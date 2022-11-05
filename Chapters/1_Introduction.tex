@@ -1,0 +1,639 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\setchapterstyle{kao}
+\setchapterpreamble[u]{\margintoc}
+\setchapterimage[6.5cm]{Images/intro_qft.jpg}
+\chapter[Introduction]{Introduction\footnotemark[0]}
+\labch{intro}
+
+The \textbf{non relativistic quantum mechanics} is the description of a single particle with an associated wavefunction. Its time evolution is given by the well-known \textbf{Schr\"odinger's equation}:
+\[
+i\hbar\frac{\partial\Psi}{\partial t}=H\Psi
+\]
+and the quantity $|\Psi|^2$ is connected to the probability density. The kinetic part of $H$ is given by the classical relation $p^2/2m$, the idea is to include the special relativity in the description:
+\[
+\frac{E^2}{c^2}=p^2+m^2c^2 \quad
+\left\{
+\begin{aligned}
+E&\xrightarrow[]{}i\hbar\frac{\partial}{\partial t}\\ p&\xrightarrow[]{}i\hbar\frac{\partial}{\partial x}
+\end{aligned}
+\right.
+\]
+By performing these substitutions we obtain the \textbf{Klein-Gordon equation} [\refch{KGeq}]:
+\[
+\left(\frac{\hbar^2}{c^2}\frac{\partial^2}{\partial t^2}-\hbar^2\nabla^2+m^2c^2\right)\phi(\underline{x},t)=0
+\]
+If we use the Klein-Gordon equation to interpret $\phi(\underline{x},t)$ as a wavefunction of a single particle we encounter two main problems:
+\begin{enumerate}
+    \item the probability density is not positive definite
+    \item for the free particle solution we have $E=\pm\sqrt{p^2+m^2}$, $E$ is not bounded from below, therefore the system collapse.
+\end{enumerate}
+A way to solve this problem and include the special relativity in the description is given by the \textbf{Dirac equation} [\refch{Diraceq}], which let us recover the Pauli equation in the non-relativistic limit.
+\section{Special relativity}
+In Newton mechanics, we have $\underline{F}=m\underline{a}$ and the time is absolute in every inertial frame:
+\[
+\begin{cases}
+x'(t)=x(t)-v_0t\\
+t'=t
+\end{cases}
+\]
+If we apply this transformations to \textbf{Maxwell equations} [\refch{Maxwelleq}], what we get is:
+\[
+\left(\frac{1}{c^2}\frac{\partial^2}{\partial t^2}-\nabla^2\right)\varphi=\rho \qquad \left(\frac{1}{c^2}\frac{\partial^2}{\partial t^2}-\nabla^2\right)\underline{A}=\frac{1}{c}\underline{J}
+\]
+Since $c$ is constant, they are not invariant, i.e. Galileo's transformations work only if $v\ll c$.
+
+An event is an instantaneous physical situation or occurrence associated with a point in spacetime: $\underline{x},t\xrightarrow[]{}(ct,\underline{x})$. We say that two events A and B are \textbf{simultaneous} if, when they emit a ray of light, they meet at half distance:
+\[
+(x_A-x_B)^2+(y_A-y_B)^2+(z_A-z_B)^2=c^2(t_a-t_B)^2\Rightarrow c^2\Delta t^2-(\Delta\underline{x})^2=0
+\]
+\[
+\Delta S_{12}:=c^2(t_1-t_2)^2-(x_1-x_2)^2-(y_1-y_2)^2-(z_1-z_2)^2
+\]
+If $\Delta S_{12}=0$ in an inertial frame, we know that $\Delta S'_{12}=0$ in any other inertial frame. We observe that $s^2=c^2t^2-l^2$ is not positive definite:
+\[
+\begin{cases}
+l'=0: s^2=c^2t^2-l^2=c^2t'^2-l'^2=c^2t'^2>0 \quad \text{time-like interval}\\
+t'=0: s^2=c^2t^2-l^2=c^2t'^2-l'^2=-l'^2<0 \quad \text{space-like interval}\\
+c^2t'^2=l'^2: s^2=0 \quad \text{light-like interval}
+\end{cases}
+\]
+\subsection{Lorentz transformations}
+Let's consider two systems $S$ and $S'$, with the latter moving at a speed $\underline{v}$ w.r.t $S$:
+\[
+\left\{
+\begin{aligned}
+t'&=\frac{t-vx/c^2}{\sqrt{1-\beta^2}} \quad &y'=y\\
+x'&=\frac{x-vt}{\sqrt{1-\beta^2}} \quad &z'=z
+\end{aligned}
+\right.
+\]
+where $\beta:=v^2/c^2$ and $\gamma:=1/\sqrt{1-\beta^2}$. In matrix form, we have:
+\[
+\begin{pmatrix}
+x^{0'}\\
+x^{1'}\\
+x^{2'}\\
+x^{3'}
+\end{pmatrix}=
+\begin{pmatrix}
+\gamma & -\beta\gamma & 0 & 0\\
+-\beta\gamma & \gamma & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+x^0\\
+x^1\\
+x^2\\
+x^3
+\end{pmatrix}
+\]
+Let's now see how these rules affect the composition of velocities:
+\begin{align*}
+    u_x&=\frac{dx}{dt}=\frac{dx}{dt'}\frac{dt'}{dt}=\frac{(u_x'+v)}{\sqrt{1-\beta^2}}\frac{(1-vu_x/c^2)}{\sqrt{1-\beta^2}}=\\
+    &=\frac{u_x'+v-vu_xu_x'/c^2-v^2u_x/c^2}{1-\beta^2}\\
+    \xrightarrow[]{}u_x(1-\beta^2)&=u_x'+v-\frac{v}{c^2}u_xu_x'-\frac{v^2}{c^2}u_x\Rightarrow u_x=\frac{u_x'+v}{1+\frac{v}{c^2}u_x'}
+\end{align*}
+Same transformation rules apply for $u_y$ and $u_z$.
+\section{Tensors}\marginnote{The whole section is based on \cite{tensori}.}
+Let's consider a vector space $\pazocal{V}$ on $\mathbb{R}$, with a set of independent vectors $\{\textbf{e}_i\}$ as a basis for $\pazocal{V}$. If $\textbf{v}\in\pazocal{V}$ then we can express it as $\textbf{v}=v^i\textbf{e}_i$: the real numbers $v^i$ are called the \textbf{contravariant components} of $\textbf{v}$. We can move to a different basis defined as $\{\textbf{e}_i'\}$ such that $\textbf{e}_i'=\Lambda_i^j\textbf{e}_j$. Notice that the index $j$ of $\textbf{e}_j$ is contracted with the upper index of $\Lambda$. In the new basis we will have:
+\[
+\textbf{v}=v'^i\textbf{e}_i'=v'^i\Lambda_i^j\textbf{e}_j'=v^j\textbf{e}_j \quad \text{ with } \; v^j=\Lambda_i^jv'^i
+\]
+Now we multiply the final result obtained above by $(\Lambda^{-1})^l_j$:
+\[
+(\Lambda^{-1})^l_jv^j=(\Lambda^{-1})^l_j\Lambda^j_iv'^i=(\Lambda^{-1}\Lambda)^l_iv'^i=\delta^l_iv'^i=v'^l
+\]
+\[
+\Rightarrow v'^l=(\Lambda^{-1})^l_jv^j
+\]
+Therefore, if the basis transforms with $\Lambda$, the contravariant components of $\textbf{v}$ transform with the inverse transposed of $\Lambda$: $(\Lambda^T)^{-1}=(\Lambda^{-1})^T$.
+
+Once we defined the vectorial space $\pazocal{V}$, it is automatic to define also the \textbf{dual} space $\pazocal{V}^*$, which is the vectorial space of linear functionals on $\pazocal{V}$:
+\begin{align*}
+\sigma:\pazocal{V}&\xrightarrow[]{}\mathbb{R}\\
+\textbf{v}&\mapsto\sigma(\textbf{v})
+\end{align*}
+Since $\pazocal{V}^*$ is a vectorial space, we can find a basis $\{\textbf{k}^i\}$ in which the functional $\sigma$ can be represented as $\sigma=\sigma_i\textbf{k}^i$. $\sigma_i$ are real numbers which represent the components of $\sigma$ in this basis. The spaces $\pazocal{V}$ and $\pazocal{V}^*$ are different, although they are isomorphic and have same dimensionality: a basis change in $\pazocal{V}$ implies a basis change in $\pazocal{V}^*$. Let's see how the components of $\sigma$ behave under the basis transformation we used for the contravariant components:
+\[
+\sigma(\textbf{v})=\sigma_i\textbf{k}^i(\textbf{v})=\sigma_i\textbf{k}^i(v^j\textbf{e}_j)=\sigma_iv^j\textbf{k}^i(\textbf{e}_j)
+\]
+The number $\textbf{k}^i(\textbf{e}_j)$ tells us how the components of the basis in $\pazocal{V}^*$ act on the components of the basis in $\pazocal{V}$. The two basis are said to be dual if:
+\[
+\textbf{k}^i(\textbf{e}_j)=\delta^i_j
+\]
+If this happens, we have:
+\[
+\sigma(\textbf{v})=\sigma_iv^i
+\]
+Let's now consider dual basis and apply $\{\textbf{k}^i\}$ to the vector $\textbf{v}\in\pazocal{V}$:
+\[
+\textbf{k}^i(\textbf{v})=\textbf{k}^i(v^J\textbf{e}_j)=v^j\textbf{k}^i(\textbf{e}_j)=v^i
+\]
+The action of $\textbf{k}^i$ on $\textbf{v}$ is to extract its \textbf{contravariant component}. On the other hand, we have:
+\[
+\sigma(\textbf{e}_j)=\sigma_i\textbf{k}^i(\textbf{e}_j)=\sigma_j
+\]
+We said before that a change of basis in $\pazocal{V}$ implies a change of basis in $\pazocal{V}^*$:
+\[
+\sigma'_i=\sigma(\textbf{e}'_i)=\sigma_j\textbf{k}^j(\textbf{e}'_i)=\sigma_j\textbf{k}^j(\Lambda^l_i\textbf{e}_l)=\sigma_j\Lambda^l_i\textbf{k}^j(\textbf{e}_l)=\sigma_j\Lambda^l_i\delta^j_l=\sigma_j\Lambda^j_i
+\]
+The components $\sigma_i$ transform as:
+\[
+\sigma'_i=\Lambda^j_i\sigma_j
+\]
+and this is why they are called \textbf{covariant components}.
+
+We now take two vectors $\textbf{v},\textbf{w}\in\pazocal{V}$ and it is possible to define the \textbf{scalar product} as a bilinear, symmetric and non-degenerate application $\pazocal{V}\times\pazocal{V}\mapsto\mathbb{R}$. We fix the vector \textbf{v} and consider the scalar product with any other vector \textbf{w}$\in\pazocal{V}$. To do that, we define a functional $f_v:=(\textbf{v},\cdot)$ such that if $\textbf{w}\in\pazocal{V}$ then:
+\[
+f_v(\textbf{w})=(\textbf{v},\textbf{w})=v^i(\textbf{e}_i,\textbf{w})=v^iw^j(\textbf{e}_i,\textbf{e}_j)=v^iw^jg_{ij} 
+\]
+where $g_{ij}=(\textbf{e}_i,\textbf{e}_j)$ is the \textbf{metric tensor}. From this we can see that:
+\[
+v_i=(\textbf{v},\textbf{e}_i)=(v^j\textbf{e}_j,\textbf{e}_i)=g_{ij}v^j
+\]
+% \begin{align*}
+% v_{\mu}&=(\textbf{v},\textbf{e}_{\mu})=(v^{\nu}\textbf{e}_{\nu},\textbf{e}_{\mu})=v^{\nu}g_{\mu\nu}\\
+% v_{\mu}'&=(\textbf{v},\textbf{e}_{\mu}')=(v^{\rho}\textbf{e}_{\rho},\Lambda_{\mu}^{\nu}\textbf{e}_{\nu})=v^{\rho}\Lambda_{\mu}^{\nu}g_{\rho\nu}=\Lambda_{\mu}^{\nu}v_{\nu}\\
+% g_{\mu\nu}'&=(\textbf{e}_{\mu}',\textbf{e}_{\nu}')=(\Lambda_{\mu}^{\rho}\textbf{e}_{\rho},\Lambda_{\nu}^{\sigma}\textbf{e}_{\sigma})=\Lambda_{\mu}^{\rho}\Lambda_{\nu}^{\sigma}g_{\rho\sigma}
+% \end{align*}
+We have seen how the covariant components behave under a basis transformation, now we ask ourselves how do the metric tensor transform? 
+\[
+g'_{ij}=(\textbf{e}'_i,\textbf{e}'_j)=(\Lambda^\rho_i\textbf{e}_\rho,\Lambda^\sigma_j\textbf{e}_\sigma)=\Lambda^\rho_i\Lambda^\sigma_j(\textbf{e}_\rho,\textbf{e}_\sigma)=\Lambda^\rho_i\Lambda^\sigma_jg_{\rho\sigma}
+\]
+This is called a \textbf{covariant tensor of rank 2}. 
+Using this relation, it is possible to show that the scalar product is invariant under transformations, i.e. it is an absolute quantity which does not depend on the choice of the basis:
+\begin{align*}
+(\textbf{u}',\textbf{v}')&=g'_{\mu\nu}u'^\mu v'^\nu=\Lambda^\rho_\mu\Lambda^\sigma_\nu g_{\rho\sigma}u'^\mu v'^\nu=\Lambda^\rho_\mu\Lambda^\sigma_\nu g_{\rho\sigma}(\Lambda^{-1})^\mu_\gamma(\Lambda^{-1})^\nu_\delta u^\gamma v^\delta\\
+&=(\Lambda\Lambda^{-1})^\rho_\gamma(\Lambda\Lambda^{-1})^\sigma_\delta u^\gamma v^\delta=\delta^\rho_\gamma\delta^\sigma_\delta u^\gamma v^\delta=g_{\gamma\delta}u^\gamma v^\delta\\
+&=(\textbf{u},\textbf{v}) \quad \checkmark
+\end{align*}
+We can also define the inverse of the metric tensor such that:
+\[
+g^{\mu\nu}g_{\nu\rho}=\delta^{\mu}_{\rho}=\delta_{\mu}^{\rho}=g_{\mu\nu}g^{\nu\rho}
+\]
+Under basis transformation, $g^{\mu\nu}$ behaves as:
+\[
+(\textbf{u},\textbf{v})=g^{\gamma\delta}u_\gamma u_\delta=(\textbf{u}',\textbf{v}')=g'^{\mu\nu}u'_\mu v'_\nu=g'^{\mu\nu}\Lambda^\gamma_\mu\Lambda^\delta_\nu u_\gamma v_\delta
+\]
+\[
+\Rightarrow g^{\gamma\delta}=g'^{\mu\nu}\Lambda^\gamma_\mu\Lambda^\delta_\nu
+\]
+Now, we multiply both sides by $(\Lambda^{-1})^l_\gamma(\Lambda^{-1})^m_\delta$:
+\[
+(\Lambda^{-1})^l_\gamma(\Lambda^{-1})^m_\delta g^{\gamma\delta}=(\Lambda^{-1})^l_\gamma(\Lambda^{-1})^m_\delta g'{\mu\nu}\Lambda^\gamma_\mu\Lambda^\delta_\nu=(\Lambda^{-1}\Lambda)^l_\mu(\Lambda^{-1}\Lambda)^m_\nu g'^{\mu\nu}
+\]
+At the end of the day, what we obtain is:
+\[
+g'^{lm}=(\Lambda^{-1})^l_{\gamma}(\Lambda^{-1})^m_{\delta}g^{\gamma\delta}
+\]
+In the Minkowski space, we have a \textbf{pseudo-euclidean metric} defined as:
+\[
+\eta_{\mu\nu}=\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & -1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1
+\end{pmatrix}=\eta^{\mu\nu}
+\]
+The scalar product is therefore:
+\[
+x^{\mu}x_{\mu}=\eta_{\mu\nu}x^{\mu}x^{\nu}=\eta^{\mu\nu}x_{\mu}x_{\nu}=x^{0^2}-x^{1^2}-x^{2^2}-x^{3^2}
+\]
+We can define a generic Lorentz transformation such as $x'^{\mu}=\Lambda^{\mu}_{\nu}x^{\nu}$ and since $x^2$ is invariant:
+\begin{align*}
+&x^2=\eta_{\rho\sigma}x^{\rho}x^{\sigma}=x'^2=\eta_{\mu\nu}\Lambda^{\mu}_{\sigma}\Lambda^{\nu}_{\rho}x^{\sigma}x^{\rho}\\
+\Rightarrow&\eta_{\rho\sigma}=\eta_{\mu\nu}\Lambda^{\mu}_{\sigma}\Lambda^{\nu}_{\rho}
+\end{align*}
+Taking now an infinitesimal Lorentz transformation, i.e. $\Lambda^\mu_\nu\simeq\delta^\mu_\nu+\varepsilon^\mu_\nu$, we have:
+\begin{align*}
+\eta_{\rho\sigma}&=\eta_{\mu\nu}\Lambda^{\mu}_{\sigma}\Lambda^{\nu}_{\rho}=(\delta^\mu_\sigma+\varepsilon^\mu_\sigma)\eta_{\mu\nu}(\delta^\nu_\rho+\varepsilon^\nu_\rho)\\
+&=\delta^\mu_\sigma\eta_{\mu\nu}\delta^\nu_\rho+\varepsilon^\mu_\sigma\eta_{\mu\nu}\delta^\nu_\rho+\delta^\mu_\sigma\eta_{\mu\nu}\varepsilon^\nu_\rho+o(\varepsilon^2)\\
+&=\eta_{\rho\sigma}+\eta_{\mu\rho}\varepsilon^\mu_\sigma+\eta_{\nu\sigma}\varepsilon^\nu_\rho+o(\varepsilon^2)\\
+&=\eta_{\rho\sigma}+\varepsilon_{\rho\sigma}+\varepsilon_{\sigma\rho}+o(\varepsilon^2)\\
+&\Rightarrow \varepsilon_{\mu\nu}=-\varepsilon_{\nu\mu}
+\end{align*}
+The $\varepsilon$ tensor is an \textbf{anti-symmetric} tensor.
+\section{Review of group theory}\marginnote{For a more detailed review, it is possible to check \cite{gruppi}.}
+\labsec{GT}
+\begin{definition}
+\labdef{group}
+A \textbf{group} \textbf{G} is a collection of objects satisfying the following properties:
+\begin{enumerate}
+    \item if $a,b\in\textbf{G}\Rightarrow ab\in\textbf{G}$
+    \item $a(bc)=(ab)c \quad \forall a,b,c\in\textbf{G}$
+    \item $\exists e\in\textbf{G}$ such that $ae=ea=a \quad \forall a\in\textbf{G}$
+    \item $\forall a\in\textbf{G}\exists a^{-1}\in\textbf{G}$ such that $aa^{-1}=a^{-1}a=e$
+\end{enumerate}
+If additionally it holds true that $ab=ba$ then \textbf{G} is an \textbf{abelian} group.
+\end{definition}
+An \textbf{homomorphism} $\Phi:\textbf{G}\xrightarrow[]{}\textbf{G}$ is such that we have:
+\[
+\Phi(g_1)\Phi(g_2)=\Phi(g_1g_2) \quad \forall g_1,g_2\in\textbf{G}
+\]
+Let $V$ be a vector space and GL the set of linear invertible transformations on $V$, then GL$(V)$ is a group.
+\begin{definition}
+\labdef{representation}
+A \textbf{representation} of \textbf{G} on $V$ is an homomorphism $D_R:\textbf{G}\xrightarrow[]{}$GL$(V)$ such that:
+\begin{enumerate}
+    \item if $g\in\textbf{G}\Rightarrow D_R(g)\in$GL$(V)$
+    \item $D_R(g_1)D_R(g_2)=D_R(g_1g_2) \quad \forall g_1,g_2\in\textbf{G}$
+    \item $D_R(e)=1$
+\end{enumerate}
+\end{definition}
+Two representations $D_1(g)$ and $D_2(g)$ are called equivalent if $\exists T:V\xrightarrow[]{}W$ invertible such that $TD_1(g)T^{-1}=D_2(g) \quad \forall g\in V$. A subspace $S$ of $V$ is \textbf{invariant} under $D_R(g)$ if $\forall x\in S, \forall g\in V: D_R(g)(x)\in S$. If the vector space on which the representation is constructed does \textbf{not} admit invariant subspaces, we say that the representation is \textbf{irreducible}.
+\begin{definition}
+A \textbf{Lie group} is a group whose elements $g$ depend in a continuous and differentiable way on a set of parameters $\theta^a$ with $a=1,\dots,N$: $g=g(\theta^a)$ and $g(0)=e$.
+\end{definition}
+Once we defined what a Lie group is, we can move to define the \textbf{Lie algebra}. This structure is very important, since it allows us to find the so called \textbf{generators} of the group. By using these objects, it is possible to calculate all the elements of the group, since the Lie algebra gives us the relations between the generators and the elements of the group.
+
+Given the assumption of smoothness, we can consider $\theta^a$ infinitesimal, i.e. in the neighbourhood of the identity: $D_R(g(\theta))\simeq\mathbb{1}+i\theta_aT^a_R+\dots$ where $T_R^a=-i\frac{\partial D_R}{\partial\theta_a}\Bigr|_{\substack{\theta=0}}$ are the generators of the group in the representation $R$. Now we consider:
+\[
+D_R(\theta+d\theta)=D_R(\theta)D_R(d\theta)=D_R(\theta)[\mathbb{1}+id\theta T_R]=D_R(\theta)+id\theta D_R(\theta)T_R
+\]
+From this, it is easy to pass to a differential equation:
+\[
+\left\{
+\begin{aligned}
+&\frac{D_R(\theta+d\theta)-D_R(\theta)}{d\theta}\simeq\frac{\partial D_R(\theta)}{\partial\theta}=iD_R(\theta)T_R\\
+&D(0)=\mathbb{1}
+\end{aligned}
+\right.
+\Rightarrow D_R(\theta)=e^{iT_R\theta}
+\]
+From Property 2 of \refdef{representation} it has to be:
+\[
+e^{i\alpha_aT_R^a}e^{i\beta_bT_R^b}=e^{i\delta_cT_R^c}\Rightarrow i\delta_cT_R^c=\ln\left[\left(\mathbb{1}+i\alpha_aT_R^a+\frac{1}{2}(i\alpha_aT_R^a)^2\right)\left(\mathbb{1}+i\beta_bT_R^b+\frac{1}{2}(i\beta_bT_R^b)^2\right)\right]
+\]
+and we assumed to have two infinitesimal transformations. Explicitly computing the relation above and neglecting terms of order higher than 2, we obtain:
+\begin{align*}
+    i\delta_cT_R^c&=\ln\left[\mathbb{1}+i(\alpha_aT_R^a+\beta_bT_R^b)-\frac{1}{2}(\alpha_aT_R^a)^2-\frac{1}{2}(\beta_bT_R^b)^2-\alpha_a\beta_bT_R^aT_R^b+\dots\right]\marginnote{$\ln(1+\varepsilon)\simeq\varepsilon-\frac{\varepsilon^2}{2}$}\\
+    &\simeq i(\alpha_aT_R^a+\beta_bT_R^b)-\frac{1}{2}(\alpha_aT_R^a)^2-\frac{1}{2}(\beta_bT_R^b)^2-\alpha_a\beta_bT_R^aT_R^b+\frac{1}{2}(\alpha_aT_R^a+\beta_bT_R^b)^2\\
+    &=i(\alpha_aT_R^a+\beta_bT_R^b)-\alpha_a\beta_bT_R^aT_R^b+\frac{1}{2}\alpha_a\beta_bT_R^aT_R^b+\frac{1}{2}\alpha_a\beta_bT_R^bT_R^a\\
+    &=i(\alpha_c+\beta_c)T_R^c-\frac{1}{2}\alpha_a\beta_b(T_R^aT_R^b-T_R^bT_R^a)=i(\alpha_c+\beta_c)T_R^c-\frac{1}{2}\alpha_a\beta_b[T_R^a,T_R^b]
+\end{align*}
+In order to satisfy this relation, it has to be\\ $\alpha_a\beta_b[T_R^a,T_R^c]=2i(\alpha_c+\beta_c-\delta_c)T_R^c=\omega_cT_R^c$, where $\omega_c=if_c^{ab}\alpha_a\beta_b$. Therefore:
+\[
+[T_R^a,T_R^b]=if^{ab}_cT_R^c \quad \text{if } f^{ab}_c=0\Rightarrow[T_R^a,T_R^b]=0 \text{ the group is abelian}
+\]
+We have seen that the generators of the group are $T_R$ defined as $D_R(\theta)=e^{iT_R\theta}$ and the algebra of the group tells us that:
+\[
+[T_R^a,T_R^b]=if^{ab}_cT_R^c
+\]
+is independent from the representation of the group. It is now possible to show that the Lorentz transformations form a group [\refdef{group}]:
+\begin{enumerate}
+    \item If $\Lambda_1,\Lambda_2\in$LT$\Rightarrow\Lambda_1\Lambda_2\in$LT:\\
+    let $\Lambda_1,\Lambda_2\in$LT and denote with $\Lambda$ the composition of the two, i.e. $\Lambda=\Lambda_1\Lambda_2$. We know that $\Lambda^T_1 g \Lambda_1=g$ and $\Lambda^T_2 g \Lambda_2=g$:
+    \[
+    \Lambda^T g \Lambda=(\Lambda_1\Lambda_2)^T g (\Lambda_1\Lambda_2)=\Lambda^T_2\Lambda^T_1 g \Lambda_1\Lambda_2=\Lambda^T_2 g \Lambda_2=g \quad \checkmark
+    \]
+    \item Associativity comes from associativity of matrix product.
+    \item $\mathbb{1}\in$LT since the 4-dimensional identity matrix is a Lorentz transformation whose elements are $g^\mu_{ \nu}$.
+    \item $\exists\Lambda^{-1}:\Lambda\Lambda^{-1}=\Lambda^{-1}\Lambda=\mathbb{1}$:\\
+    we want to show that $\Lambda^{-1}\in$LT. We know that $\Lambda^T g \Lambda=g$ and we multiply by $(\Lambda^T)^{-1}$ on the left and by $\Lambda^{-1}$ on the right:
+    \[
+    \left\{
+    \begin{aligned}
+    &\text{(LHS): }(\Lambda^T)^{-1}\Lambda^T g \Lambda \Lambda^{-1}=g\\
+    &\text{(RHS): }(\Lambda^T)^{-1}g\Lambda^{-1}=(\Lambda^{-1})^T g \Lambda^{-1}
+    \end{aligned}
+    \right.
+    \Rightarrow(\Lambda^{-1})^T g \Lambda^{-1}=g \quad \checkmark
+    \]
+\end{enumerate}
+The Poincaré group $T(\Lambda,a)$ is obtained by a LT+a rigid translation: $x'^{\mu}=\Lambda^{\mu}_{\nu}x^{\nu}+a^{\mu}$. \textbf{Non compact groups} have \textbf{non-unitary representation}, such as the Lorentz group which is not compact since $\beta\in[0,1).$
+\begin{definition}
+A \textbf{Casimir operator} is an operator which commutes with all the generators of the Lie group.
+\end{definition}
+For example, in the case of angular momentum in quantum mechanics, we know that:
+\[
+\left\{
+\begin{aligned}
+J^2&:[J^2,J^i]=0\xrightarrow[]{}\text{Casimir operator}\\
+J^i&:[J^i,J^j]=i\varepsilon^{ijk}J^k\xrightarrow[]{}\text{not a Casimir operator}
+\end{aligned}
+\right.
+\]
+Casimir operators play a key role in group theory because they are directly connected to the identity via the Schur's lemma.
+\begin{lemma}
+If U(\textbf{G}) is an \textbf{irreducible representation} of \textbf{G} on a vector space $V$ and $J^2$ (defined as $[J^2,J^i]=0, [J^i,J^j]=i\varepsilon_{ijk}J^k$) is a \textbf{Casimir operator} we observe that $[J^2,U(\textbf{G})]=0\Rightarrow J^2\propto\mathbb{1}$.
+\end{lemma}
+
+The group of rotations SO(2) is abelian:
+\[
+R(\phi_1)R(\phi_2)=R(\phi_1+\phi_2)=R(\phi_2+\phi_1)=R(\phi_2)R(\phi_1) \text{ with } R(\phi)=R(\phi+2\pi)
+\]
+The generators are given by $R(d\phi)=\mathbb{1}+d\phi K$ and since $RR^\dagger=\mathbb{1}$ we get that:
+\[
+d\phi(K+K^\dagger)+o(d\phi^2)\simeq0
+\]
+therefore it has to be $K=-K^\dagger$, i.e. it is anti-hermitian. We want an hermitian object, so we define $K=-iJ$, with $J=J^+$:
+\[
+R(d\phi)=\mathbb{1}-iJd\phi\Rightarrow R(\phi)=e^{-iJ\phi}
+\]
+The matrix representation is given by:
+\[
+D(\phi)=\left(\begin{array}{cc}
+    \cos\phi & \sin\phi \\
+    -\sin\phi & \cos\phi
+    \end{array}\right)\xrightarrow[]{}D(d\phi)=\left(\begin{array}{cc}
+    1 & d\phi \\
+    -d\phi & 1
+    \end{array}\right)=\mathbb{1}-iJd\phi
+\]
+$J$ is hence given by the 2$\times$2 matrix $\left(\begin{array}{cc}
+    0 & i \\
+    -i & 0
+    \end{array}\right)$.
+
+So far, we found that:
+\[
+\left\{
+\begin{aligned}
+&U_R(\phi)=e^{-iJ\phi}\\
+&U_R(\phi_1)U_R(\phi_2)=U_R(\phi_1+\phi_2)\\
+&U_R(\phi)=U_R(\phi+2\pi)
+\end{aligned}
+\right.
+\]
+Moreover, we have that $[U,J]=[J,U]=0$ which means that they have a common basis of eigenvectors:
+\[
+\left\{
+\begin{aligned}
+&J\ket{\alpha}=\alpha\ket{\alpha}\\
+&U_R(\phi)\ket{\alpha}=e^{-i\phi\alpha}\ket{\alpha}
+\end{aligned}
+\right.
+\]
+$\alpha$ has to be an integer number and for each value of $\alpha$ we have a one-dimensional irreducible representation.
+\subsection{Poincaré algebra}
+An element of the Poincaré group is denoted by $T(\Lambda,a)$, where $\Lambda$ is the Lorentz transformation and $a$ the rigid translation. The homogeneous group (the Lorentz transformation) takes into account 6 parameters, while the inhomogeneous group (the rigid translation) consider 4 of them for a total of 10 parameters. The rule of composition and the inverse are defined as follows:
+\[
+\left\{
+\begin{aligned}
+&T(\Lambda',a')T(\Lambda,a)=T(\Lambda'\Lambda,\Lambda'a+a')\\
+&T^{-1}(\Lambda,a)=T(\Lambda^{-1},-\Lambda^{-1}a)
+\end{aligned}
+\right.
+\]
+If we move to an infinitesimal transformation, i.e. $\Lambda^{\mu}_{\nu}=\delta^{\mu}_{\nu}+\delta\omega^{\mu}_{\nu}$ and $a^{\mu}=\delta a^{\mu}$, we get that:
+\[
+\left\{
+\begin{aligned}
+&T(\Lambda,a)\simeq T(\delta^{\mu}_{\nu}+\delta\omega^{\mu}_{\nu},\delta a^{\mu})\\
+&T(\mathbb{1},\delta a^{\mu})\simeq\mathbb{1}-i\delta a_{\mu}P^{\mu}\xrightarrow[]{}\text{4 generators of translations}\\
+&T(\delta^{\mu}_{\nu}+\delta\omega^{\mu}_{\nu},0)\simeq\mathbb{1}-\frac{i}{2}
+\delta\omega_{\mu\nu}J^{\mu\nu}\xrightarrow[]{}\text{6 generators of LT}\\
+&T(\delta^{\mu}_{\nu}+\delta\omega^{\mu}_{\nu},\delta a^{\mu})\simeq\mathbb{1}-\frac{i}{2}\delta\omega_{\mu\nu}J^{\mu\nu}-i\delta a_{\mu}P^{\mu} \quad (\star)
+\end{aligned}
+\right.
+\]
+We now want to study the relation that the generators $J$ and $P$ have to satisfy. We impose the composition rule to the LHS of $(\star)$:
+\begin{align*}
+T(\Lambda,b)T(\mathbb{1}+\delta\omega
+,\delta a)T^{-1}(\Lambda,b)&=T(\Lambda(\mathbb{1}+\delta\omega),\Lambda\delta a+b)T^{-1}(\Lambda,b)\\
+&=T(\Lambda(\mathbb{1}+\delta\omega),\Lambda\delta a+b)T(\Lambda^{-1},-\Lambda^{-1}b)\\
+&=T(\Lambda(\mathbb{1}+\delta\omega)\Lambda^{-1},-\Lambda(\mathbb{1}+\delta\omega)\Lambda^{-1}b+\Lambda\delta a+b)\\
+&=T(\Lambda\mathbb{1}\Lambda^{-1}+\Lambda\delta\omega\Lambda^{-1},\cancel{-\Lambda\mathbb{1}\Lambda^{-1}b}-\Lambda\delta\omega\Lambda^{-1}b+\Lambda\delta a+\cancel{b})\\
+&=T(\mathbb{1}+\Lambda\delta\omega\Lambda^{-1},\Lambda\delta a-\Lambda\delta\omega\Lambda^{-1}b)\\
+&\simeq\mathbb{1}-\frac{i}{2}(\Lambda\delta\omega\Lambda^{-1})_{\mu\nu}J^{\mu\nu}-i(\Lambda\delta a-\Lambda\delta\omega\Lambda^{-1}b)_{\mu}P^{\mu}
+\end{align*}
+We apply the transformation to the RHS of $(\star)$ and it has to be:
+\[
+T(\Lambda,b)\left[\mathbb{1}-\frac{i}{2}\delta\omega_{\mu\nu}J^{\mu\nu}-i\delta a_{\mu}P^{\mu}\right]T^{-1}(\Lambda,b)\simeq\mathbb{1}-\frac{i}{2}(\Lambda\delta\omega\Lambda^{-1})_{\mu\nu}J^{\mu\nu}-i(\Lambda\delta a-\Lambda\delta\omega\Lambda^{-1}b)_{\mu}P^{\mu}
+\]
+The term $(\Lambda\delta\omega\Lambda^{-1})_{\mu\nu}$ can be rewritten as follows:
+\begin{align*}
+  (\Lambda\delta\omega\Lambda^{-1})_{\mu\nu}=&\Lambda_{\mu\sigma}\delta\omega^{\sigma\rho}(\Lambda^{-1})_{\rho\nu}=\delta\omega^{\sigma\rho}\Lambda^{\alpha}_{\mu}g_{\alpha\sigma}g_{\mu\beta}(\Lambda^{-1})^{\beta}_{\nu}\\
+  =&\delta\omega^{\sigma\rho}\Lambda^{\alpha}_{\mu}\Lambda^{\beta}_{\nu}g_{\alpha\sigma}g_{\mu\beta}=\delta\omega_{\alpha\beta}\Lambda^{\alpha}_{\mu}\Lambda^{\beta}_{\nu}
+\end{align*}
+% Equaling the terms in $\delta\omega$ we get that:
+% \[
+% T(\Lambda,b)J^{\mu\nu}T^{-1}(\Lambda,b)=\Lambda^{\mu}_{\alpha}\Lambda^{\nu}_{\beta}(J^{\alpha\beta}-b^{\alpha}P^{\beta}+b^{\beta}P^{\alpha})
+% \]
+Similarly, for $(\Lambda\delta\omega\Lambda^{-1}b)_{\mu}P^{\mu}$ we see that:
+\begin{align*}
+    (\Lambda\delta\omega\Lambda^{-1}b)_{\mu}P^{\mu}=&\delta\omega_{\rho\sigma}\Lambda^{\rho}_{\nu}\Lambda^{\sigma}_{\mu}b^{\nu}P^{\mu}=\frac{1}{2}\delta\omega_{\rho\sigma}(\Lambda^{\rho}_{\nu}\Lambda^{\sigma}_{\mu}-\Lambda^{\sigma}_{\nu}\Lambda^{\rho}_{\mu})b^{\nu}P^{\mu}\marginnote{$\Lambda\Lambda=\frac{1}{2}(\text{sum})+\frac{1}{2}(\text{difference})$ and only the anti-symmetric part survives since it contracts with $\delta\omega$ which is anti-symmetric.}\\
+    =&\frac{1}{2}\delta\omega_{\rho\sigma}\Lambda_{\nu}^{\rho}\Lambda^{\sigma}_{\mu}(b^{\nu}P^{\mu}-b^{\mu}P^{\nu})
+\end{align*}
+% \[
+% \Rightarrow T(\Lambda,b)P^{\mu}T^{-1}(\Lambda,b)=\Lambda^{\mu}_{\nu}P^{\nu}
+% \]
+Now, taking the first order in $\delta\omega$, what we get is:
+\begin{equation}
+\labeq{J}
+T(\Lambda,b)J^{\mu\nu}T^{-1}(\Lambda,b)=\left[\Lambda_\alpha^\mu\Lambda_\beta^\nu J^{\alpha\beta}-\Lambda_{\nu}^{\rho}\Lambda^{\sigma}_{\mu}(b^{\nu}P^{\mu}-b^{\mu}P^{\nu})\right]
+\end{equation}
+The generators $J$ of the Lorentz transformation under a Poincaré transformation act like a rank two tensor plus an additional piece, which goes away if we consider just the LT. The piece in $\delta a$ gives us the transformation rule for the generators $P^\mu$:
+\[
+T(\Lambda,b)P^\mu T^{-1}(\Lambda,b)=\Lambda^\mu_\nu P^\nu
+\]
+We now want to see how the algebra is constructed, what conditions the generators have to satisfy. We consider $T$ as an infinitesimal transformation and \refeq{J} becomes:
+\[
+\left[\mathbb{1}-\frac{i}{2}\delta\omega_{\mu'\nu'}J^{\mu'\nu'}-i\delta a_{\mu'}P^{\mu'}\right]J^{\mu\nu}\left[\mathbb{1}-\frac{i}{2}\delta\omega_{\mu'\nu'}J^{\mu'\nu'}-i\delta a_{\mu'}P^{\mu'}\right]=(\delta^{\mu}_{\rho}+\delta\omega^{\mu}_{\rho})(\delta^{\nu}_{\sigma}+\delta\omega^{\nu}_{\sigma})(J^{\rho\sigma}-\delta a^{\rho}P^{\sigma}+P^{\rho}\delta a^{\sigma})
+\]
+\[
+J^{\mu\nu}-\frac{i}{2}\delta\omega_{\mu'\nu'}J^{\mu'\nu'}J^{\mu\nu}+\frac{i}{2}\delta\omega_{\mu'\nu'}J^{\mu\nu}J^{\mu'\nu'}-i\delta a_{\mu'}J^{\mu\nu}P^{\mu'}\simeq J^{\mu\nu}+\delta^{\mu}_{\rho}\delta^{\nu}_{\sigma}(b^{\sigma}P^{\rho}-b^{\rho}P^{\sigma})+\delta^{\mu}_{\rho}\delta\omega^{\nu}_{\sigma}(J^{\rho\sigma}+\dots)+\delta^{\nu}_{\sigma}\delta\omega^{\mu}_{\rho}(J^{\rho\sigma}+\dots)
+\]
+Readjusting everything in a more compact form we obtain:
+\[
+\frac{i}{2}\delta\omega_{\rho\nu}[J^{\mu\nu},J^{\mu'\nu'}]+i\delta a_{\mu'}[J^{\mu\nu},P^{\mu'}]\simeq\delta a^{\nu}P^{\mu}-\delta a^{\mu}P^{\nu}+\delta\omega^{\nu}_{\sigma}J^{\mu\sigma}+\delta\omega^{\mu}_{\rho}J^{\rho\nu}
+\]
+Taking the corresponding terms what we get is:
+\[
+\left\{
+\begin{aligned}
+&[P^{\mu},P^{\nu}]=0\\
+&[P^{\mu},J^{\lambda\sigma}]=i(P^{\lambda}\eta^{\mu\sigma}-P^{\sigma}\eta^{\mu\lambda})\\
+&[J^{\mu\nu},J^{\rho\sigma}]=i(J^{\nu\sigma}\eta^{\mu\rho}+J^{\rho\nu}\eta^{\sigma\mu}-J^{\mu\sigma}\eta^{\nu\rho}-J^{\rho\mu}\eta^{\sigma\nu})
+\end{aligned}
+\right.
+\]
+$P^0=H$ and $\underline{P}=(P^1,P^2,P^3)$ are connected to the space part of the momentum, $\underline{J}=(J^{23},J^{31},J^{12})$ and $\underline{K}=(J^{10},J^{20},J^{30})$ satisfy the following commutation rules:
+\[
+\left\{
+\begin{aligned}
+&[J_i,J_j]=i\varepsilon_{ijk}J_k\\ &[J_i,P_j]=i\varepsilon_{ijk}P_k\\
+&[K_i,K_j]=-i\varepsilon_{ijk}K_k\\ &[K_i,P_j]=iH\delta_{ij}
+\end{aligned}
+\right.
+\quad
+\left\{
+\begin{aligned}
+&[J_i,K_j]=i\varepsilon_{ijk}J_k\\
+&[K_i,H]=iP_i\\
+&[J_i,H]=0\\
+&[P_i,H]=0\\
+\end{aligned}
+\right.
+\]
+The displacement is given by $U(\mathbb{1},a)=e^{-ia_{\mu}p^{\mu}}$ and the rotation by $U(R(\theta),0)=e^{-i\underline{J}\cdot\underline{\theta}}$. The Casimir\marginnote{Casimir operator=operator which commutes with all the generators.} operators are given by:
+\[
+\left\{
+\begin{aligned}
+&J^2-K^2=\frac{1}{2}J_{\mu\nu}J^{\mu\nu}\\
+&\underline{J}\cdot\underline{K}=-\frac{1}{4}\varepsilon^{\mu\nu\rho\sigma}J_{\mu\nu}J^{\rho\sigma}
+\end{aligned}
+\right.
+\text{ combining them as }
+\left\{
+\begin{aligned}
+N^i&=\frac{1}{2}(J^i+iK^i)\\
+M^i&=\frac{1}{2}(J^i-iK^i)
+\end{aligned}
+\right.
+\]
+From this we obtain the algebra:
+\[
+\left\{
+\begin{aligned}
+[N^i,N^j]&=i\varepsilon_{ijk}N^k\\
+[M^i,M^j]&=i\varepsilon_{ijk}M^k\\
+[N^i,M^j]&=0
+\end{aligned}
+\right.
+\]
+In this space, we decoupled $J$ and $K$, the Casimir of the new representation are now $N^2$ and $M^2$.
+
+Moving back to fields, we consider:
+\[
+\Phi(x)=(\Phi_1(x),\dots,\Phi_2(x)):\mathbb{M}^4\xrightarrow[]{}\mathbb{C}^n
+\]
+How does it transform? $\Phi(x)\xrightarrow[]{}\Phi'(x')=S(\Lambda)\Phi(x)$. A trivial representation is given by a particle with zero spin and $\Lambda=\mathbb{1}$. Let's consider a vector $V^{\mu}(x)=(V^0(x),\underline{V}(x))$ which transforms as $V'^{\mu}(x')=\Lambda^{\mu}_{\nu}V^{\nu}(x)$. In this case:
+\[
+S(\Lambda)=(\Lambda^{\mu}_{\nu})_x=\left(\begin{array}{cccc}
+    \cosh\phi_x & \sinh\phi_x & 0 & 0 \\
+    \sinh\phi_x & \cosh\phi_x & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+    \end{array}\right)
+\]
+The generators of the rotation come from:
+\[
+R_x=\left(\begin{array}{cccc}
+    1 & 0 & 0 \\
+    0 & \cos\theta_x & \sin\theta_x & 0 \\
+    0 & -\sin\theta_x & \cos\theta_x & 0 \\
+    0 & 0 & 0 & 1 \\
+    \end{array}\right)
+\]
+The generators are given by $t^a=-i\frac{\partial}{\partial\theta_a}S(\Lambda)\Bigr|_{\substack{\theta_a=0}}$, therefore we obtain for the boost $K$ and for the rotation $J$:
+\[
+K_x=-i\left(\begin{array}{cccc}
+     0 & 1 & 0 & 0 \\
+     1 & 0 & 0 & 0 \\
+     0 & 0 & 0 & 0 \\
+     0 & 0 & 0 & 0 \\
+\end{array}\right)
+\quad 
+J_x=-i\left(\begin{array}{cccc}
+     0 & 0 & 0 & 0 \\
+     0 & 0 & 0 & 0 \\
+     0 & 0 & 0 & 1 \\
+     0 & 0 & -1 & 0 \\
+\end{array}\right)
+\]
+\section{Dynamics of a free particle}
+\labsec{freedynamics}
+In Newtonian mechanics we know that $\underline{v}=dx/dt$ but we have just seen that the time is not invariant, what is invariant now is $ds^2=c^2dt^2-dx^2-dy^2-dz^2$. We move to an inertial frame with the particle at rest, i.e. $dx'=dy'=dz'=0$ and we get that $d\tau=dt\sqrt{1-\beta^2}$ and $ds'^2=c^2d\tau^2$. Therefore it is possible to use $d\tau$ instead of $dt$:
+\[
+u^{\mu}=(u^0,\underline{u})=\frac{dx^{\mu}}{d\tau}=\gamma\frac{dx^{\mu}}{dt} \quad \left\{\begin{aligned}
+u^0=\gamma\frac{dx^0}{dt}=\frac{c}{\sqrt{1-\beta^2}}\\
+\underline{u}=\gamma\frac{d\underline{x}}{dt}=\frac{\underline{v}}{\sqrt{1-\beta^2}}
+\end{aligned}\right.
+\]
+With the relations above, it is possible to define the 4-momentum: 
+\[
+\underline{p}=m\underline{v}\xrightarrow[]{}p^{\mu}=mu^{\mu}=\left(\frac{mc}{\sqrt{1-\beta^2}},\frac{m\underline{v}}{\sqrt{1-\beta^2}}\right)=(p^0,\underline{p})
+\]
+What we found above is correct since $L=-mc^2\sqrt{1-\beta^2}$, $\underline{p}=\partial L/\partial \underline{v}$ and we can obtain:
+\[
+E=\underline{p}\underline{v}-L=\frac{mv^2}{\sqrt{1-\beta^2}}+mc^2\sqrt{1-\beta^2}=\frac{mc^2}{\sqrt{1-\beta^2}}\simeq mc^2+\frac{mv^2}{2}
+\]
+We now recall the Lagrangian description of mechanics: $L=L(q,\Dot{q},t)$ and we are interested in finding $q(t)$ in order to minimize the action $S=\int_{t_1}^{t_2}dtL(q,\Dot{q},t)$ over a path imposing that $\delta S=0$. We require that the action is invariant among inertial frames:
+\[
+L(q,\Dot{q},t)dt\Rightarrow L(x^{\mu},\Dot{x}^{\mu},\tau)d\tau \quad \Dot{x}^{\mu}=\frac{dx^{\mu}}{d\tau}
+\]
+If it is invariant, then we should have that $L(x^{\mu},\Dot{x}^{\mu},\tau)=L(x'^{\mu},\Dot{x}'^{\mu},\tau')$ with the transformation defined as:
+\[
+\left\{
+\begin{aligned}
+&\tau\xrightarrow[]{}\tau'=\tau+\delta\tau\\
+&x^{\mu}\xrightarrow[]{}x'^{\mu}(\tau')=x^{\mu}(\tau)+\delta x^{\mu}(\tau)\\
+&\Dot{x}^{\mu}\xrightarrow[]{}\Dot{x}'^{\mu}(\tau')=\Dot{x}^{\mu}(\tau)+\delta\Dot{x}^{\mu}(\tau)
+\end{aligned}
+\right.
+\]
+We are now interested in computing $L(x'^{\mu},\Dot{x}'^{\mu},\tau')$:
+\begin{align*}
+L(x'^{\mu},\Dot{x}'^{\mu},\tau')&\simeq L(x^{\mu},\Dot{x}^{\mu},\tau)+{\color{red}\frac{\partial L}{\partial \tau}\delta\tau}+\frac{\partial L}{\partial x^{\mu}}\delta x^{\mu}+\frac{\partial L}{\partial\Dot{x}^{\mu}}\delta\Dot{x}^{\mu}\marginnote{$\frac{dL}{d\tau}=\frac{\partial L}{\partial \tau}+\frac{\partial L}{\partial x^{\mu}}\frac{\partial x^{\mu}}{\partial \tau}+\frac{\partial L}{\partial\Dot{x}^{\mu}}\frac{\partial\Dot{x}^{\mu}}{\partial\tau}$}\\
+&=L(x^{\mu},\Dot{x}^{\mu},\tau)+{\color{red}\frac{dL}{d\tau}\delta\tau-\frac{\partial L}{\partial x^{\mu}}\frac{\partial x^{\mu}}{\partial \tau}\delta\tau-\frac{\partial L}{\partial\Dot{x}^{\mu}}\frac{\partial\Dot{x}^{\mu}}{\partial\tau}\delta\tau}+\frac{\partial L}{\partial x^{\mu}}\delta x^{\mu}+\frac{\partial L}{\partial\Dot{x}^{\mu}}\delta\Dot{x}^{\mu}\\
+&\simeq L(x^{\mu},\Dot{x}^{\mu},\tau)+\frac{dL}{d\tau}\delta\tau+\left[\frac{\partial L}{\partial x^{\mu}}(\delta x^{\mu}-\Dot{x}^{\mu}\delta\tau)+\frac{\partial L}{\partial \Dot{x}^{\mu}}(\delta\Dot{x}^{\mu}-\Ddot{x}^{\mu}\delta\tau)\right]
+\end{align*}
+From this, recalling that $d\tau'=d\tau+d(\delta\tau)=d\tau+\frac{\partial\delta\tau}{\partial\tau}d\tau$, we can see that the variation over the action $\delta S$ is given by:\marginnote{We neglect terms in $\delta\tau^2$ and higher orders.}
+\begin{align*}
+    \delta S&=\int d\tau\left(1+\frac{d}{d\tau}\delta\tau\right)\left[L+\frac{dL}{d\tau}\delta\tau+\frac{\partial L}{\partial x^{\mu}}(\delta x^{\mu}-\Dot{x}^{\mu}\delta\tau)+\frac{\partial L}{\partial \Dot{x}^{\mu}}(\delta\Dot{x}^{\mu}-\Ddot{x}^{\mu}\delta\tau)\right]-\int d\tau L\\
+    &=\int d\tau\left[\frac{d}{d\tau}(L\delta\tau)+\frac{\partial L}{\partial x^{\mu}}(\delta x^{\mu}-\Dot{x}^{\mu}\delta\tau)+\frac{\partial L}{\partial\Dot{x}^{\mu}}(\delta\Dot{x}^{\mu}-\Ddot{x}^{\mu}\delta\tau)\right]
+\end{align*}
+The variation is given by:
+\[
+\left\{
+\begin{aligned}
+&\delta x^{\mu}(\tau)=x'^{\mu}(\tau')-x^{\mu}(\tau)=x'^{\mu}(\tau')-x^{\mu}(\tau){\color{red}+x'^{\mu}(\tau)-x'^{\mu}(\tau)}=\Dot{x}^{\mu}\delta\tau+\delta_0x^{\mu}(\tau)\\
+&\delta\Dot{x}^{\mu}(\tau)=\Dot{x}'^{\mu}(\tau')-\Dot{x}^{\mu}(\tau)=\Dot{x}'^{\mu}(\tau')-\Dot{x}^{\mu}(\tau){\color{red}+\Dot{x}'^{\mu}(\tau)-\Dot{x}'^{\mu}(\tau)}=\Ddot{x}^{\mu}(\tau)\delta\tau+\delta_0\Dot{x}^{\mu}(\tau)=\Ddot{x}^{\mu}(\tau)\delta\tau+\frac{d}{d\tau}\delta_0x^{\mu}(\tau)
+\end{aligned}
+\right.
+\]
+Substituting these two results in the relation above, we obtain:
+\[
+\delta S=\int_{\tau_1}^{\tau_2}d\tau\left[\frac{d}{d\tau}(L\delta\tau)+\frac{\partial L}{\partial x^{\mu}}\delta_0x^{\mu}(\tau)+\frac{\partial L}{\partial\Dot{x}^{\mu}}\frac{d}{d\tau}\delta_0x^{\mu}(\tau)\right]
+\]
+This can be evaluated integrating by parts:
+\begin{align*}
+    \delta S&=\int_{\tau_1}^{\tau_2}d\tau\left[\frac{d}{d\tau}(L\delta\tau)+\left(\frac{\partial L}{\partial x^{\mu}}-\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^{\mu}}\right)\delta_0x^{\mu}+\frac{d}{d\tau}\left(\frac{\partial L}{\partial\Dot{x}^{\mu}}\delta_0x^{\mu}\right)\right]\marginnote{We use the fact that $\delta_0x^{\mu}=\delta x^{\mu}-\Dot{x}^{\mu}d\tau$.}\\
+    &=\int_{\tau_1}^{\tau_2}d\tau\left[\frac{d}{d\tau}\left(L-\frac{\partial L}{\partial\Dot{x}^{\mu}}\Dot{x}^{\mu}\right)\delta\tau+\left(\frac{\partial L}{\partial x^{\mu}}-\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^{\mu}}\right)\delta_0x^{\mu}+\frac{d}{d\tau}\left(\frac{\partial L}{\partial\Dot{x}^{\mu}}\delta x^{\mu}\right)\right]
+\end{align*}
+Assuming that $\delta x^{\mu}(\tau_1)=\delta x^{\mu}(\tau_2)=0$ the first and the last term in the integral are equal to 0:
+\[
+\delta S=\int_{\tau_1}^{\tau_2}d\tau\left[\left(\frac{\partial L}{\partial x^{\mu}}-\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^{\mu}}\right)\delta_0x^{\mu}\right]\Rightarrow\frac{\partial L}{\partial x^{\mu}}-\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^{\mu}}=0 \quad \text{Lagrange equation}
+\]
+$L$ can be written as: 
+\[
+L=\frac{\partial L}{\partial\Dot{x}^{\mu}}\Dot{x}^{\mu}
+\]
+Now, assuming that $L=\alpha\sqrt{\Dot{x}^{\mu}\Dot{x}_{\mu}}$ the action $S$ can be expressed as $S=\alpha\int d\tau\sqrt{\Dot{x}^{\mu}\Dot{x}_{\mu}}$:
+\[
+S=\alpha\int\sqrt{dx^{\mu}dx_{\mu}}=\alpha\int ds=\alpha c\int_{\tau_1}^{\tau_2}d\tau=\alpha c\int dt\sqrt{1-\beta^2}
+\]
+therefore $L=\alpha c\sqrt{1-\beta^2}\simeq\alpha c-\frac{\alpha v^2}{2c}$. In order to obtain the classical result (in the limit $v\ll c$) it has to be $\alpha=-mc$.
+
+We now require that our Lagrangian is invariant under Poincaré transformations:
+\begin{align*}
+L(x'^\mu,\Dot{x}'^\mu,\tau)&\simeq L(x^\mu,\Dot{x}^\mu,\tau)+\frac{\partial L}{\partial x^\mu}\delta x^\mu+\frac{\partial L}{\partial\Dot{x}^\mu}\delta\Dot{x}^\mu\\
+&=L(x^\mu,\Dot{x}^\mu,\tau)+\frac{\partial L}{\partial x^\mu}\delta x^\mu+\frac{\partial L}{\partial\Dot{x}^\mu}\frac{d}{d\tau}\delta x^\mu{\color{red}+\left(\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^\mu}\right)\delta x^\mu-\left(\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^\mu}\right)\delta x^\mu}\\
+&=L(x^\mu,\Dot{x}^\mu,\tau)+\cancelto{0}{\left(\frac{\partial L}{\partial x^\mu}-\frac{d}{d\tau}\frac{\partial L}{\partial\Dot{x}^\mu}\right)\delta x^\mu}+\frac{d}{d\tau}\left[\frac{\partial L}{\partial\Dot{x}^\mu}\delta x^\mu\right]
+\end{align*}
+Since we want $L$ to be untouched, it has to be:
+\begin{equation}
+\labeq{poincareinvariant}
+\frac{d}{d\tau}\left(\frac{\partial L}{\partial\Dot{x}^{\mu}}\delta x^{\mu}\right)=0\xleftrightarrow[]{}\frac{\partial L}{\partial\Dot{x}^{\mu}}\delta x^{\mu}=\text{constant}
+\end{equation}
+A Poincaré transformation is given by:
+\[
+x^{\mu}\xrightarrow[]{}x'^{\mu}=\Lambda^{\mu}_{\nu}x^{\nu}+a^{\mu}\underset{\mathclap{\tikz \node {$\uparrow$} node [below=1ex] {\footnotesize infinitesimal transformation };}}=(\delta^{\mu}_{\nu}+\varepsilon^{\mu}_{\nu})x^{\nu}+\delta a^{\mu}\Rightarrow\delta x^{\mu}=\varepsilon^{\mu}_{\nu}x^{\nu}+\delta a^{\mu}
+\]
+If we now insert this in \refeq{poincareinvariant}, keeping in mind that $\frac{\partial L}{\partial\Dot{x}^\mu}=p_\mu$, what we get is:
+\[
+\frac{\partial L}{\partial\dot{x}^{\mu}}\delta x^{\mu}=p_{\mu}\delta x^{\mu}=p_{\mu}(\varepsilon^{\mu}_{\nu}x^{\nu}+\delta a^{\mu})=p_{\mu}\varepsilon^{\mu}_{\nu}x^{\nu}+p_{\mu}\delta a^{\mu}
+\]
+We observe that $p_{\mu}\varepsilon^{\mu}_{\nu}x^{\nu}$ can be rewritten as $p_{\mu}\varepsilon^{\mu\nu}x_{\nu}$:
+\[
+p_{\mu}\varepsilon^{\mu\nu}x_{\nu}=\left[\frac{1}{2}(p_{\mu}x_{\nu}+p_{\nu}x_{\mu})+\frac{1}{2}(p_{\mu}x_{\nu}-p_{\nu}x_{\mu})\right]\varepsilon^{\mu\nu}
+\]
+Considering that $\varepsilon^{\mu\nu}$ is anti-symmetric, what we get at the end is:
+\[
+\frac{1}{2}\varepsilon^{\mu\nu}(p_{\mu}x_{\nu}-p_{\nu}x_{\mu})=\text{constant}
+\]
+Keeping in mind that $x_{\mu}p_{\nu}:=M_{\mu\nu}$ we obtain that $M$ and $P$ are constants because we imposed Poincarè invariance to the Lagrangian.
+\end{document}

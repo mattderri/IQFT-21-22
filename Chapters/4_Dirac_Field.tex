@@ -1,0 +1,1370 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\setchapterstyle{kao}
+\setchapterpreamble[u]{\margintoc}
+\setchapterimage[6.5cm]{Images/Dirac.jpg}
+\chapter[Dirac field]{Dirac field\footnotemark[0]}
+\labch{Diraceq}
+\section{Dirac equation}
+Dirac looked for a first order equation in time and space so it could have been relativistically meaningful:
+\begin{equation}
+\labeq{Dirac}
+i\frac{\partial}{\partial t}\Psi(\underline{x},t)=(-i\underline{\alpha}\cdot\underline{\nabla}+\beta m)\Psi(\underline{x},t)
+\end{equation}
+$\Psi(\underline{x},t)$ is a \textbf{spinor}, therefore $\underline{\alpha}$ and $\beta$ are \textbf{matrices}. Moreover, it has to be relativistically covariant, $|\Psi|^2$ has to be positive definite and it has to satisfy $E^2=p^2+m^2$, i.e. a solution of the Dirac equation is also a solution of the Klein-Gordon equation [\refeq{KG}]. We square both sides of Dirac equation:
+\[
+-\frac{\partial^2}{\partial t^2}\Psi=\left[-\alpha^i\alpha^j\partial_i\partial_j-im(\alpha^i\beta+\beta\alpha^i)\partial_i+\beta^2 m^2\right]\Psi\xleftrightarrow[]{}-\frac{\partial^2}{\partial t^2}\Psi=(-\nabla^2+m^2)\Psi
+\]
+In order for it to be true, we have to impose that $\beta^2=\mathbb{1}$,
+$\alpha^i\beta+\beta\alpha^i=0$. $\alpha^i\alpha^j\partial_i\partial_j$ is symmetric and we get that $\frac{1}{2}(\alpha^i\alpha^j+\alpha^j\alpha^i)=\delta^{ij}$. What we obtain at the end is:
+\[
+\left\{
+\begin{aligned}
+&\beta^2=\mathbb{1}\\
+&[\alpha^i,\beta]_+=0\\
+&[\alpha^i,\alpha^j]_+=2\delta^{ij}
+\end{aligned}
+\right.
+\]
+From this, we observe that $[\alpha^i,\alpha^i]_+=2\alpha^{i2}=2\Rightarrow\alpha^{i2}=\mathbb{1}$. The term $(-i\underline{\alpha}\cdot\underline{\nabla}+\beta m)$ has to be \textbf{hermitian}: this means that $\alpha^{i\dagger}=\alpha^i$ and $\beta^\dagger=\beta$. From the fact that $\beta^2=\mathbb{1}$ and using anti-commutation rules, we can rewrite $\alpha^i$ as:
+\[
+\alpha^i=\beta^2\alpha^i=\beta\beta\alpha^i=\beta(-\alpha^i\beta)=-\beta\alpha^i\beta
+\]
+Now we observe that:\marginnote{Keeping in mind that: $\tr(-A)=-\tr(A)$ and $\tr(ABC)=\tr(BCA)=\tr(CAB)$}
+\begin{align*}
+\tr(\alpha^i)&=\tr(\beta^2\alpha^i)=\tr(-\beta\alpha^i\beta)=-\tr(\beta\alpha^i\beta)=\\
+&=-\tr(\alpha^i\beta\beta)=-\tr(\alpha^i\beta^2)=-\tr(\alpha^i)\Rightarrow\tr(\alpha^i)=0
+\end{align*}
+The same happens for $\beta$, $\tr(\beta)=0$.
+
+Both matrices are traceless with eigenvalues $\pm1$\marginnote{The condition on the eigenvalues comes from the fact that the matrices squared are the identity (eigenvalues modulus one) and that they are hermitian (real eigenvalues).}, therefore they will have even dimensions, i.e. 2$\times$2, 4$\times$4 and so on. A first choice could have been represented by the \href{https://en.wikipedia.org/wiki/Pauli_matrices}{Pauli matrices} $\sigma^i$ plus the identity. If we work with these objects in two dimensions, we get from anti-commutation rules that $\alpha^i\beta+\beta\alpha^i=2\alpha^i=0$ which could not be possible being $\alpha^i\neq0$. Therefore, it was necessary to move to higher dimensions, using 4$\times$4 matrices. The ones chosen by Dirac were:
+\[
+\alpha^i=\left(\begin{array}{cc}
+    0 & \sigma^i \\
+    \sigma^i & 0
+\end{array}\right)
+\quad
+\beta=\left(\begin{array}{cc}
+    \mathbb{1} & 0 \\
+    0 & -\mathbb{1}
+\end{array}\right)
+\]
+\section{Lorentz invariance}
+\labsec{gammamatrici}
+We want to write the Dirac equation in a manifestly covariant way. To do that, we first define the \textbf{$\gamma$ matrices}:
+\[
+\left\{
+\begin{aligned}
+\gamma^0&=\beta\\
+\gamma^i&=\beta\alpha^i
+\end{aligned}
+\right.
+\Rightarrow
+\gamma^\mu=(\gamma^0,\gamma^i)
+\]
+We can express $\gamma^0$ and $\gamma^i$ in matrix form and look at anti-commutation rules: they satisfy the \textbf{Clifford algebra}.
+\[
+\gamma^0=\left(\begin{array}{cc}
+    \mathbb{1} & 0 \\
+    0 & -\mathbb{1}
+\end{array}\right)
+\quad
+\gamma^i=\left(\begin{array}{cc}
+    0 & \sigma^i \\
+    -\sigma^i & 0
+\end{array}\right)
+\quad
+[\gamma^\mu,\gamma^\nu]_+=2\eta^{\mu\nu}\marginnote{Reminder: the metric in the Minkowski space we will use is:
+\[
+\eta_{\mu\nu}=\eta^{\mu\nu}=\begin{pmatrix}
++1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & -1
+\end{pmatrix}
+\]}
+\]
+Multiplying both sides of \refeq{Dirac} times $\beta$, we see that:
+\begin{align*}
+{\color{red}\beta}i\frac{\partial}{\partial t}\Psi&=(-i{\color{red}\beta}\underline{\alpha}\cdot\underline{\nabla}+{\color{red}\beta}\beta m)\Psi\\
+i\gamma^0\partial_0\Psi&=(-i\gamma^i\partial_i+m)\Psi
+\end{align*}
+Moving everything to the first member, we obtain:
+\begin{kaobox}[frametitle=Dirac equation]
+\begin{equation}
+\labeq{Deq}
+(i\gamma^\mu\partial_\mu-m)\Psi=(i\slashed{\partial}-m)\Psi=0
+\end{equation}
+\end{kaobox}
+where we have defined $\slashed{\partial}:=\gamma^\mu\partial_\mu$. 
+
+We now want to prove that this equation is \textbf{covariant}: the spinor transforms under a 4-dimensional representation.
+\[
+\Psi'(x')=S(\Lambda)\Psi(x)
+\]
+We move from $\gamma^\mu\partial_\mu$ to $\Tilde{\gamma}^\mu\partial'_\mu$ but $\Tilde{\gamma}^\mu$ has to satisfy the same algebra as before: $[\Tilde{\gamma}^\mu,\Tilde{\gamma}^\nu]_+=2\eta^{\mu\nu}$. They satisfy the same algebra if $\Tilde{\gamma}$ is connected to $\gamma$ by a unitary transformation:
+\[
+\Tilde{\gamma}^\mu=U^\dagger\gamma^\mu U \quad U^\dagger U=\mathbb{1}
+\]
+On top of that, if we have:
+\[
+\left\{
+\begin{aligned}
+\Tilde{\gamma}^\mu&=U^\dagger\gamma^\mu U\\
+\Psi'&=U^\dagger\Psi
+\end{aligned}
+\right.
+\]
+we observe that:
+\begin{align*}
+(i\gamma^\mu\partial_\mu-m)\Psi&=iU\Tilde{\gamma}^\mu\partial_\mu U^\dagger\Psi-m\Psi=iU\Tilde{\gamma}^\mu\partial_\mu U^\dagger U\Psi'-Um\Psi'\\
+&=U(i\Tilde{\gamma}^\mu\partial_\mu-m)\Psi'\Rightarrow(i\Tilde{\gamma}^\mu\partial_\mu-m)\Psi'=0
+\end{align*}
+This means that we do not change the $\gamma$ when moving from an inertial frame to another. What we have at the end of the day is then:
+\[
+(i\gamma^\mu\partial_\mu-m)\Psi(x)=0\xrightarrow[]{}(i\gamma^\mu\partial_\mu-m)S^{-1}(\Lambda)\Psi'(x')=0
+\]
+We can rewrite the derivative $\partial_\mu$ in a clever way:
+\[
+\partial_\mu=\frac{\partial}{\partial x^\mu}=\frac{\partial x'^\nu}{\partial x^\mu}\frac{\partial}{\partial x'^\nu}=\Lambda^\nu_\mu\frac{\partial}{\partial x'^\nu}=\Lambda^\nu_\mu\partial'_\nu
+\]
+Plugging this in the relation we just found above and multiplying everything by $S(\Lambda)$ we obtain that:
+\[
+{\color{red}S(\Lambda)}(i\gamma^\mu\partial'_\nu\Lambda^\nu_\mu-m)S^{-1}(\Lambda)\Psi'(x')=0\Rightarrow\left[iS(\Lambda)(\gamma^\mu\partial'_\nu\Lambda^\nu_\mu)S^{-1}(\Lambda)-m\right]\Psi'(x')=0
+\]
+In order to be \textbf{covariant}, this has to be equal to $(i\gamma^\mu\partial'_\mu-m)\Psi'(x')=0$:
+\begin{equation}
+\labeq{covariance}
+S(\Lambda)\gamma^\mu\Lambda^\nu_\mu S^{-1}(\Lambda)=\gamma^\nu\Rightarrow S^{-1}(\Lambda)\gamma^\nu S(\Lambda)=\gamma^\mu\Lambda^\nu_\mu
+\end{equation}
+Let's consider an infinitesimal transformation:
+\[
+\left\{
+\begin{aligned}
+&\Lambda^\mu_\nu\simeq\delta^\mu_\nu+\varepsilon^\mu_\nu\\
+&S(\Lambda)\simeq\mathbb{1}-\frac{i}{2}\Sigma_{\mu\nu}\varepsilon^{\mu\nu}=\mathbb{1}-\frac{i}{4}\sigma_{\mu\nu}\varepsilon^{\mu\nu}\\
+&S^{-1}(\Lambda)\simeq\mathbb{1}+\frac{i}{4}\sigma_{\mu\nu}\varepsilon^{\mu\nu}
+\end{aligned}
+\right.
+\]
+We now substitute this in \refeq{covariance} and neglect terms in $\varepsilon^{\mu\nu}$ of order higher than one:
+\[
+\left(\mathbb{1}+\frac{i}{4}\sigma_{\mu\nu}\varepsilon^{\mu\nu}\right)\gamma_\rho\left(\mathbb{1}-\frac{i}{4}\sigma_{\mu\nu}\varepsilon^{\mu\nu}\right)=\gamma_\rho+\varepsilon_{\rho\nu}\gamma^\nu
+\]
+\[
+\xrightarrow[]{}\frac{i}{4}[\sigma_{\mu\nu},\gamma_\rho]\varepsilon^{\mu\nu}=\varepsilon_{\rho\nu}\gamma^\nu=\varepsilon^\nu_\rho\gamma_\nu=\eta_{\rho\mu}\varepsilon^{\mu\nu}\gamma_\nu=\frac{1}{2}(\eta_{\mu\rho}\gamma_\nu-\eta_{\nu\rho}\gamma_\mu)\varepsilon^{\mu\nu}\marginnote{$\varepsilon^{\mu\nu}$ is anti-symmetric.}
+\]
+\[
+\Rightarrow[\sigma_{\mu\nu},\gamma_\rho]=-2i(\eta_{\mu\rho}\gamma_\nu-\eta_{\nu\rho}\gamma_\mu)
+\]
+A solution is given by $\sigma_{\mu\nu}=\frac{i}{2}[\gamma_\mu,\gamma_\nu]$ and for the transformation $S(\Lambda)$ we obtain:
+\[
+S(\Lambda)\simeq\mathbb{1}+\frac{1}{8}[\gamma_\mu,\gamma_\nu]\varepsilon^{\mu\nu}=\exp{\frac{1}{8}[\gamma_\mu,\gamma_\nu]\varepsilon^{\mu\nu}}
+\]
+The Lorentz group is not compact, therefore it cannot have a unitary representation:
+\[
+\sigma^\dagger_{\mu\nu}=-\frac{i}{2}(\gamma^\dagger_\nu\gamma^\dagger_\mu-\gamma^\dagger_\mu\gamma^\dagger_\nu)=\frac{i}{2}[\gamma^\dagger_\mu,\gamma^\dagger_\nu]\neq\sigma_{\mu\nu}
+\]
+It follows that $S^\dagger(\Lambda)\neq S^{-1}(\Lambda)$, however there is still an important property of $\sigma_{\mu\nu}$: 
+\[
+\gamma^0\sigma^\dagger_{\mu\nu}\gamma^0=\sigma_{\mu\nu}
+\]
+\[
+\mu=0,\nu=i: \quad \frac{i}{2}\gamma^0[\gamma_0(-\gamma_i)+\gamma_i\gamma_0]\gamma^0=\sigma_{0i}
+\]
+It is easy to see that this property implies 
+\[
+\gamma^0 S^\dagger(\Lambda)\gamma^0=S^{-1}(\Lambda) \quad (\star)
+\]
+We have to verify that $S(\Lambda)$ satisfies the group relation [\refsec{GT}]: $S(\Lambda_1)S(\Lambda_2)=S(\Lambda_1\Lambda_2)$. For the first transformation $S(\Lambda_1)$ we have:
+\[
+S^{-1}(\Lambda_1)\gamma^\mu S(\Lambda_1)=\Lambda^\mu_{1\nu}\gamma^\nu\xrightarrow[]{}{\color{red}(\Lambda^{-1}_1)^\rho_\mu}S^{-1}(\Lambda_1)\gamma^\mu S(\Lambda_1)={\color{red}(\Lambda^{-1}_1)^\rho_\mu}\Lambda^\mu_{1\nu}\gamma^\rho={\color{blue}\gamma^\rho}
+\]
+Focusing now on the second transformation $S(\Lambda_2)$:
+\[
+S^{-1}(\Lambda_2){\color{blue}\gamma^\rho} S(\Lambda_2)=\Lambda^\rho_{2\alpha}\gamma^\alpha\xrightarrow[]{}S^{-1}(\Lambda_2){\color{blue}(\Lambda^{-1}_1)^\rho_\mu S^{-1}(\Lambda_1)\gamma^\mu S(\Lambda_1)}S(\Lambda_2)=\Lambda^\rho_{2\alpha}\gamma^\alpha
+\]
+Now we multiply both sides by $\Lambda^\sigma_{1\rho}$:\marginnote{$(\Lambda_1)^\sigma_\rho(\Lambda^{-1}_1)^\rho_\mu\gamma^\mu=\gamma^\sigma$.}
+\[
+S^{-1}(\Lambda_2)S^{-1}(\Lambda_1)\gamma^\sigma S(\Lambda_1)S(\Lambda_2)=\Lambda^\sigma_{1\rho}\Lambda^\rho_{2\alpha}\gamma^\alpha=(\Lambda_1\Lambda_2)^\sigma_\alpha\gamma^\alpha
+\]
+We have seen that $S(\Lambda)$ is a representation of the Lorentz group that behaves properly but there is still the problem that $\Psi^\dagger\Psi$ is not Lorentz invariant since $S(\Lambda)$ is not unitary:
+\[
+\Psi'^\dagger\Psi'=\Psi^\dagger S^\dagger S\Psi\neq\Psi^\dagger\Psi
+\]
+We can introduce the \textbf{Dirac adjoint} $\bar{\Psi}:=\Psi^\dagger\gamma^0$:
+\begin{align*}
+\bar{\Psi}'\Psi'&=\Psi'^\dagger\gamma^0\Psi'=(S(\Lambda)\Psi)^\dagger\gamma^0S(\Lambda)\Psi=\Psi^\dagger S^\dagger(\Lambda)\gamma^0S(\Lambda)\Psi\marginnote{Remember that $\gamma^{0^2}=\mathbb{1}$.}\\
+&=\Psi^\dagger{\color{red}\gamma^0\gamma^0}S^\dagger(\Lambda)\gamma^0S(\Lambda)\Psi=\bar{\Psi}{\color{blue}\gamma^0S^\dagger(\Lambda)\gamma^0}S(\Lambda)\Psi\marginnote{Using now the property $(\star)$.}\\
+&=\bar{\Psi}{\color{blue}S^{-1}(\Lambda)}S(\Lambda)\Psi=\bar{\Psi}\Psi \quad \text{invariant \checkmark}
+\end{align*}
+$\Psi^\dagger\Psi$ is positive definite and we can construct a continuity equation as we did in \refch{KGeq}:
+\[
+\Psi^\dagger\left[i\frac{\partial\Psi}{\partial t}=(-i\underline{\alpha}\cdot\underline{\nabla}+\beta m)\Psi\right]-\left[-i\frac{\partial\Psi^\dagger}{\partial t}=\Psi^\dagger(i\underline{\alpha}\cdot\overset{\leftarrow}{\underline{\nabla}}+\beta m)\right]\Psi
+\]
+\[
+\xrightarrow[]{}i\Psi^\dagger\frac{\partial\Psi}{\partial t}+i\frac{\partial\Psi^\dagger}{\partial t}\Psi=\Psi^\dagger(-i\underline{\alpha}\cdot\underline{\nabla}+\cancel{\beta m})\Psi-(i\underline{\nabla}\Psi^\dagger\underline{\alpha}\cdot+\cancel{\beta m\Psi^\dagger} )\Psi
+\]
+\[
+\Rightarrow i\frac{\partial}{\partial t}(\Psi^\dagger\Psi)=-i\Psi^\dagger\underline{\alpha}\cdot\underline{\nabla}\Psi-i\underline{\nabla}\Psi^\dagger\underline{\alpha}\Psi=-i\underline{\nabla}(\Psi^\dagger\underline{\alpha}\Psi)
+\]
+In this way, we can define a \tetxbf{current} $J^\mu:=(\Psi^\dagger\Psi,\Psi^\dagger\underline{\alpha}\Psi)$ such that $\partial_\mu J^\mu=0$. By inserting $\gamma^{0^2}=\beta^2=\mathbb{1}$ in the expression of the current, keeping in mind that $\gamma^i=\beta\alpha^i$, it is possible to rewrite $J^\mu$ as:
+\[
+\left\{
+\begin{aligned}
+J^0&=\Psi^\dagger\gamma^{0^2}\Psi=\bar{\Psi}\gamma^0\Psi\\
+J^i&=\Psi^\dagger\gamma^{0^2}\underline{\alpha}\Psi=\bar{\Psi}\gamma^i\Psi
+\end{aligned}
+\right.
+\Rightarrow J^\mu=\bar{\Psi}\gamma^\mu\Psi
+\]
+We can prove that it is a 4-vector, i.e. it transforms regularly under Lorentz transformation:
+\begin{align*}
+J'^\mu(x')&=\bar{\Psi}'(x')\gamma^\mu\Psi'(x')=\Psi'^\dagger\gamma^0\gamma^\mu\Psi'=(S\Psi)^\dagger\gamma^0\gamma^\mu(S\Psi)=\Psi^\dagger S^\dagger\gamma^0\gamma^\mu S\Psi\\
+&={\color{red}\Psi^\dagger\gamma^0}{\color{blue}\gamma^0 S^\dagger\gamma^0}\gamma^\mu S\Psi={\color{red}\Bar{\Psi}}{\color{blue}S^{-1}}\gamma^\mu S\Psi=\bar{\Psi}\Lambda^\mu_\nu\gamma^\nu\Psi=\Lambda^\mu_\nu\bar{\Psi}\gamma^\nu\Psi=\Lambda^\mu_\nu J^\nu(x)\\
+&\Rightarrow J'^\mu(x')=\Lambda^\mu_\nu J^\nu(x) \quad \checkmark
+\end{align*}
+\section{Lagrangian description}
+\labsec{LagDescr}
+Starting from the Dirac equation [\refeq{Deq}] it is possible to derive the Lagrangian density:
+\[
+(i\slashed{\partial}-m)\Psi=0\xrightarrow[]{\dagger}(i\slashed{\partial}\Psi)^\dagger-m\Psi^\dagger=0
+\]
+We try to write the equation above in terms of $\bar{\Psi}$. To do so, we multiply both sides by $\gamma^0$:
+\begin{align*}
+(-i\partial_\mu\Psi^\dagger\gamma^{\mu\dagger}-m\Psi^\dagger)\gamma^0&=-i\partial_\mu\Psi^\dagger{\color{red}\gamma^0\gamma^0}\gamma^{\mu\dagger}\gamma^0-m{\color{blue}\Psi^\dagger\gamma^0}\\
+&=-i\partial_\mu\bar{\Psi}{\color{green}\gamma^0\gamma^{\mu\dagger}\gamma^0}-m{\color{blue}\bar{\Psi}}\\
+&=-i\partial_\mu\bar{\Psi}{\color{green}\gamma^\mu}-m\bar{\Psi}=-i\slashed{\partial}\bar{\Psi}-m\bar{\Psi}=0
+\end{align*}
+In this way, we obtained two independent fields $\Psi$ and $\bar{\Psi}$:
+\begin{kaobox}[frametitle=Lagrangian density]
+\begin{equation}
+\labeq{DiracLagrangian}
+\left\{
+\begin{aligned}
+&(i\slashed{\partial}-m)\Psi=0\\
+&\bar{\Psi}(i\overset{\leftarrow}{\slashed{\partial}}+m)=0
+\end{aligned}
+\right.
+\Rightarrow
+\pazocal{L}=\bar{\Psi}(i\slashed{\partial}-m)\Psi
+\end{equation}
+\end{kaobox}
+We see that this is the correct form of the Lagrangian because the equation for $\Psi$ and $\bar{\Psi}$ can be recovered starting from $\pazocal{L}$:
+\[
+\left\{
+\begin{aligned}
+\Psi:&\frac{\partial\pazocal{L}}{\partial\bar{\Psi}}-\partial_\mu\frac{\partial\pazocal{L}}{\partial\bar{\Psi}_{,\mu}}=0\Rightarrow(i\slashed{\partial}-m)\Psi=0 \quad \checkmark\\
+\bar{\Psi}:&\frac{\partial\pazocal{L}}{\partial\Psi}-\partial_\mu\frac{\partial\pazocal{L}}{\partial\Psi_{,\mu}}=0\Rightarrow -m\bar{\Psi}-\partial_\mu(\bar{\Psi}i\gamma^\mu)=\bar{\Psi}(i\overset{\leftarrow}{\slashed{\partial}}+m)=0 \quad \checkmark
+\end{aligned}
+\right.
+\]
+On the other hand, the conjugated momenta are not both present because the Dirac equation is a first order equation:
+\[
+\pi_\Psi=\frac{\partial\pazocal{L}}{\partial\Dot{\Psi}}=i\Psi^\dagger \quad \pi_{\Psi^\dagger}=\frac{\partial\pazocal{L}}{\partial\Dot{\Psi}^\dagger}=0
+\]
+Since one of the momenta is equal to zero, we cannot find the Hamiltonian density $\pazocal{H}$ as the Legendre transformation of the Lagrangian density $\pazocal{L}$ but we have to use N\"other's theorem instead [\refthm{Nother}]. We want to write down the energy of configurations that are solutions of the Dirac equation and in this particular case, being a solution of the Dirac equation implies having $\pazocal{L}=0$.
+
+What is conserved is the \textbf{energy momentum tensor}:
+\[
+T^\mu_\nu=\frac{\partial\pazocal{L}}{\partial\Phi^i_{,\mu}}\Phi^i_{,\nu}-\eta^\mu_\nu\pazocal{L}=\frac{\partial\pazocal{L}}{\partial\Psi_{,\mu}}\Psi_{,\nu}=i\bar{\Psi}\gamma^\mu\partial_\nu\Psi\marginnote{$\Phi^i=\Psi,\bar{\Psi}$.}
+\]
+\begin{align*}
+\partial_\mu T^\mu_\nu&=i\partial_\mu(\bar{\Psi}\gamma^\mu\partial_\nu\Psi)=(i\partial_\mu\bar{\Psi})\gamma^\mu\partial_\nu\Psi+\bar{\Psi}\gamma^\mu(i\partial_\mu\partial_\nu\Psi)\\
+&=(i\slashed{\partial}\bar{\Psi})\partial_\nu\Psi+\bar{\Psi}\partial_\nu(i\slashed{\partial}\Psi)\marginnote{Remember that $\Psi$ and $\bar{\Psi}$ have to be solution of the Dirac equation.}
+=-m\bar{\Psi}\partial_\nu\Psi-m\bar{\Psi}\partial_\nu\Psi=0
+\end{align*}
+From this, it follows that also $P_\nu=\int d^3x T^0_\nu$ is conserved:
+\[
+E=i\int d^3x\Psi^\dagger\partial_0\Psi \quad P_i=i\int d^3x\Psi^\dagger\partial_i\Psi \quad \text{are conserved quantities}
+\]
+If we look now at the \textbf{generalized energy momentum tensor}, this tells us that there is another conserved quantity:
+\[
+\pazocal{M}^\mu_{\rho\nu}=x_\rho T^\mu_\nu-x_\nu T^\mu_\rho-\frac{\partial\pazocal{L}}{\partial\Phi^i_{,\mu}}(\Sigma_{\rho\nu})^i_j\Phi^j \quad \text{such that }\;\partial_\mu\pazocal{M}^\mu_{\rho\nu}=0
+\]
+Because of the additional term which was not present when we studied the Klein-Gordon field [\refch{KGeq}], we have another conserved quantity. We have seen that $\Sigma_{\mu\nu}=\frac{i}{2}\sigma_{\mu\nu}$, therefore:
+\begin{align*}
+\pazocal{M}^\mu_{\rho\nu}&=x_\rho(i\bar{\Psi}\gamma^\mu\partial_\nu\Psi)-x_\nu(i\bar{\Psi}\gamma^\mu\partial_\rho\Psi)-\frac{\partial\pazocal{L}}{\partial\Phi^i_{,\mu}}\frac{i}{2}\sigma_{\rho\nu}\Phi^j\\
+&=i\bar{\Psi}\gamma^\mu\left(x_\rho\partial_\nu-x_\nu\partial_\rho+\frac{1}{4}[\gamma_\rho,\gamma_\nu]\right)\Psi
+\end{align*}
+We look at the 0 component and what we get is:
+\begin{align*}
+\pazocal{M}^0_{12}&=i\bar{\Psi}\gamma^0\left(x_1\partial_2-x_2\partial_1+\frac{1}{4}[\gamma_1,\gamma_2]\right)\Psi\\
+&=i\Psi^\dagger\left[\underbrace{(x_1\partial_2-x_2\partial_1)}_{\text{angular momentum}}+\overbrace{\frac{1}{2}\begin{pmatrix}\sigma^3 & 0 \\ 0 & \sigma^3\end{pmatrix}}^{\text{spin}}\right]\Psi
+\end{align*}
+Another important quantity which is conserved is the \textbf{charge}. The Lagrangian density is invariant under a U(1) transformation:
+\[
+\left\{
+\begin{aligned}
+\Psi\xrightarrow[]{}\Psi'&=e^{-i\theta}\Psi\\
+\bar{\Psi}\xrightarrow[]{}\bar{\Psi}'&=e^{i\theta}\bar{\Psi}
+\end{aligned}
+\right.
+\]
+The corresponding charge can be obtained by computing the current first:
+\[
+J^\mu=\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi^i+\cancel{\pazocal{L}\delta x^\mu}=\bar{\Psi}i\gamma^\mu(-i\theta\Psi)=\theta\bar{\Psi}\gamma^\mu\Psi
+\]
+The conserved quantity is given by:
+\[
+Q_{\text{U(1)}}=\int d^3x J^0=\int d^3x\bar{\Psi}\gamma^0\Psi=\int d^3x\Psi^\dagger\Psi
+\]
+\section{Plane wave solutions}
+\labsec{PWsol}
+As it happened for the Klein-Gordon equation [\refch{KGeq}], it is possible to find a solution to the Dirac equations in terms of plane waves. However, in this case we have a \textbf{spinor} so we have to add a term $u(p)$ which has the structure of a spinor:
+\[
+\Psi(x)=u(p)e^{-iP_\mu x^\mu} \quad P^\mu=(E,\underline{p})
+\]
+Since this a solution of the Dirac equation, one has that:
+\[
+(i\gamma^\mu\partial_\mu-m)u(p)e^{-iP_\mu x^\mu}=[i\gamma^\mu(-iP_\mu)-m]u(p)e^{-iP_\mu x^\mu}=(\slashed{P}-m)u(p)e^{-iP_\mu x^\mu}=0
+\]
+\[
+\Rightarrow(\slashed{P}-m)u(p)=0
+\]
+Putting this in  matrix form, keeping in mind the expression of the $\gamma$ matrices [\refsec{gammamatrici}], we obtain:
+\[
+\left(\begin{array}{cc}
+    P^0-m & -\underline{\sigma}\cdot\underline{p} \\
+    \underline{\sigma}\cdot\underline{p} & -P^0-m
+\end{array}\right)\left(\begin{array}{c}
+    \varphi\\
+    \chi
+\end{array}\right)=\left(\begin{array}{c}
+    0\\
+    0
+\end{array}\right)
+\]
+This has a non-trivial solution if the determinant of the matrix is zero, which means:
+\[
+\det\left(\begin{array}{cc}
+    P^0-m & -\underline{\sigma}\cdot\underline{p} \\
+    \underline{\sigma}\cdot\underline{p} & -P^0-m
+\end{array}\right)=0\Rightarrow m^2-P^{0^2}+(\underline{\sigma}\cdot\underline{p})^2=0
+\]
+Focusing now on the term $\underline{\sigma}\cdot\underline{p}$, we remind that the Pauli matrices $\sigma_i$ have the following properties:
+\[
+\left\{
+\begin{aligned}
+&[\sigma_i,\sigma_j]=\sigma_i\sigma_j-\sigma_j\sigma_i=2i\varepsilon_{ijk}\sigma_k\\
+&[\sigma_i,\sigma_j]_+=\sigma_i\sigma_j+\sigma_j\sigma_i=2\delta{ij}
+\end{aligned}
+\right.
+\Rightarrow \sigma_i\sigma_j=\delta_{ij}+i\varepsilon_{ijk}\sigma_k
+\]
+Therefore, $\underline{\sigma}\cdot\underline{p}=\sigma_i\sigma_jp_ip_j=p^2$ and the condition determinant=0 translates into:
+\[
+m^2-P^{0^2}+p^2=0\Rightarrow P^0=E=\pm\sqrt{p^2+m^2}=\pm\omega_p
+\]
+We can identify two different solutions associated respectively to $+\omega_p$ and $-\omega_p$:
+\begin{equation}
+\labeq{Diracsolutions}
+\left\{
+\begin{aligned}
+\Psi^{(+)}&=u(p)e^{-iP_\mu x^\mu}\\
+\Psi^{(-)}&=v(p)e^{+iP_\mu x^\mu}
+\end{aligned}
+\right.
+\Rightarrow
+\left\{
+\begin{aligned}
+&(i\slashed{\partial}-m)\Psi^{(+)}=(\slashed{P}-m)u(p)=0\\
+&(i\slashed{\partial}-m)\Psi^{(-)}=(\slashed{P}+m)v(p)=0
+\end{aligned}
+\right.
+% \Rightarrow
+% \begin{aligned}
+% (\slashed{P}-m)u(p)&=0\\
+% (\slashed{P}+m)v(p)&=0
+% \end{aligned}
+\end{equation}
+To find these solutions, we move to a certain frame with trivial solutions and then we boost back. Our privileged frame is the one where the particle is at rest: $P_\mu=(m,\underline{0})$.
+\[
+\left\{
+\begin{aligned}
+(\gamma^0m-m)u(m,\underline{0})=0&\Rightarrow\left(\begin{array}{cccc}
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & -2 & 0 \\
+    0 & 0 & 0 & -2
+\end{array}\right)\left(\begin{array}{c}
+    u_1 \\
+    u_2 \\
+    u_3 \\
+    u_4
+\end{array}\right)=\left(\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    0
+\end{array}\right)\xrightarrow[]{}u_3=u_4=0\\
+(\gamma^0m+m)v(m,\underline{0})=0&\Rightarrow\left(\begin{array}{cccc}
+    +2 & 0 & 0 & 0 \\
+    0 & +2 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+\end{array}\right)\left(\begin{array}{c}
+    v_1 \\
+    v_2 \\
+    v_3 \\
+    v_4
+\end{array}\right)=\left(\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    0
+\end{array}\right)\xrightarrow[]{}v_1=v_2=0
+\end{aligned}
+\right.
+\]
+In the frame where the particle is at rest we can write $u(p)$ and $v(p)$ as:
+\[
+\left\{
+\begin{aligned}
+u(m,\underline{0})&=\alpha\left(\begin{array}{c}
+    1 \\
+    0 \\
+    0 \\
+    0
+\end{array}\right)+\beta\left(\begin{array}{c}
+    0 \\
+    1 \\
+    0 \\
+    0
+\end{array}\right)=\overbrace{\alpha u^{(1)}(m,\underline{0})}^{\text{spin up $\uparrow$}}+\overbrace{\beta u^{(2)}(m,\underline{0})}^{\text{spin down $\downarrow$}}\\
+v(m,\underline{0})&=\gamma\left(\begin{array}{c}
+    0 \\
+    0 \\
+    1 \\
+    0
+\end{array}\right)+\delta\left(\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    1
+\end{array}\right)=\overbrace{\gamma v^{(1)}(m,\underline{0})}^{\text{spin up $\uparrow$}}+\overbrace{\delta v^{(2)}(m,\underline{0})}^{\text{spin down $\downarrow$}}
+\end{aligned}
+\right.
+\]
+We are fixing momentum and energy, what we have is a superposition of two states in which the third component of the spin is \textbf{not fixed}.
+
+Now that we found the expression for $u(m,\underline{0})$ and $v(m,\underline{0})$, we can boost to a frame in which $\underline{p}\neq0$ to find $u^\alpha(m,\underline{p})$ and $v^\alpha(m,\underline{p})$. We observe that: 
+\[
+(\slashed{P}+m)(\slashed{P}-m)=\slashed{P}\slashed{P}-m^2=P^2-m^2=0
+\]
+This means that the two objects in \refeq{Diracsolutions} are \textbf{orthogonal}, so we look for a solution in the form:
+\[
+\left\{
+\begin{aligned}
+u^{(\alpha)}(p)&=c_\alpha(\slashed{P}+m)u^{(\alpha)}(m,\underline{0})\\
+v^{(\alpha)}(p)&=d_\alpha(-\slashed{P}+m)v^{(\alpha)}(m,\underline{0})
+\end{aligned}
+\right.
+\]
+In the system where the particle is at rest, the following equalities hold true:
+\[
+\left\{
+\begin{aligned}
+\bar{u}^{(\alpha)}(m,\underline{0})u^{(\beta)}(m,\underline{0})&=\delta^{\alpha\beta}\\
+\bar{v}^{(\alpha)}(m,\underline{0})v^{(\beta)}(m,\underline{0})&=-\delta^{\alpha\beta}\\
+\bar{u}^{(\alpha)}(m,\underline{0})v^{(\beta)}(m,\underline{0})&=0
+\end{aligned}
+\right.
+\]
+It is easy to check the validity of these relations for $u^i$ and $v^i$, with $i=1,2$:
+\[
+\left\{
+\begin{aligned}
+\bar{u}^1u^1&=\left(\begin{array}{cccc}
+    1 & 0 & 0 & 0
+\end{array}\right)\gamma^0\left(\begin{array}{c}
+    1 \\
+    0 \\
+    0 \\
+    0
+\end{array}\right)=1 \; \checkmark\\
+\bar{u}^2u^2&=\left(\begin{array}{cccc}
+    0 & 1 & 0 & 0
+\end{array}\right)\gamma^0\left(\begin{array}{c}
+    0 \\
+    1 \\
+    0 \\
+    0
+\end{array}\right)=1 \; \checkmark
+\end{aligned}
+\right.
+\quad 
+\begin{aligned}
+\bar{v}^1v^1&=\left(\begin{array}{cccc}
+    0 & 0 & 1 & 0
+\end{array}\right)\gamma^0\left(\begin{array}{c}
+    0 \\
+    0 \\
+    1 \\
+    0
+\end{array}\right)=-1 \; \checkmark\\
+\bar{v}^2v^2&=\left(\begin{array}{cccc}
+    0 & 0 & 0 & 1
+\end{array}\right)\gamma^0\left(\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    1
+\end{array}\right)=-1 \; \checkmark
+\end{aligned}
+\]
+These scalar objects were computed in the frame where the particle is at the rest, but the relations hold true in \textbf{all} reference frames because $\bar{u}u$ and $\bar{v}v$ are \textbf{Lorentz scalar}. We want to find the explicit expression of the coefficients $c_\alpha$ and $d_\alpha$:
+\begin{align*}
+\delta^{\alpha\beta}&={\color{red}\bar{u}^{(\alpha)}(p)}u^{(\beta)}(p)={\color{red}c^*_\alpha u^{(\alpha)\dagger}(m,\underline{0})}{\color{green}\gamma^0\gamma^0}{\color{red}(\slashed{P}+m)^\dagger\gamma^0} c_\beta(\slashed{P}+m)u^{(\beta)}(m,\underline{0})\marginnote{$u^{(\alpha)\dagger}\gamma^0=\bar{u}^{(\alpha)}$, $\gamma^0(\slashed{P}+m)^\dagger\gamma^0=(\slashed{P}+m)$.}\\
+&=c^*_\alpha c_\beta\bar{u}^{(\alpha)}(\slashed{P}+m)^2u^{(\beta)}=c^*_\alpha c_\beta\bar{u}^{(\alpha)}({\color{blue}\slashed{P}\slashed{P}+m^2}+2m\slashed{P})u^{(\beta)}\\
+&=c^*_\alpha c_\beta\bar{u}^{(\alpha)}({\color{blue}2m^2}+2m\slashed{P})u^{(\beta)}=c^*_\alpha c_\beta\bar{u}^{(\alpha)}2m\slashed{P}u^{(\beta)}+c^*_\alpha c_\beta\bar{u}^{(\alpha)}2m^2u^{(\beta)}\\
+&=c^*_\alpha c_\beta 2mP_\mu\bar{u}^{(\alpha)}\gamma^\mu u^{(\beta)}+c^*_\alpha c_\beta 2m^2\bar{u}^{(\alpha)}u^{(\beta)}\marginnote{$\gamma^i u^{(\beta)}(m,\underline{0})=0$; $\gamma^0 u^{(\beta)}(m,\underline{0})\neq0$}\\
+&=c^*_\alpha c_\beta 2mP_0\bar{u}^{(\alpha)}\gamma^0 u^{(\beta)}+c^*_\alpha c_\beta 2m^2\delta^{\alpha\beta}=c^*_\alpha c_\beta 2mE\delta^{\alpha\beta}+c^*_\alpha c_\beta 2m^2\delta^{\alpha\beta}\\
+&=|c_\alpha|^22m(E+m)=1\Rightarrow|c_\alpha|=\frac{1}{\sqrt{2m(E+m)}}
+\end{align*}
+We repeat the same procedure for $v(p)$ spinors and we obtain the same result for $d_\alpha$. Our solutions will then be:
+\begin{kaobox}[frametitle=Plane wave solutions of the Dirac equation]
+\[
+u^{(\alpha)}(p)=\frac{\slashed{P}+m}{\sqrt{2m(E+m)}}u^{(\alpha)}(m,\underline{0})
+\quad 
+v^{(\alpha)}(p)=\frac{-\slashed{P}+m}{\sqrt{2m(E+m)}}v^{(\alpha)}(m,\underline{0})
+\]
+\end{kaobox}
+We can rewrite the terms $u^{(\alpha)}(m,\underline{0})$, $v^{(\alpha)}(m,\underline{0})$ and $\slashed{P}$ in order to have a spinorial expression for $u^{(\alpha)}(p)$ and $v^{(\alpha)}(p)$:
+\[
+u^{(\alpha)}(m,\underline{0})=\left(\begin{array}{c}
+    \Phi^{(\alpha)}(m,\underline{0}) \\
+    0 
+\end{array}\right)
+\quad
+v^{(\alpha)}(m,\underline{0})=\left(\begin{array}{c}
+    0 \\
+    \chi^{(\alpha)}(m,\underline{0})
+\end{array}\right)
+\quad 
+\slashed{P}=\left(\begin{array}{cc}
+    E & -\underline{p}\cdot\underline{\sigma} \\
+    \underline{p}\cdot\underline{\sigma} & -E
+\end{array}\right)
+\]
+From this representation, it is immediate to see that $u^{(\alpha)}(m,\underline{0})$ and $v^{(\alpha)}(m,\underline{0})$ are orthogonal. It is now possible to express $u^{(\alpha)}(p)$ as:
+\[
+u^{(\alpha)}(p)=\left(\begin{array}{cc}
+    E+m & -\underline{p}\cdot\underline{\sigma} \\
+    \underline{p}\cdot\underline{\sigma} & -E+m
+\end{array}\right)\frac{1}{\sqrt{2m(E+m)}}\left(\begin{array}{c}
+    \Phi^{(\alpha)}(m,\underline{0}) \\
+    0 
+\end{array}\right)=\left(\begin{array}{c}
+    \sqrt{\frac{E+m}{2m}}\Phi^{(\alpha)}(m,\underline{0}) \\
+    \frac{\underline{p}\cdot\underline{\sigma}}{\sqrt{2m(E+m)}}\Phi^{(\alpha)}(m,\underline{0})  
+\end{array}\right)
+\]
+Similarly, for $v^{(\alpha)}(p)$ we get:
+\[
+v^{(\alpha)}(p)=\left(\begin{array}{cc}
+    -E+m & \underline{p}\cdot\underline{\sigma} \\
+    -\underline{p}\cdot\underline{\sigma} & E+m
+\end{array}\right)\frac{1}{\sqrt{2m(E+m)}}\left(\begin{array}{c}
+    \chi^{(\alpha)}(m,\underline{0}) \\
+    0 
+\end{array}\right)=\left(\begin{array}{c}
+    \frac{\underline{p}\cdot\underline{\sigma}}{\sqrt{2m(E+m)}}\chi^{(\alpha)}(m,\underline{0}) \\
+    \sqrt{\frac{E+m}{2m}}\chi^{(\alpha)}(m,\underline{0})
+\end{array}\right)
+\]
+We want these objects to be normalized to the dagger, because the scalar product includes $\Psi^\dagger\Psi$. From the expression for $u^{(\alpha)}(p)$ one gets:
+\begin{align*}
+u^{(\alpha)^\dagger}(p)u^{(\beta)}(p)&=\left(
+  \sqrt{\frac{E+m}{2m}}\Phi^{(\alpha)^\dagger}(m,\underline{0}), \frac{\underline{p}\cdot\underline{\sigma}}{\sqrt{2m(E+m)}}\Phi^{(\alpha)^\dagger}(m,\underline{0})
+\right)\left(\begin{array}{c}
+    \sqrt{\frac{E+m}{2m}}\Phi^{(\beta)}(m,\underline{0}) \\
+    \frac{\underline{p}\cdot\underline{\sigma}}{\sqrt{2m(E+m)}}\Phi^{(\beta)}(m,\underline{0})  
+\end{array}\right)\\
+&=\frac{E+m}{2m}\underbrace{\Phi^{(\alpha)^\dagger}\Phi^{(\beta)}}_{=\delta^{\alpha\beta}}+\frac{{\color{red}(\underline{p}\cdot\underline{\sigma})^2}}{2m(E+m)}\underbrace{\Phi^{(\alpha)^\dagger}\Phi^{(\beta)}}_{=\delta^{\alpha\beta}}=\frac{E+m}{2m}\delta^{\alpha\beta}+\frac{{\color{red}p^2}}{2m(E+m)}\delta^{\alpha\beta}\\
+&=\frac{E^2+{\color{blue}m^2}+2Em+{\color{blue}p^2}}{2m(E+m)}\delta^{\alpha\beta}=\frac{E^2+2Em+{\color{blue}E^2}}{2m(E+m)}\delta^{\alpha\beta}=\frac{2E\cancel{(E+m)}}{2m\cancel{(E+m)}}\delta^{\alpha\beta}\\
+&=\frac{E}{m}\delta^{\alpha\beta}
+\end{align*}
+And similarly, $v^{(\alpha)^\dagger}(p)v^{(\beta)}(p)=\frac{E}{m}\delta^{\alpha\beta}$. The solutions defined in \refeq{Diracsolutions} then become:
+\[
+\left\{
+\begin{aligned}
+\Psi^{(+)}_{(\alpha)}&=N\sqrt{\frac{m}{E}}u^{(\alpha)}e^{-iP_\mu x^\mu}\\
+\Psi^{(-)}_{(\alpha)}&=N\sqrt{\frac{m}{E}}v^{(\alpha)}e^{+iP_\mu x^\mu}
+\end{aligned}
+\right.
+\]
+Imposing now the normalization over the solutions $\Psi$, we get that:
+\[
+(\Psi^{(+)}_\alpha,\Psi^{(+)}_\beta)=N^2\frac{m}{E}\int d^3xu^{(\alpha)^\dagger}(p)u^{(\beta)}(q)e^{i(P_\mu-Q_\mu)x^\mu}=N^2\frac{m}{E}\frac{E}{m}\delta^{\alpha\beta}(2\pi)^3
+\]
+The normalization constant $N$ is then equal to $N=\frac{1}{(2\pi)^{3/2}}$ and we can write $\Psi(x)$ in the form:
+\begin{kaobox}[frametitle=Solution of the Dirac equation]
+\[
+\Psi(x)=\sum_{\alpha=1}^2\int \frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[b_\alpha(p)u_\alpha(p)e^{-iP_\mu x^\mu}+d^*_\alpha(p)v_\alpha(p)e^{+iP_\mu x^\mu}\right]
+\]
+\end{kaobox}
+This is a superposition of normal modes, as seen in \refsec{pwsol} for the Klein-Gordon field, with the difference that this time the planewaves have a degeneracy linked to the polarization (up and down). Therefore, we have to sum over all the possible polarizations $\alpha$.
+\section{Dirac field quantization}
+We have already seen the expression for $\pazocal{L}$ and $\pi_\Psi$ for the Dirac equation [\refsec{LagDescr}] and in principle we cannot perform a Legendre transformation, since one of the two conjugated momenta is not present. However, N\"other's theorem [\refthm{Nother}] tells us that $E$ and $\underline{p}$ are conserved, in this way we can define the energy density $\pazocal{H}$ and the trimomentum $\underline{\pazocal{P}}$ as:
+\[
+\pazocal{H}=i\Psi^\dagger\frac{\partial\Psi}{\partial t} \quad \quad \underline{\pazocal{P}}=i\Psi^\dagger\underline{\nabla}\Psi
+\]
+It is now possible to promote the coefficients $b(p,n)$ and $d(p,n)$ to operators:
+\[
+\left\{
+\begin{aligned}
+&\Psi(x)=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[b(p,n)u(p,n)e^{-iP_\mu x^\mu}+d^\dagger(p,n)v(p,n)e^{iP_\mu x^\mu}\right]\\
+&\Psi^\dagger(x)=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[d(p,n)v^\dagger(p,n)e^{-iP_\mu x^\mu}+b^\dagger(p,n)u^\dagger(p,n)e^{iP_\mu x^\mu}\right]
+\end{aligned}
+\right.
+\]
+With the condition that $(\Psi,\Psi^\dagger)=1$.
+
+The idea is to express the energy $H=\int d^3x\pazocal{H}$ in terms of creation and annihilation operators. To do so, we need some preliminary calculations:
+\begin{equation}
+\labeq{roba}
+\left\{
+\begin{aligned}
+&\bar{u}(p,n)u(p',n')=-\bar{v}(p,n)v(p',n')=\delta_{nn'}\\
+&u^\dagger(p,n)u(p',n')=v^\dagger(p,n)v(p',n')=\frac{E}{m}\delta_{nn'}\\
+&\bar{v}(p,n)u(p,n')=v^\dagger(p,n)u(\Tilde{p},n')=u^\dagger(p,n)v(\Tilde{p},n')=0
+\end{aligned}
+\right.
+\end{equation}
+where $\Tilde{P}^\mu=(E,-\underline{p})$.
+\marginnote{We simplify the notation: $u_p=u(p,n)$, $u_{p'}=u(p',n')$. Same for other quantities}
+With this relations, we can substitute $\Psi(x)$ and $\Psi^\dagger(x)$ into the expression for $\pazocal{H}$ to compute the energy:
+\begin{align*}
+H&=\int d^3x\pazocal{H}=i\int d^3x\Psi^\dagger\frac{\partial\Psi}{\partial t}\\
+&=i\sum_{\pm n,\pm n'}\int d^3x\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left[d_pv^\dagger_pe^{-iP_\mu x^\mu}+b^\dagger_pu^\dagger_pe^{iP_\mu x^\mu}\right](-iE')\left[b_{p'}u_{p'}e^{-iP'_\mu x^\mu}-d^\dagger_{p'}v_{p'}e^{iP'_\mu x^\mu}\right]\\
+&=\sum_{\pm n,\pm n'}\int d^3x\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{mE'}{\sqrt{EE'}}\left\{\left[d_pv^\dagger_pe^{-iP_\mu x^\mu}+b^\dagger_pu^\dagger_pe^{iP_\mu x^\mu}\right]\left[b_{p'}u_{p'}e^{-iP'_\mu x^\mu}-d^\dagger_{p'}v_{p'}e^{iP'_\mu x^\mu}\right]\right\}
+\end{align*}
+We compute the multiplication between square brackets:
+\begin{align*}
+&+d_pb_{p'}v^\dagger_pu_{p'}e^{-i(P+P')_\mu x^\mu}-d_pd^\dagger_{p'}v^\dagger_pv_{p'}e^{i(P'-P)_\mu x^\mu}\\
+&+b^\dagger_pb_{p'}u^\dagger_pu_{p'}e^{i(P-P')_\mu x^\mu}-b^\dagger_pd^\dagger_{p'}u^\dagger_pv_{p'}e^{i(P+P')_\mu x^\mu}
+\end{align*}
+When we integrate in $d^3x$ we get $\delta(\underline{p}+\underline{p}')$ for the first and the last term: they go to zero because of the last relation stated in \refeq{roba}. What survives are instead the second and the third term because the integration in $d^3x$ gives us $\delta(\underline{p}-\underline{p}')$. Substituting this in the relation above for $H$ gives us:
+\begin{align*}
+H&=\sum_{\pm n,\pm n'}\int d^3pd^3p'\frac{mE'}{\sqrt{EE'}}\left[-d_pd^\dagger_{p'}v^\dagger_pv_{p'}e^{i(E'-E)t}\delta(\underline{p}-\underline{p}')+b^\dagger_pb_{p'}u^\dagger_pu_{p'}e^{i(E-E')t}\delta(\underline{p}-\underline{p}')\right]\\
+&=\sum_{\pm n}\int d^3p\frac{mE}{E}\frac{E}{m}\left[-d_pd^\dagger_p+b^\dagger_pb_p\right]=\sum_{\pm n}\int d^3pE\left[b^\dagger_pb_p-d_pd^\dagger_p\right]\marginnote{We integrated in $d^3p'$ and used the second property in \refeq{roba}.}
+\end{align*}
+Similarly, for $\underline{P}$ we get:
+\[
+\underline{P}=\int d^3x\underline{\pazocal{P}}=i\int d^3x\Psi^\dagger\underline{\nabla}\Psi=\dots=\sum_{\pm n}\int d^3p\underline{p}[b^\dagger_pb_p-d_pd^\dagger_p]
+\]
+Our goal is to identify $b,b^\dagger,d$ and $d^\dagger$ as annihilation and creation operators. If we just impose commutation relations, we would have again states with $E<0$, in order to get rid of that we have to impose \textbf{anti-commutation relations}:
+\[
+\left\{
+\begin{aligned}
+&[b(p,n),b^\dagger(p',n')]_+=[d(p,n),d^\dagger(p',n')]_+=\delta_{nn'}\delta(\underline{p}-\underline{p'})\\
+&[b(p,n),b(p',n')]_+=[d(p,n),d(p',n')]_+=0
+\end{aligned}
+\right.
+\]
+With these relations, it is possible to define again energy and momentum in terms of normal ordering:
+\[
+\left\{
+\begin{aligned}
+\norder{H}&=\sum\int d^3pE[b^\dagger b+d^\dagger d] \quad \quad b\ket{0}=\ket{0} \quad &b^\dagger\ket{0}=\ket{p}\\
+\norder{\underline{P}}&=\sum\int d^3p\underline{p}[b^\dagger b+d^\dagger d] \quad \quad d\ket{0}=0 \quad &d^\dagger\ket{0}=\ket{p}
+\end{aligned}
+\right.
+\]
+Because of anti-commutation relations, we obtain immediately that:
+\[
+b^\dagger(p_1,n_1)b^\dagger(p_2,n_2)\ket{0}=-b^\dagger(p_2,n_2)b^\dagger(p_1,n_1)\ket{0}
+\]
+States are \textbf{totally anti-symmetric}. How can we distinguish between two particles? We know that the current $J^\mu=\bar{\Psi}\gamma^\mu\Psi$ is such that $\partial_\mu J^\mu=0$, from this we obtain the charge:
+\begin{kaobox}[frametitle=Normal ordered charge for the Dirac field]
+\[
+\norder{Q}=\sum_{\pm n}\int d^3pe[b^\dagger b-d^\dagger d]
+\]
+\end{kaobox}
+The minus sign is crucial in order to distinguish particles: 
+\[
+\left\{
+\begin{aligned}
+&b \text{ annihilates } e^-\\  
+&b^\dagger \text{ creates } e^+ 
+\end{aligned}
+\quad
+\begin{aligned}
+&d \text{ annihilates } e^+\\
+&d^\dagger \text{ creates } e^-
+\end{aligned}
+\right.
+\]$b^\dagger$ creates $+e$, $d^\dagger$ creates $-e$.
+We found a way to distinguish particles created by $b^\dagger$ and $d^\dagger$: same mass, same energy but different charge.
+\section{Causality}
+As we did for creation and annihilation operators, we can impose anti-commutation rules for the fields too and see what this implies:
+\begin{align*}
+[\Psi_a(\underline{x},t),\Psi^\dagger_b(\underline{y},t)]_+=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}&\left\{\left[b_pu_a(p)e^{-iP_\mu x^\mu}+d^\dagger_pv_a(p)e^{iP_\mu x^\mu}\right]\left[d_{p'}v^\dagger_b(p')e^{-iP'_\mu y^\mu}+b^\dagger_{p'}u^\dagger_b(p')e^{iP'_\mu y_\mu}\right]\right.\\
+&+\left.\left[d_{p'}v^\dagger_b(p')e^{-iP'_\mu y^\mu}+b^\dagger_{p'}u^\dagger_b(p')e^{iP'_\mu y^\mu}\right]\left[b_pu_a(p)e^{-iP_\mu x^\mu}+d^\dagger_pv_a(p)e^{iP_\mu x^\mu}\right]\right\}
+\end{align*}
+Computing the multiplications inside the curly brackets makes anti-commutators appear:
+\begin{align*}
+&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}[b_p,b^\dagger_{p'}]_+}e^{-i(P_\mu x^\mu-P'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){{\color{green}[d_p,d^\dagger_{p'}]_}}+e^{i(P_\mu x^\mu-P'_\mu y^\mu)}\right\}\\
+&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{-i(P_\mu x^\mu-P'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){\color{green}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{i(P_\mu x^\mu-P'_\mu y^\mu)}\right\}\\
+&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left[u_a(p,n)u^\dagger_b(p,n)e^{-ip(x-y)}+v_a(p,n)v^\dagger_b(p,n)e^{ip(x-y)}\right]\\
+&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left\{\left[u_a(p,n)u^\dagger_b(p,n){\color{red}\gamma^0\gamma^0}+v_a(\Tilde{p},n)v^\dagger_b(\Tilde{p},n){\color{red}\gamma^0\gamma^0}\right]e^{-ip(x-y)}\right\}\\
+&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left\{\left[{\color{green}u_a(p,n)\bar{u}_b(p,n)}\gamma^0+{\color{blue}v_a(\Tilde{p},n)\bar{v}_b(\Tilde{p},n)}\gamma^0\right]e^{-ip(x-y)}\right\}\\
+&=\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}e^{-ip(x-y)}\delta_{ab}\left[{\color{green}\frac{(\slashed{P}+m)}{2m}}{\color{blue}-\frac{(-\slashed{\Tilde{P}}+m)}{2m}}\right]\gamma^0\\
+&=\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}e^{-ip(x-y)}\delta_{ab}\gamma^0\left(\frac{2E\gamma^0}{2m}\right)\\
+&=\int\frac{d^3p}{(2\pi)^3}e^{-ip(x-y)}\delta_{ab}=\delta_{ab}\delta(\underline{x}-\underline{y})
+\end{align*}
+It is also possible to write the anti-commutation relation for $x$ and $y$ in different times, i.e. in a different inertial frame. It can be proved that the anti-commutator is an invariant object, so if it is zero in an inertial frame, it must be zero in other ones. 
+
+As we did for the Klein-Gordon field [\refch{KGeq}], we would like to preserve locality and causality of our theory, but we have seen that this means having the commutator equal to zero. However, this is not the case hence the Dirac field is \textbf{not an observable}. This is not a problem, because the property of the particles we want to measure are energy, charge, momentum etc... We want to construct these objects in a way that they are observable, i.e. have the commutator equal to zero: this is the case since they are all \textbf{bilinear} in the fields (they contain two fields). This can be proved based on the fact that if the fields anti-commute, the bilinear commutes:
+\begin{align*}
+[AB,C]&=A[B,C]+[A,C]B=A(BC-CB)+(AC-CA)B\\
+&=ABC-ACB+ACB-CAB=A[B,C]_+-[A,C]_+B
+\end{align*}
+This is equal to zero if $[B,C]_+=[A,C]_+=0$, just as we wanted. IF we use one of the bilinears we know, e.g. the current $J^\mu=\bar{\Psi}\gamma^\mu\Psi$, we can show that:
+\[
+[J^\mu(x),J^\nu(y)]=0 \quad \text{for }\;(x-y)^2<0
+\]
+\section{$\gamma_5$ matrix}
+We want to study what happens when we apply parity and time reversal. In order to do that, we need an additional object: the matrix $\gamma_5$.
+\[
+\gamma_5:=i\gamma^0\gamma^1\gamma^2\gamma^3
+\]
+Notice that the 5 is \textbf{not a Lorentz index}. This is hermitian:
+\begin{align*}
+\gamma^\dagger_5&=(i\gamma^0\gamma^1\gamma^2\gamma^3)^\dagger=-i\gamma^{3\dagger}\gamma^{2\dagger}\gamma^{1\dagger}\gamma^{0\dagger}=i\gamma^3\gamma^2\gamma^1\gamma^0\\
+&=\dots\text{commutations}\dots=i\gamma^0\gamma^1\gamma^2\gamma^3=\gamma_5
+\end{align*}
+The anti-commutation rules tell us that:
+\[
+\left\{
+\begin{aligned}
+[\gamma_5,\gamma^0]_+&=i\gamma^0\gamma^1\gamma^2\gamma^3\gamma^0+i\gamma^0\gamma^0\gamma^1\gamma^2\gamma^3=\dots=-i\gamma^1\gamma^2\gamma^3+i\gamma^1\gamma^2\gamma^3=0\\
+[\gamma_5,\gamma^i]_+&=\dots=0
+\end{aligned}
+\right.
+\]
+The Dirac representation for the $\gamma_5$ matrix is given by:
+\[
+\gamma_5=\left(\begin{array}{cc}
+    0 & \mathbb{1} \\
+    \mathbb{1} & 0
+\end{array}\right)
+\]
+Let's now take $i\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma$, with $\mu\neq\nu\neq\rho\neq\sigma$: for an even number of permutations, we recover $\gamma_5$ while for an odd number of permutations we have instead $-\gamma_5$. We have a total of 4!=24 possible permutations:
+\[
+\gamma_5=\frac{i}{24}\varepsilon_{\mu\nu\rho\sigma}\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma
+\]
+How does $\gamma_5$ transform? %$\det\Lambda=\varepsilon_{\mu\nu\rho\sigma}\Lambda^\mu_0\Lambda^\nu_1\Lambda^\rho_2\Lambda^\sigma_3$
+\begin{align*}
+S^{-1}\gamma_5S(\Lambda)&=\frac{i}{24}S^{-1}\varepsilon_{\mu\nu\rho\sigma}\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma S=\frac{i}{24}\varepsilon_{\mu\nu\rho\sigma}S^{-1}\gamma^\mu {\color{red}SS^{-1}}\gamma^\nu {\color{red}SS^{-1}}\gamma^\rho {\color{red}SS^{-1}}\gamma^\sigma 
+S\\
+&=\frac{i}{24}\varepsilon_{\mu\nu\rho\sigma}\Lambda^\mu_\alpha\gamma^\alpha\Lambda^\nu_\beta\gamma^\beta\Lambda^\rho_\gamma\gamma^\gamma\Lambda^\sigma_\delta\gamma^\delta=\frac{i}{24}\varepsilon_{\mu\nu\rho\sigma}\Lambda^\mu_\alpha\Lambda^\nu_\beta\Lambda^\rho_\gamma\Lambda^\sigma_\delta\gamma^\alpha\gamma^\beta\gamma^\gamma\gamma^\delta\\
+&=\frac{i}{24}(\det\Lambda)\gamma^\alpha\gamma^\beta\gamma^\gamma\gamma^\delta=(\det\Lambda)\gamma_5=\pm\gamma_5\\
+&=\begin{cases}
++\gamma_5 \quad \small\text{proper orthochronous transformations}\\
+-\gamma_5 \quad \small\text{otherwise}
+\end{cases}
+\end{align*}
+It is possible to define $\Gamma^\alpha:=\{\mathbb{1},\gamma^\mu,\gamma_5,\sigma^{\mu\nu},\gamma^\mu\gamma_5\}$ having a total of (1+4+1+6+4)=16 matrices. The object $\bar{\Psi}\Gamma^\alpha\Psi$ can be connected to an observable:
+\begin{itemize}
+    \item $\bar{\Psi}\mathbb{1}\Psi=\bar{\Psi}\Psi\xrightarrow[]{}\bar{\Psi}'\Psi'=\bar{\Psi}\Psi$
+    \item $\bar{\Psi}\gamma^\mu\Psi\xrightarrow[]{}\bar{\Psi}'\gamma^\mu\Psi'=\Lambda^\mu_\nu\bar{\Psi}\gamma^\nu\Psi$
+    \item $\bar{\Psi}\gamma_5\Psi\xrightarrow[]{}\bar{\Psi}'\gamma_5\Psi'=\bar{\Psi}\gamma^0S^\dagger\gamma_5S\Psi=(\det\Lambda)(\bar{\Psi}\gamma_5\Psi)$ \,  pseudoscalar
+\end{itemize}
+We know that the $\gamma$ matrices have to satisfy the Clifford algebra [\refsec{gammamatrici}]:
+\[
+[\gamma_\mu,\gamma_\nu]_+=2\eta_{\mu\nu} \quad \gamma^0\gamma^{\mu\dagger}\gamma^0=\gamma^\mu
+\]
+Using this relations it is possible to prove that:
+\[
+\left\{
+\begin{aligned}
+&\gamma^\mu\gamma_\mu=4\mathbb{1}\Rightarrow\gamma^0\gamma^0-\gamma^i\gamma^i=\mathbb{1}-3(-\mathbb{1})=4\mathbb{1} \quad \checkmark\\
+&\gamma_\mu\gamma^\nu\gamma_\mu=-2\gamma^\nu\Rightarrow\gamma_\mu(-\gamma^\mu\gamma^\nu+2\eta^{\mu\nu})=-{\color{red}\gamma_\mu\gamma^\mu}\gamma^\nu+2\gamma^\nu=-{\color{red}4}\gamma^\nu+2\gamma^\nu=-2\gamma^\nu \quad \checkmark\\
+&\gamma_\mu\gamma^\lambda\gamma^\nu\gamma^\mu=4\eta^{\lambda\nu}\mathbb{1}
+\end{aligned}
+\right.
+\]
+As we previously did, we define $\slashed{A}:=\gamma_\mu A^\mu$ and we can look at some interesting properties:
+\[
+\left\{
+\begin{aligned}
+&\slashed{A}\slashed{A}=A^\mu A^\nu\gamma_\mu\gamma_\nu=A^\mu A^\nu(-\gamma_\nu\gamma^\mu+2\eta_{\mu\nu})=-\slashed{A}\slashed{A}+2A^2\Rightarrow\slashed{A}\slashed{A}=A^2\\
+&\slashed{A}\slashed{B}+\slashed{B}\slashed{A}=2A\cdot B\\
+&\gamma_\mu\slashed{A}\gamma^\mu=-2\slashed{A}\\
+&\gamma_\mu\slashed{A}\slashed{B}\gamma^\mu=4A\cdot B
+\end{aligned}
+\right.
+\]
+With this properties and knowing that $\tr\gamma^\mu=\tr\gamma_5=0$, we show that:
+\begin{align*}
+\tr(\slashed{A}\slashed{B})&=\tr(A_\mu B_\nu\gamma^\mu\gamma^\nu)=A_\mu B_\nu\tr(\gamma^\mu\gamma^\nu)=A_\mu B_\nu\frac{1}{2}\left[\tr(\gamma^\mu\gamma^\nu)+\tr(\gamma^\nu\gamma^\mu)\right]\\
+&=A_\mu B_\nu\frac{1}{2}\tr(\gamma^\mu\gamma^\nu+\gamma^\nu\gama^\mu)=A_\mu B_\nu\frac{1}{2}\tr([\gamma^\mu,\gamma^\nu]_+)=\frac{1}{2}A_\mu B_\nu\tr(2\eta_{\mu\nu}\mathbb{1})\\
+&=4A\cdot B
+\end{align*}
+Moreover, one has that $\tr(\slashed{A}\slashed{B}\slashed{C})=-\tr(\slashed{A}\slashed{B}\slashed{C})=0$.
+
+\section{Energy projectors}
+We already encountered one orthogonality relation while discussing the plane wave solutions of the Dirac equation, starting from that we can define $\Lambda_\pm$:
+\[
+\left\{
+\begin{aligned}
+&(\slashed{P}+m)(\slashed{P}+m)=2m(\slashed{P}+m)\\
+&(-\slashed{P}+m)(-\slashed{P}+m)=2m(-\slashed{P}+m)\\
+&(\slashed{P}+m)(-\slashed{P}+m)=0
+\end{aligned}
+\right.
+\Rightarrow\Lambda_\pm:=\frac{\pm\slashed{P}+m}{2m}
+\]
+How do $\Lambda_\pm$ operate on the field? They act only on the spinorial part, so we consider a superposition of the two spinors: $\Psi(x)=\alpha u(p)+\beta v(p)$.
+\[
+\left\{
+\begin{aligned}
+\Lambda_+\Psi(x)&=\alpha\Lambda_+{\color{blue}u(p)}+\beta\cancelto{0}{\Lambda_+v(p)}=\alpha\frac{\slashed{P}+m}{2m}{\color{blue}\frac{\slashed{P}+m}{\sqrt{2m(E+m)}}u(m,\underline{0})}=\alpha\frac{\cancel{2m}(\slashed{P}+m)}{\cancel{2m}\sqrt{2m(E+m)}}u(m,\underline{0})=\alpha u(p)\\
+\Lambda_-\Psi(x)&=\alpha\cancelto{0}{\Lambda_-u(p)}+\beta\Lambda_-{\color{blue}v(p)}=\beta\frac{(-\slashed{P}+m)}{2m}{\color{blue}\frac{(-\slashed{P}+m)}{\sqrt{2m(E+m)}}v(m,\underline{0})}=\beta\frac{\cancel{2m}(-\slashed{P}+m)}{\cancel{2m}\sqrt{2m(E+m)}}v(m,\underline{0})=\beta v(p)
+\end{aligned}
+\right.
+\]
+$\Lambda_+$ selects the \textbf{positive} part, while $\Lambda_-$ the \textbf{negative} one. We show that $\Lambda_\pm$ defined in this way are actually \textbf{projectors}:
+\begin{itemize}
+    \item Idempotent: $\Lambda^2_\pm=\frac{1}{4m^2}(\pm\slashed{P}+m)(\pm\slashed{P}+m)=\frac{2m}{4m^2}(\pm\slashed{P}+m)=\Lambda_\pm$
+    \item Orthogonal: $\Lambda_+\Lambda_-=\frac{1}{4m^2}(\slashed{P}+m)(-\slashed{P}+m)=0$
+    \item Sum to the identity: $\Lambda_++\Lambda_-=\frac{1}{2m}(\slashed{P}+m-\slashed{P}+m)=\mathbb{1}$
+\end{itemize}
+It is possible to express energy projectors in terms of spinors:
+\begin{align*}
+\Lambda_+&=\sum_{\alpha=1}^2 u^{(\alpha)}(p)\bar{u}^{(\alpha)}(p)=\sum_{\alpha=1}^2 u^{(\alpha)}(p)u^{(\alpha)\dagger}(p)\gamma^0\\
+&=\frac{1}{2m(E+m)}\sum_{\alpha=1}^2(\slashed{P}+m)u_\alpha(m,\underline{0}) u^\dagger_\alpha(m,\underline{0}){\color{red}\gamma^0\gamma^0}(\slashed{P}+m)^\dagger\gamma^0\\
+&=\frac{1}{2m(E+m)}\sum_{\alpha=1}^2(\slashed{P}+m)u_\alpha(m,\underline{0})\bar{u}_\alpha(m,\underline{0})(\slashed{P}+m)
+\end{align*}
+We compute the product between $u_\alpha(m,\underline{0})$ and $\bar{u}_\alpha(m,\underline{0})$:
+\begin{align*}
+\sum_{\alpha=1}^2 u_\alpha(m,\underline{0})\bar{u}_\alpha(m,\underline{0})&=\left(\begin{array}{c}
+   1 \\
+   0 \\
+   0 \\
+   0
+\end{array}\right)\left(\begin{array}{cccc}
+1 & 0 & 0 & 0
+\end{array}\right)\gamma^0+\left(\begin{array}{c}
+   0 \\
+   1 \\
+   0 \\
+   0
+\end{array}\right)\left(\begin{array}{cccc}
+0 & 1 & 0 & 0
+\end{array}\right)\gamma^0\\
+&=\left(\begin{array}{cccc}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 
+\end{array}\right)=\frac{1+\gamma^0}{2}
+\end{align*}
+Inserting this result in the previous computation for $\Lambda_+$ gives us:
+\[
+\Lambda_+=\frac{1}{2m(E+m)}(\slashed{P}+m)\frac{1+\gamma^0}{2}(\slashed{P}+m)=\frac{1}{4m(E+m)}\left[2m(\slashed{P}+m)+(\slashed{P}+m)\gamma^0(\slashed{P}+m)\right]
+\]
+Focusing just on the last term between square brackets:
+\begin{align*}
+(\slashed{P}+m)\gamma^0(\slashed{P}+m)&=(\slashed{P}+m)(P_\mu{\color{red}\gamma^0\gamma^\mu}+\gamma^0m)=(\slashed{P}+m)[P_\mu{\color{red}(2\eta^{0\mu}-\gamma^\mu\gamma^0)}+\gamma^0m]\\
+&=(\slashed{P}+m)({\color{blue}2P_0}-\slashed{P}\gamma^0+\gamma^0m)=(\slashed{P}+m)(-\slashed{P}\gamma^0+\gamma^0m+{\color{blue}2E})\\
+&=2E(\slashed{P}+m)+\cancelto{0}{(\slashed{P}+m)(-\slashed{P}+m)}\gamma^0=2E(\slashed{P}+m)
+\end{align*}
+Finally, we put this result in the previous expression of $\Lambda_+$ to find:
+\begin{align*}
+\Lambda_+&=\frac{1}{4m(E+m)}\left[2m(\slashed{P}+m)+2E(\slashed{P}+m)\right]=\frac{1}{4m(E+m)}\left[(2m+2E)(\slashed{P}+m)\right]=\\
+&=\frac{2\cancel{(E+m)}(\slashed{P}+m)}{4m\cancel{(E+m)}}=\frac{\slashed{P}+m}{2m}=\Lambda_+ \quad \checkmark
+\end{align*}
+With the same strategy, one sees that $\sum_{\alpha=1}^2v_\alpha(p)\bar{v}_\alpha(p)=-\Lambda_-$.
+\section{Spin projectors}
+As we said before, the solution we found for the Dirac equation have a degeneracy in spin. To select a certain spin, we introduce \textbf{spin projectors}. We are interested in selecting spin up and spin down and we define $\Sigma(\hat{n})$:
+\[
+\Sigma(\hat{n}):=\frac{1+\sigma_{12}}{2}\hat{n}_3
+\quad
+\sigma_{12}=\frac{i}{2}[\gamma_1,\gamma_2]=\left(\begin{array}{cc}
+    \sigma_3 & 0 \\
+    0 & \sigma_3
+\end{array}\right)
+\]
+The matrix form of the spin projector is given by\marginnote{The Pauli matrix $\sigma_3$ is given by:$$\sigma_3=\left(\begin{array}{cc}
+    +1 & 0 \\
+    0 & -1
+\end{array}\right)$$}:
+\[
+\Sigma(\hat{n})=\frac{1}{2}\left(\begin{array}{cc}
+    1+\sigma_3 & 0 \\
+    0 & 1+\sigma_3
+\end{array}\right)=\left(\begin{array}{cccc}
+    1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 
+\end{array}\right)
+\]
+We let it act on $u^{(1)}(m,\underline{0})$ and $u^{(2)}(m,\underline{0})$ and observe that:
+\[
+\left\{
+\begin{aligned}
+\Sigma(\hat{n})u^{(1)}(m,\underline{0})&=u^{(1)}(m,\underline{0}) \\
+\Sigma(\hat{n})u^{(2)}(m,\underline{0})&=0
+\end{aligned}
+\right.
+\quad \text{select spin $\uparrow$}
+\]
+Similarly, acting on $v^{(1)}(m,\underline{0})$ and $v^{(2)}(m,\underline{0})$ it selects only the \textbf{upper} component $v^{(1)}(m,\underline{0})$.
+
+We can express the spin projector in another form by explicitly computing $\sigma_{12}$:
+\begin{align*}
+\sigma_{12}&=\frac{i}{2}(\gamma^1\gamma^2-\gamma^2\gamma^1)=i\gamma^1\gamma^2=-i{\color{red}\underbrace{\gamma^0\gamma^0}_{=\mathbb{1}}}\gamma^1\gamma^2{\color{blue}\underbrace{\gamma^3\gamma^3}_{=-\mathbb{1}}}\marginnote{The first equality comes from anti-commutation rules: $[\gamma^1,\gamma^2]_+=2\eta^{12}=0$
+$\gamma^1$ and $\gamma^2$ anti-commute, so\\ $\gamma^2\gamma^1=-\gamma^1\gamma^2$.
+}\\
+&=-\gamma^0\gamma_5\gamma^3=\gamma_5\gamma^0\gamma^3
+\end{align*}
+The spin projector can be now written in terms of $\gamma$ matrices:
+\[
+\Sigma(\hat{n})=\frac{1+\gamma_5\gamma^0\gamma^3\hat{n}_3}{2}=\frac{1+\gamma_5\gamma^0\slashed{\hat{n}}_3}{2}
+\]
+It is also possible to define a projector which selects only lower components: 
+\[
+\Sigma(-\hat{n}):=\frac{1-\sigma_{12}}{2}\hat{n}_3=\left(\begin{array}{cccc}
+    0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 
+\end{array}\right)
+\]
+It is easy to check that when acting on $u^{(\alpha)}(m,\underline{0})$ and $v^{(\alpha)}(m,\underline{0})$ it selects the lower components.
+
+At the end of the day, we found out that acting with these two projectors we can select respectively the upper and lower components:
+\[
+\Psi=\left(\begin{array}{c}
+     \alpha \\
+     \beta \\
+     \gamma \\
+     \delta
+\end{array}\right)
+\xrightarrow[]{}
+\left\{
+\begin{aligned}
+\Sigma(+\hat{n})\left(\begin{array}{c}
+     \alpha \\
+     \beta \\
+     \gamma \\
+     \delta
+\end{array}\right)&=\left(\begin{array}{c}
+     \alpha \\
+     0 \\
+     \gamma \\
+     0
+\end{array}\right)\\
+\Sigma(-\hat{n})\left(\begin{array}{c}
+     \alpha \\
+     \beta \\
+     \gamma \\
+     \delta
+\end{array}\right)&=\left(\begin{array}{c}
+     0 \\
+     \beta \\
+     0 \\
+     \delta
+\end{array}\right)
+\end{aligned}
+\right.
+\]
+We could redefine the spin projector by removing $\gamma^0$:
+\[
+\Sigma(\pm\hat{n})=\frac{1\pm\gamma_5\slashed{\hat{n}}_3}{2}
+\]
+The two new projectors defined in this way are:
+\[
+\Sigma(+\hat{n})=\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & +1 & 0 & 0 \\
+0 & 0 & +1 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix} \quad \Sigma(-\hat{n})=\begin{pmatrix}
++1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & +1
+\end{pmatrix}
+\]
+Now, when they act on the spinors we get:
+\[
+\Psi=\left(\begin{array}{c}
+     \alpha \\
+     \beta \\
+     \gamma \\
+     \delta
+\end{array}\right)
+\xrightarrow[]{}
+\left\{
+\begin{aligned}
+\Sigma(+\hat{n})\left(\begin{array}{c}
+     \alpha \\
+     \beta \\
+     \gamma \\
+     \delta
+\end{array}\right)&=\left(\begin{array}{c}
+     0 \\
+     \beta \\
+     \gamma \\
+     0
+\end{array}\right) \quad \text{$u$ component spin $\downarrow$, $v$ component spin $\uparrow$}\\
+\Sigma(-\hat{n})\left(\begin{array}{c}
+     \alpha \\
+     \beta \\
+     \gamma \\
+     \delta
+\end{array}\right)&=\left(\begin{array}{c}
+     \alpha \\
+     0 \\
+     0 \\
+     \delta
+\end{array}\right) \quad \text{$u$ component spin $\uparrow$, $v$ component spin $\downarrow$}
+\end{aligned}
+\right.
+\]
+% \marginnote{{\color{red}Se mi faccio i conti espliciti, ottengo che $\gamma_5\gamma^3$ fa:
+% \[
+% \begin{pmatrix}
+% 0 & 0 & +1 & 0 \\
+% 0 & 0 & 0 & +1 \\
+% +1 & 0 & 0 & 0 \\
+% 0 & +1 & 0 & 0
+% \end{pmatrix}
+% \begin{pmatrix}
+% 0 & 0 & +1 & 0 \\
+% 0 & 0 & 0 & -1 \\
+% -1 & 0 & 0 & 0 \\
+% 0 & +1 & 0 & 0
+% \end{pmatrix}=
+% \]
+% \[
+% =
+% \begin{pmatrix}
+% -1 & 0 & 0 & 0 \\
+% 0 & +1 & 0 & 0 \\
+% 0 & 0 & +1 & 0 \\
+% 0 & 0 & 0 & -1
+% \end{pmatrix}
+% \]
+% Adesso, se faccio $\Sigma(+\hat{n})$ trovo che:
+% \[
+% \begin{pmatrix}
+% 0 & 0 & 0 & 0 \\
+% 0 & +1 & 0 & 0 \\
+% 0 & 0 & +1 & 0 \\
+% 0 & 0 & 0 & 0
+% \end{pmatrix}
+% \]
+% seleziona componente $u$ spin $\downarrow$ e componente $v$ spin $\uparrow$, mentre $\Sigma(-\hat{n})$ fa:
+% \[
+% \begin{pmatrix}
+% +1 & 0 & 0 & 0 \\
+% 0 & 0 & 0 & 0 \\
+% 0 & 0 & 0 & 0 \\
+% 0 & 0 & 0 & +1
+% \end{pmatrix}
+% \]
+% E seleziona componente $u$ spin $\uparrow$ e componente $v$ spin $\downarrow$. Letteralmente l'opposto rispetto a quanto fatto da mister Bonc}
+% }
+To see that these objects are actually \textbf{projectors}, we need to prove the properties already seen for the energy projectors:
+\begin{itemize}
+    \item Idempotent: $\Sigma^2(\pm\hat{n})=\frac{1}{4}[1\pm(\gamma_5\slashed{\hat{n}})^2\pm2\gamma_5\slashed{\hat{n}}]=\frac{1}{4}[2\pm2\gamma_5\slashed{\hat{n}}]=\Sigma(\pm\hat{n})$
+    \item Orthogonal: $\Sigma(+\hat{n})\Sigma(-\hat{n})=\frac{(1+\gamma_5\slashed{\hat{n}})(1-\gamma_5\slashed{\hat{n}})}{4}=0$
+    \item Sum to the identity: $\Sigma(+\hat{n})+\Sigma(-\hat{n})=\mathbb{1}$
+\end{itemize}
+\section{Recovering Schr\"odinger's equation}
+In order to recover the Schr\"odinger's equation [\refeq{Seq}], we need to introduce the \textbf{interaction}. Consider an electron in an electromagnetic field $A^\mu=(\Phi,\underline{A})$. After the substitution $\partial^\mu\xrightarrow[]{}\partial^\mu+ieA^\mu$, the Dirac equation [\refeq{Deq}] and the Lagrangian density [\refeq{DiracLagrangian}] become:
+\begin{equation}
+\labeq{DiracInt}
+\left\{
+\begin{aligned}
+&(i\slashed{\partial}-m)\Psi=0\xrightarrow[]{}(i\slashed{\partial}-e\slashed{A}-m)\Psi=0\\
+&\pazocal{L}=\bar{\Psi}(i\slashed{\partial}-m)\Psi\xrightarrow[]{}\pazocal{L}=\bar{\Psi}(i\slashed{\partial}-m)\Psi-e\bar{\Psi}\slashed{A}\Psi
+\end{aligned}
+\right.
+\end{equation}
+In the non relativistic limit, $v\ll c$, this should reproduce Schr\"odinger's equation:
+\[
+E=\sqrt{p^2+m^2}\simeq m^2+\frac{p^2}{2m}
+\]
+The first term in the energy is just a constant, so we can isolate it by defining $\Psi:=\Tilde{\Psi}e^{imt}$, with $\Tilde{\Psi}=\begin{pmatrix}
+\Tilde{\Phi}\\
+\Tilde{\chi}
+\end{pmatrix}$. With this new definition of $\Psi$, we have an additional term, since:
+\[
+\gamma_0\partial^0\Psi=\gamma_0\partial^0(\Tilde{\Psi}e^{-imt})=\gamma_0(\partial^0\Tilde{\Psi})e^{-imt}-im\gamma_0\Tilde{\Psi}e^{-imt}
+\]
+Substituting everything in \refeq{DiracInt}, we get:
+\[
+\left[\left(\begin{array}{cc}
+    +\mathbb{1} & 0 \\
+    0 & -\mathbb{1}
+\end{array}\right)(i\partial^0-eA^0+m)-m\left(\begin{array}{cc}
+    +\mathbb{1} & 0 \\
+    0 & +\mathbb{1}
+\end{array}\right)\right]\left(\begin{array}{c}
+    \Tilde{\Phi} \\
+    \Tilde{\chi}
+\end{array}\right)+\left(\begin{array}{cc}
+    0 & -\sigma_i \\
+    +\sigma_i & 0
+\end{array}\right)(i\partial^i-eA^i)\left(\begin{array}{c}
+    \Tilde{\Phi} \\
+    \Tilde{\chi}
+\end{array}\right)=0
+\]
+In which we have separated the terms in $\gamma^0$ and in $\gamma^i$.
+\[
+\left\{
+\begin{aligned}
+&(i\partial^0-eA^0)\Tilde{\Phi}-\sigma_i(i\partial^i-eA^i)\Tilde{\chi}=0\\
+&-(i\partial^0-eA^0+2m)\Tilde{\chi}+\sigma_i(i\partial^i-eA^i)\Tilde{\Phi}=0
+\end{aligned}
+\right.
+\]
+In the second equation, we neglect $i\partial^0$ and $eA^0$ with respect to $2m$ to obtain $\Tilde{\chi}$. Substituting this in the first equation let us recover the Schr\"odinger's equation:
+\[
+\Tilde{\chi}=\frac{\underline{\sigma}\cdot(\underline{p}-e\underline{A})}{2m}\Tilde{\Phi}\Rightarrow(i\partial^0-eA^0)\Tilde{\Phi}=\frac{[\underline{\sigma}\cdot(\underline{p}-e\underline{A})]^2}{2m}\Tilde{\Phi}
+\]
+Let's focus now on the term between square brackets:
+\begin{align*}
+[\underline{\sigma}\cdot(\underline{p}-e\underline{A})]^2&=\sigma_i\sigma_j(p^i-eA^i)(p^j-eA^j)\marginnote{$\sigma_i\sigma_j=\delta_{ij}+i\varepsilon_{ijk}\sigma_k$}\\
+&=(\underline{p}-e\underline{A})^2+i\varepsilon_{ijk}\sigma_k[\cancel{p^ip^j}-e{\color{blue}(p^iA^j+A^ip^j)}+e^2\cancel{A^iA^j}]\marginnote{They cancel out because they are totally symmetric and $\varepsilon_{ijk}$ is anti-symmetric.}\\
+&=(\underline{p}-e\underline{A})^2-e\underline{\sigma}\cdot{\color{blue}(\underline{\nabla}\wedge\underline{A})}=(\underline{p}-e\underline{A})^2-e\underline{\sigma}\cdot{\color{blue}\underline{B}}
+\end{align*}
+\[
+\Rightarrow(i\partial^0-eA^0)\Tilde{\Phi}=\left[\frac{(\underline{p}-e\underline{A})^2}{2m}-\frac{e}{2m}\underline{\sigma}\cdot\underline{B}\right]\Tilde{\Phi}
+\]
+This is exactly what comes out when we include the electromagnetic field in the Schr\"odinger's equation. In this way, we reproduced the Hamiltonian of interaction between an electron $e^-$ and the magnetic field $\underline{B}$. It is also possible to define:
+\[
+\mu:=-\frac{e}{2m}\underline{\sigma}=-\frac{e}{m}\underline{S}=-g\frac{e}{2m}\underline{S} \quad \text{g is the \textbf{gyromagnetic ratio}}
+\]
+\section{Parity and Charge conjugation}
+The action of \textbf{parity} on a space-time point gives us:
+\[
+\left\{
+\begin{aligned}
+t&\xrightarrow[]{}t\\
+\underline{x}&\xrightarrow[]{}-\underline{x}
+\end{aligned}
+\right.
+\Rightarrow \Lambda_p=\left(\begin{array}{cccc}
+    +1 & 0 & 0 & 0 \\
+    0 & -1 & 0 & 0 \\
+    0 & 0 & -1 & 0 \\
+    0 & 0 & 0 & -1
+\end{array}\right)=\eta^{\mu\nu}
+\]
+$\Psi(x)$ transforms as $\Psi'(x')=S(\Lambda_p)\Psi(x)$. This has to satisfy the same relations we found for $S(\Lambda)$ in \refsec{gammamatrici}:
+\[
+S^{-1}(\Lambda_p)\gamma^\mu S(\Lambda_p)=\Lambda^\mu_{p\nu}\gamma^\nu
+\]
+We can separate the temporal and spatial components in order to get:
+\[
+\left\{
+\begin{aligned}
+&S^{-1}\gamma^0S=+\gamma^0\xleftrightarrow[]{}[\gamma^0,S(\Lambda_p)]=0\\
+&S^{-1}\gamma^i S=-\gamma^i\xleftrightarrow[]{}[\gamma^i,S(\Lambda_p)]_+=0
+\end{aligned}
+\right.
+\]
+Parity transformation can be represented by a \textbf{unitary} operator, so we require that $S(\Lambda_p)=\eta_p\gamma^0$:
+\[
+\left\{
+\begin{aligned}
+S(\Lambda_p)^\dagger&=S^{-1}(\Lambda_p)=\eta_p^*\gamma^{0^\dagger}=\eta_p^*\gamma^0\Rightarrow|\eta_p|^2=1\\
+S^2(\Lambda_p)&=\mathbb{1}\Rightarrow\eta_p=\pm1
+\end{aligned}
+\right.
+\]
+The second constraint comes from the fact that if we act twice with a parity transformation we get back to the same point, i.e. it is \textbf{idempotent}.
+
+We look now at the Dirac Lagrangian [\refeq{DiracInt}]:
+\[
+\pazocal{L}=\bar{\Psi}(i\slashed{\partial}-e\slashed{A}-m)\Psi
+\]
+and we want this object to be invariant under parity transformation:
+\[
+\left\{
+\begin{aligned}
+&\bar{\Psi}'\Psi'=(S\Psi)^\dagger\gamma^0(S\Psi)=\Psi^\dagger{\color{red}\gamma^0\gamma^0}S^\dagger\gamma^0S\Psi=\bar{\Psi}\Psi\marginnote{Remember that: $\gamma^0S^\dagger\gamma^0=S^{-1}$}\\
+&\bar{\Psi}'\gamma^\mu\Psi'=(S\Psi)^\dagger\gamma^0\gamma^\mu(S\Psi)=\Psi^\dagger{\color{red}\gamma^0\gamma^0}S^\dagger\gamma^0\gamma^\mu S\Psi=\bar{\Psi}S^{-1}\gamma^\mu S\Psi=\bar{\Psi}\gamma^{\mu\dagger}\Psi
+\end{aligned}
+\right.
+\]
+The last object is saturated with either $A_\mu$
+or $\partial_\mu$:
+\begin{itemize}
+    \item For $\mu\neq0$, we know that both $x_\mu$ (and therefore $\partial_\mu$) and $A_\mu$ changes sign under parity transformation. Nevertheless, $\gamma^{\mu\dagger}=-\gamma^\mu$
+    \item For $\mu=0$, $A_\mu$, $x_\mu$ and $\partial_\mu$ are invariant under parity transformation while $\gamma^{0\dagger}=\gamma^0$
+\end{itemize} 
+Therefore, the Lagrangian density is invariant under parity transformation.
+
+Now we take the Dirac equation with the interaction [\refeq{DiracInt}] and see what happens if we transform it under \textbf{charge conjugation}:
+\[
+\underset{\text{electron}}{(i\slashed{\partial}-e\slashed{A}-m)}\Psi=0\xrightarrow[\mathbb{C}]{}\underset{\text{positron}}{(i\slashed{\partial}+e\slashed{A}-m)}\Psi_C=0
+\]
+We want to find which transformation we have to apply to $\Psi$ in order to move from the equation for the electron to the one for the positron. If the Lagrangian density is invariant under charge conjugation, then a physically realizable situation for the electron should correspond to a physically realizable one for the positron.
+
+The charge conjugation operator $\mathbb{C}$ is such that $\mathbb{C}(\mathbb{C}\Psi)=e^{i\theta}\Psi$. This means that if we apply the operator twice, we recover the initial condition, up to a phase.
+
+The Dirac equation for the adjoint $\bar{\Psi}$ is given by:
+\[
+-i\bar{\Psi}\overset{\leftarrow}{\slashed{\partial}}-e\bar{\Psi}\slashed{A}-m\bar{\Psi}=0\xrightarrow[]{\text{transpose}}[\gamma^{\mu^t}(-i\partial_\mu-eA_\mu)-m]\bar{\Psi}^t=0
+\]
+Where $\bar{\Psi}^t=\gamma^{0^t}\Psi^*=\gamma^0\Psi^*$. We can introduce an operator $\mathbb{C}$ such that we recover the equation for the positron if we act with it on the Dirac equation:
+\[
+\mathbb{C}[\gamma^{\mu^t}(-i\partial_\mu-eA_\mu)-m]\mathbb{C}^{-1}\mathbb{C}\bar{\Psi}^t=0\marginnote{$\mathbb{C}^{-1}\mathbb{C}=\mathbb{1}$}
+\]
+To recover the equation for the positron we previously stated, we have to impose that $\mathbb{C}\gamma^{\mu^t}\mathbb{C}^{-1}=-\gamma^\mu$, obtaining:
+\[
+(i\slashed{\partial}+e\slashed{A}-m)\Psi_C=0
+\]
+where we defined $\Psi_C:=\eta_C\mathbb{C}\bar{\Psi}^t$. From the constraint we imposed, one observes that $\mathbb{C}\gamma^{\mu^t}=-\gamma^\mu\mathbb{C}$. The $\gamma$ matrices defined in \refsec{gammamatrici} can be written in their full form:
+\[
+\begin{aligned}
+&\gamma^0=\left(\begin{array}{cccc}
+    +1 & 0 & 0 & 0 \\
+    0 & +1 & 0 & 0 \\
+    0 & 0 & -1 & 0 \\
+    0 & 0 & 0 & -1
+\end{array}\right) \quad &\gamma^1=\left(\begin{array}{cccc}
+    0 & 0 & 0 & +1 \\
+    0 & 0 & +1 & 0 \\
+    0 & -1 & 0 & 0 \\
+    -1 & 0 & 0 & 0
+\end{array}\right) \\
+&\gamma^2=\left(\begin{array}{cccc}
+    0 & 0 & 0 & -i \\
+    0 & 0 & +i & 0 \\
+    0 & +i & 0 & 0 \\
+    -i & 0 & 0 & 0
+\end{array}\right) \quad &\gamma^3=\left(\begin{array}{cccc}
+    0 & 0 & +1 & 0 \\
+    0 & 0 & 0 & -1 \\
+    -1 & 0 & 0 & 0 \\
+    0 & +1 & 0 & 0
+\end{array}\right) 
+\end{aligned}
+\]
+From this, we observe that $\gamma^0$ and $\gamma^2$ do not change under transposition. Therefore $\mathbb{C}$ \textbf{anti-commutes} with $\gamma^0$ and $\gamma^2$ while it \textbf{commutes} with $\gamma^1$ and $\gamma^3$. The form of $\mathbb{C}$ is then given by:
+\[
+\mathbb{C}=i\gamma^2\gamma^0=\left(\begin{array}{cc}
+    0 & -i\sigma^2 \\
+    -i\sigma^2 & 0
+\end{array}\right)
+\quad \mathbb{C}^\dagger=\mathbb{C}^t=\mathbb{C}^{-1}=-\mathbb{C}
+\]
+We take a certain solution of the Dirac equation:
+\[
+\Psi'(x)=\underbrace{\left(\frac{\pm\slashed{P}+m}{2m}\right)}_{\text{select the energy}}\overbrace{\left(\frac{1\pm\gamma_5\slashed{n}_3}{2}\right)}^{\text{select the spin}}\Psi(x)
+\]
+and we are interested to see what happens if we apply $\mathbb{C}$ to it\marginnote{Remember that:\begin{itemize}
+    \item $\gamma^0\gamma_5=-\gamma_5\gamma^0$
+    \item $\gamma^0\gamma^{\mu*}=\gamma^{\mu^t}\gamma^0$
+    \item $[\mathbb{C},\gamma_5]=0$
+    \item $\mathbb{C}\gamma^\mu=-\gamma^\mu\mathbb{C}$ if $\mu=0,2$
+    \item $\mathbb{C}\gamma^\mu=+\gamma^\mu\mathbb{C}$ if $\mu=1,3$
+    \end{itemize}}
+\begin{align*}
+\Psi'_C(x)&=\eta_C\mathbb{C}\bar{\Psi}'^t=\eta_C\mathbb{C}\gamma^0\left(\frac{\pm\slashed{P^*}+m}{2m}\right)\left(\frac{1\pm\gamma_5\slashed{n^*_3}}{2}\right)\Psi^*(x)\\
+&=\eta_C\mathbb{C}{\color{blue}\gamma^0}\left(\frac{\pm{\color{blue}\gamma^{\mu*}}P+m}{2m}\right)\left(\frac{1\pm\gamma_5\gamma^{\mu*}n_3}{2}\right)\Psi^*(x)\\
+&=\eta_C\mathbb{C}\left(\frac{\pm{\color{blue}\gamma^{\mu^t}}P+m}{2m}\right){\color{blue}\gamma^0}\left(\frac{1\pm\gamma_5\gamma^{\mu*}n_3}{2}\right)\Psi^*(x)\\
+&=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right)\left(\frac{1\mp\gamma_5{\color{green}\gamma^0\gamma^{\mu*}}n_3}{2}\right)\Psi^*(x)\\
+&=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right)\left(\frac{1\mp\gamma_5{\color{green}\gamma^{\mu^t}}n_3}{2}\right){\color{green}\gamma^0}\Psi^*(x)\\
+&=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n^t_3}}{2}\right)\bar{\Psi}^t(x)\\
+&=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right){\color{red}\mathbb{C}^{-1}\mathbb{C}}\left(\frac{1\mp\gamma_5\slashed{n^t_3}}{2}\right){\color{red}\mathbb{C}^{-1}\mathbb{C}}\bar{\Psi}^t(x)\\
+&=\eta_C\left(\frac{\mp\slashed{P}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n}_3}{2}\right)\mathbb{C}\bar{\Psi}^t(x)=\left(\frac{\mp\slashed{P}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n}_3}{2}\right)\Psi_C(x)
+\end{align*}
+Charge conjugation exchanges particles with anti-particles and inverts the spin.
+
+Consider now $\Psi(x)=e^{imt}v^{(2)}(m,\underline{0})$, as defined in \refsec{PWsol}, which corresponds to negative energy spin down:
+\begin{align*}
+\Psi_C(x)&=\eta_C{\color{red}\mathbb{C}}{\color{blue}\bar{\Psi}^t}=\eta_C{\color{red}i\gamma^2\gamma^0}{\color{blue}\gamma^0\Psi^*}=\eta_Ci\gamma^2\Psi^*\\
+&=\eta_Ce^{-imt}\left(\begin{array}{cccc}
+    0 & 0 & 0 & +1 \\
+    0 & 0 & -1 & 0 \\
+    0 & -1 & 0 & 0 \\
+    +1 & 0 & 0 & 0 
+\end{array}\right)
+\left(\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    1
+\end{array}\right)=\eta_Ce^{-imt}\left(\begin{array}{c}
+    1 \\
+    0 \\
+    0 \\
+    0
+\end{array}\right)
+\end{align*}
+We started from negative energy spin down and moved to positive energy spin up.
+
+\section{Massless Dirac field}
+We consider the Dirac equation for a massless fermion: $i\slashed{\partial}\Psi=0$. In a new representation, we have:
+\[
+\gamma^0=\left(\begin{array}{cc}
+    0 & +\mathbb{1} \\
+    +\mathbb{1} & 0
+\end{array}\right)
+\quad 
+\gamma^i=\left(\begin{array}{cc}
+    0 & +\sigma^i \\
+    -\sigma^i & 0
+\end{array}\right)
+\quad
+\gamma_5=\left(\begin{array}{cc}
+    -\mathbb{1} & 0 \\
+    0 & +\mathbb{1}
+\end{array}\right)
+\]
+$\gamma_5$ is diagonal and we can separate the solutions into two invariant subspaces by using the projection operators:
+\[
+\Psi=\left(\begin{array}{c}
+\Psi_R\\
+\Psi_L
+\end{array}\right)
+\left\{
+\begin{aligned}
+P_R&=\frac{1+\gamma_5}{2}\xrightarrow[]{}P_R\Psi=\left(\begin{array}{c}
+\Psi_R\\
+0
+\end{array}\right) \\ 
+P_L&=\frac{1-\gamma_5}{2}\xrightarrow[]{}P_L\Psi=\left(\begin{array}{c}
+0\\
+\Psi_L
+\end{array}\right)
+\end{aligned}
+\right.
+\]
+In this way, the Dirac equation for a massless field can be splitted into two equations:
+\[
+\left\{
+\begin{aligned}
+&i\partial^0\Psi_R-i\underline{\sigma}\cdot\underline{\nabla}\Psi_R=0\xrightarrow[]{}i\partial^0\Psi_R+\underline{\sigma}\cdot\underline{p}\Psi_R=0\\
+&i\partial^0\Psi_L+i\underline{\sigma}\cdot\underline{\nabla}\Psi_L=0\xrightarrow[]{}i\partial^0\Psi_L-\underline{\sigma}\cdot\underline{p}\Psi_L=0
+\end{aligned}
+\right.
+\]
+From this, it is possible to define the \textbf{helicity} as:
+\[
+h:=\frac{\underline{\sigma}\cdot\underline{p}}{2|\underline{p}|}
+\]
+For a massless field, we have that $E=\pm|\underline{p}|$:
+\[
+\Psi_R=\Psi^0_Re^{\mp iP_\mu x^\mu}\Rightarrow(\pm P^0+\underline{\sigma}\cdot\underline{p})\Psi_R=\left(\pm\frac{1}{2}+\frac{\underline{\sigma}\cdot\underline{p}}{2|\underline{p}|}\right)\Psi_R=0
+\]
+\[
+\Rightarrow h\Psi_R=\mp\frac{1}{2}\quad\begin{cases}
+h=-\frac{1}{2} \quad \text{neutrinos}\\
+h=+\frac{1}{2} \quad \text{anti-neutrinos}
+\end{cases}
+\]
+
+\end{document}

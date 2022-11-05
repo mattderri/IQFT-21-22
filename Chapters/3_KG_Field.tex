@@ -1,0 +1,501 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\setchapterstyle{kao}
+\setchapterpreamble[u]{\margintoc}
+\setchapterimage[6.5cm]{Images/KleinGordon.jpg}
+\chapter[Klein-Gordon field]{Klein-Gordon field\footnotemark[0]}
+\labch{KGeq}
+
+%\marginnote{From now on, we are going to use \href{https://en.wikipedia.org/wiki/Natural_units}{natural units}.}
+\section{Klein-Gordon equation}
+At a certain point, it was necessary to include special relativity in the quantum mechanical treatment. In the non-relativistic regime, we know very well the \textbf{Schr\"odinger equation} which describes a free particle:
+\begin{equation}
+\labeq{Seq}
+i\hbar\frac{\partial\Psi(x,t)}{\partial t}=H\Psi(x,t)=-\frac{\hbar^2}{2m}\nabla^2\Psi(x,t)
+\end{equation}
+This comes by quantizing the classical relation $E=\frac{p^2}{2m}$. We get:
+\[
+\left\{
+\begin{aligned}
+E\xrightarrow[]{}&i\hbar\frac{\partial}{\partial t}\\
+\underline{p}\xrightarrow[]{}&-i\hbar\underline{\nabla}
+\end{aligned}
+\right.
+\]
+This cannot be relativistically covariant, it works well only for $v\ll c$. The probability density should be conserved: if we assign the wavefunction to a particle, the probability of finding the particle is given by $|\Psi(x,t)|^2$ and it follows that $\int d^3x|\Psi(x,t)|^2=1$ therefore $\frac{d}{dt}\int d^3x|\Psi(x,t)|^2=0$.
+
+From the Schr\"odinger's equation we can obtain a \textbf{continuity equation}:
+\[
+\left\{
+\begin{aligned}
++i\hbar\frac{\partial\Psi}{\partial t}&=-\frac{\hbar^2}{2m}\nabla^2\Psi &\, &\times\Psi^*\\
+-i\hbar\frac{\partial\Psi^*}{\partial t}&=-\frac{\hbar^2}{2m}\nabla^2\Psi^* &\, &\times\Psi
+\end{aligned}
+\right.
+\Rightarrow
+i\hbar\frac{\partial}{\partial t}(\Psi^*\Psi)=\frac{\hbar^2}{2m}\underline{\nabla}\cdot(\Psi\underline{\nabla}\Psi^*-\Psi^*\underline{\nabla}\Psi)
+\]
+We now define the following quantities:
+\[
+\left\{
+\begin{aligned}
+&\rho=\Psi^*\Psi\\
+&\underline{J}=-\frac{\hbar}{2mi}(\Psi\underline{\nabla}\Psi^*-\Psi^*\underline{\nabla}\Psi)
+\end{aligned}
+\right.
+\]
+With these definitions, one has that:
+\[
+\frac{\partial\rho}{\partial t}+\underline{\nabla}\cdot\underline{J}=0 \quad  \textbf{continuity equation}
+\]
+If we now integrate this on $\mathbb{R}^3$, we see that:
+\[
+\frac{\partial}{\partial t}\int d^3x\rho+\cancelto{0}{\int d^3x\underline{\nabla}\cdot\underline{J}}=0\Rightarrow\int d^3x\rho \; \text{is constant with respect to time}
+\]
+We now want to move to the \textbf{relativistic point of view}, i.e. $E^2=m^2+p^2$ \marginnote{Working now with \href{https://en.wikipedia.org/wiki/Natural_units}{Natural units}.}which brings problems with negative energy since $E=\pm\sqrt{m^2+p^2}$. If we quantize it as before, we obtain a second order equation:
+\[
+-\frac{\partial^2}{\partial t^2}\Phi=(-\nabla^2+m^2)\Phi
+\]
+We can write it in a covariant form, since we know that $\frac{\partial}{\partial x^{\mu}}=(\partial_t,\partial_x)$:
+\begin{kaobox}[frametitle=Klein-Gordon equation]
+\begin{equation}
+\labeq{KG}
+(\partial_{\mu}\partial^{\mu}+m^2)\Phi=0\xrightarrow[]{}(\Box+m^2)\Phi=0 
+\end{equation}
+\end{kaobox}
+This is for a \textbf{scalar field with no spin}. However, we still have problems:
+\begin{itemize}
+    \item we moved from a first order equation to second order equation: this implies to have two initial conditions connected to position and momentum and it is not possible because of the Heisenberg principle.
+    \item $|\Phi|^2$ is not positive definite.
+\end{itemize}
+The good things are that it is covariant and it has real parameters, so if $\Phi$ is a solution then $\Phi^*$ is a solution as well:
+\[
+\left\{
+\begin{aligned}
+&(\Box+m^2)\Phi_1=0 \; &\times\Phi_2^*\\
+&(\Box+m^2)\Phi_2^*=0 \; &\times\Phi_1^*
+\end{aligned}
+\right.
+\Rightarrow \Phi_2^*(\Box+\cancel{m^2})\Phi_1-\Phi_1(\Box+\cancel{m^2})\Phi_2^*=\Phi_2^*\Box\Phi_1-\Phi_1\Box\Phi_2^*=0
+\]
+From this, we can find a conserved quantity:
+\[
+\partial_{\mu}i(\Phi_2^*\partial^{\mu}\Phi_1-\Phi_1\partial^{\mu}\Phi_2^*)=\partial_{\mu}{\color{red}i(\Phi_2^*\overset{\leftrightarrow}{\partial^{\mu}}\Phi_1)}=0\Rightarrow\partial_{\mu}{\color{red}J^{\mu}}=0
+\]
+It then follows that:
+\[
+\int d^3x(\partial_0J^0-\cancelto{0}{\partial_iJ^i})=0\Rightarrow i\int d^3x\Phi_2^*\overset{\leftrightarrow}{\partial_0}\Phi_1 \quad \text{is conserved}
+\]
+This is the \textbf{scalar product} for the Klein-Gordon field. However, there are still problems because this scalar product is not positive definite. We also have to assume that $\Phi$ is a complex field and it cannot be connected to the concepts of Schr\"odinger's point of view. 
+
+\underline{\textbf{Solution:}} $(\Box+m^2)\Phi=0$ is interpreted as the classical equation for the field, equal to Maxwell's equations, then it is possible to quantize the field and find the particles linked to it. This is called \textbf{second quantization}.
+
+Let's now write the Lagrangian description of the field $\Phi(x)$. We do a reverse process of the Hamilton principle, starting from the equation we want to find the Lagrangian:
+\begin{align*}
+0&=\int d^4x(\partial_{\mu}\partial^{\mu}\Phi+m^2\Phi)\delta\Phi=\int d^4x(\partial_{\mu}\partial^{\mu}\Phi\delta\Phi+m^2\Phi\delta\Phi)\\
+&=\int d^4x \left[\partial_{\mu}\cancelto{0}{(\partial^{\mu}\Phi\delta\Phi)}-\partial_{\mu}\Phi\partial^{\mu}\delta\Phi+\frac{m^2}{2}\delta(\Phi^2)\right]=\\
+&=\int d^4x \left[-\partial_{\mu}\Phi\delta(\partial^{\mu}\Phi)+\delta\left(\frac{m^2\Phi^2}{2}\right)\right]=\int d^4x \left[-\frac{1}{2}\delta(\partial_{\mu}\Phi\partial^{\mu}\Phi)+\delta\left(\frac{m^2\Phi^2}{2}\right)\right]\\
+&=\delta\int d^4x\left[-\left(\frac{1}{2}\partial_{\mu}\Phi\partial^{\mu}\Phi-\frac{m^2\Phi^2}{2}\right)\right]=\delta\int d^4x\pazocal{L}
+\end{align*}
+Therefore what we have is:
+\begin{kaobox}[frametitle=Lagrangian density $\pazocal{L}$]
+\[
+\pazocal{L}=\frac{1}{2}(\partial_{\mu}\Phi\partial^\mu\Phi-m^2\Phi^2)
+\]
+\end{kaobox}
+It is possible to introduce the \textbf{conjugated momentum} of $\Phi$:
+\[
+\pi_\Phi:=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}}=\partial_0\Phi=\Dot{\Phi}
+\]
+Once we have the Lagrangian density and the conjugated momentum, we can compute the Hamiltonian density $\pazocal{H}$:
+\[
+\pazocal{H}=\pi_\Phi\partial_0\Phi-\pazocal{L}=\pi^2_\Phi-\frac{1}{2}[\pi^2_\Phi-(\underline{\nabla}\Phi)^2-m^2\Phi^2]=\frac{\pi^2_\Phi}{2}+\frac{1}{2}(\underline{\nabla}\Phi)^2+\frac{1}{2}m^2\Phi^2
+\]
+The Hamiltonian density is \textbf{positive definite} and now we want to express the conserved quantities, according to N\"other's theorem [\refthm{Nother}]:
+\[
+\left\{
+\begin{aligned}
+&T^\mu_\nu=\frac{\partial\pazocal{L}}{\partial\Phi_{,\mu}}\Phi'^\nu-\eta^\mu_\nu\pazocal{L}=\partial_\mu\Phi\partial^\nu\Phi-\eta^\mu_\nu\pazocal{L}\\
+&T^0_0=(\partial_0\Phi)^2-\pazocal{L}=\pazocal{H}\xrightarrow[]{}\text{energy is conserved}\\
+&T^0_i=\partial_0\Phi\partial^i\Phi-\eta^0_i\pazocal{L}=\pi_\phi\partial^i\Phi\xrightarrow[]{}\text{momentum is conserved}\\
+&M^0_{ij}=\int d^3x(x_iT^0_j-x_jT^0_i) \quad \text{angular momentum is conserved}
+\end{aligned}
+\right.
+\]
+\section{Plane wave solutions}
+\labsec{pwsol}
+We are now interested in finding a plane wave solution for the Klein-Gordon equation: a general solution will be in the form $\Phi(x)=Ae^{-iP_\mu x^\mu}$. Substituting this in \refeq{KG} gives us:
+\[
+(-P_\mu P^\mu+m^2)Ae^{-iP_\mu x^\mu}=[-(E^2-p^2)+m^2]Ae^{-iP_\mu x^\mu}=0
+\]
+From this, we obtain again the relation $E^2=p^2+m^2$ giving us positive and negative energy:
+\[
+\left\{
+\begin{aligned}
++\omega_p&:=E_+=+\sqrt{p^2+m^2}\\
+-\omega_p&:=E_-=-\sqrt{p^2+m^2}
+\end{aligned}
+\right.
+\]
+The two solutions of the Klein-Gordon equation can be written as:
+\[
+f^+_p(x)=Ae^{-i\omega_pt+i\underline{p}\cdot\underline{x}} \quad f^-_p(x)=Ae^{+i\omega_pt+i\underline{p}\cdot\underline{x}}
+\]
+The general solution will be a superimposition of $f^+_p$ and $f^-_p$:
+\begin{kaobox}[frametitle=Solution of the Klein-Gordon equation]
+\[
+\Phi(x)=\int d^3p\left(ae^{-i\omega_pt+i\underline{p}\cdot\underline{x}}+be^{+i\omega_pt+i\underline{p}\cdot\underline{x}}\right)
+\]
+\end{kaobox}
+We want to renormalize the function and construct an Hilbert space with the scalar product previously introduced:
+\[
+(\Phi_1,\Phi_2)=i\int d^3x\Phi^*_1\overset{\leftrightarrow}{\partial_0}\Phi_2=i\int d^3x\left[\Phi^*_1\partial_0\Phi_2-\Phi_2\partial_0\Phi^*_1\right]
+\]
+Let's start with the solution $f^+_p(x)$:
+\begin{align*}
+(f_p^+,f_{p'}^+)&=i|A|^2\int d^3x\left[e^{iP_\mu x^\mu}\partial_0e^{-iP'_\mu x^\mu}-e^{-iP'_\mu x^\mu}\partial_0e^{iP_\mu x^\mu}\right]\\
+&=i|A|^2\int d^3x\left[(-i\omega_{p'})e^{i(P-P')_\mu x^\mu}-i\omega_pe^{i(P-P')_\mu x^\mu}\right]\\
+&=|A|^2\int d^3x(\omega_{p'}+\omega_p)e^{i(P-P')_\mu x^\mu}\\
+&=|A|^2\int d^3x(\omega_{p'}+\omega_p)e^{i(\omega_p-\omega_{p'})t}e^{i(\underline{p}-\underline{p}')\underline{x}}\\
+&=(2\pi)^3|A|^2(\omega_{p'}+\omega_p)e^{i(\omega_p-\omega_{p'})t}\delta^3(\underline{p}-\underline{p'})=(2\pi)^3|A|^22\omega_p
+\end{align*}
+We want it to be normalized, i.e. $(f_p^+,f_{p'}^+)=1$. Repeating the same procedure for $f^-_p$ and imposing that $(f^-_p,f^-_{p'})=1$ we find that:
+\[
+A=\frac{1}{(2\pi)^{3/2}\sqrt{2\omega_p}} \quad f^+_p=\frac{e^{-i\omega_pt+i\underline{p}\cdot\underline{x}}}{(2\pi)^{3/2}\sqrt{2\omega_p}} \quad f^-_p=\frac{e^{+i\omega_pt+i\underline{p}\cdot\underline{x}}}{(2\pi)^{3/2}\sqrt{2\omega_p}}
+\]
+We can verify that $f^+_p$ and $f^-_p$ are orthogonal:
+\begin{align*}
+(f^-_p,f^+_{p'})&=i|A|^2\int d^3x\left[e^{-i\omega_pt-i\underline{p}\underline{x}}\partial_0e^{-i\omega_{p'}t+i\underline{p}'\underline{x}}+e^{-i\omega_{p'}t+i\underline{p}'\underline{x}}\partial_0e^{-i\omega_pt-i\underline{p}\underline{x}}\right]=\\
+&=|A|^2(\omega_{p'}-\omega_p)e^{-i(\omega_p+\omega_{p'})t}\delta^3(\underline{p}-\underline{p'})=0
+\end{align*}
+As said before, we take a combination of the two in order to get $\Phi(x)$:
+\begin{align*}
+\Phi(x)&=\int d^3p\left[\alpha(p)f^+_p+\Tilde{\beta}(p)f^-_p\right]=\\
+&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\left[\alpha(p)e^{-i\omega_pt+i\underline{p}\cdot\underline{x}}+\Tilde{\beta}(p)e^{+i\omega_pt+i\underline{p}\cdot\underline{x}}\right]\marginnote{We now send $p$ to $-p$ in the second part of the integral and define $\beta(p):=\Tilde{\beta}(-p)$.}\\
+&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\left[\alpha(p)e^{-i\omega_pt+i\underline{p}\cdot\underline{x}}+\beta(p)e^{+i\omega_pt-i\underline{p}\cdot\underline{x}}\right]\\
+&=\int d^3p\left[\alpha(p)f^+_p+\beta(p)f^-_p\right]
+\end{align*}
+We redefined the solution with negative energy as:
+\[
+f^-_p=Ae^{+i\omega_pt-i\underline{p}\cdot\underline{x}}=Ae^{iP_\mu x^\mu}=f^{+*}_p
+\]
+We want to describe a \textbf{real field}: $\Phi(x)=\Phi^*(x)$. This means that\\ $\beta(p)=\alpha^*(p)$.
+\begin{kaobox}[frametitle=Solution of the Klein-Gordon equation]
+\begin{equation}
+\labeq{Phi}
+\Phi(x)=\int d^3p \left[\alpha(p)f^+_p+\alpha^*(p)f^-_p\right]
+\end{equation}
+\end{kaobox}
+This cannot be a quantum mechanics equation because it has still problems with the negative energy.
+\section{Canonical quantization and normal ordering}
+We want to find an operator on the Hilbert space and the idea is to do as we have already done in QM for $\underline{x}$ and $\underline{p}$. The problem here is that $f^+$ and $f^-$ cannot be promoted to operator: what we have to work on is instead $\alpha(p)$ and $\beta(p)$, expressed as $\alpha(p)=(f^+_p,\Phi)$ and $\beta(p)=-(f^-_p,\Phi)$. We are moving from a point-like particle to an extended object, i.e. from one degree of freedom to infinite degrees of freedom:
+\[
+\left\{
+\begin{aligned}
+q(t)&\xrightarrow[]{}\Phi(\underline{x},t)\\
+p(t)&\xrightarrow[]{}\pi(\underline{x},t)
+\end{aligned}
+\right.
+\]
+We impose \textbf{commutation relations} for the fields: for more than one degree of freedom, we know that $[\hat{q}_i,\hat{p}_j]=i\hbar\delta_{ij}$. Applying this to $\Phi$ and $\pi$, what we get is:
+\[
+[\Phi(\underline{x},t),\pi(\underline{y},t)]=i\hbar\delta(\underline{x}-\underline{y})
+\]
+Since we imposed the commutation rules we know from quantum mechanics, we expect to recover an Hamiltonian similar to what we already know, i.e. an infinite sum of harmonic oscillator terms. Let's see that this is, in fact, true. First of all, we computed the Hamiltonian as:
+\begin{equation}
+\labeq{HamiltonianDensity}
+H=\int d^3x\pazocal{H}=\int d^3x\frac{1}{2}\left[\Dot{\Phi}^2+(\underline{\nabla}\Phi)^2+m^2\Phi^2\right]
+\end{equation}
+Substituting the field we found in \refeq{Phi} we get:
+\[
+\left\{
+\begin{aligned}
+&\Dot{\Phi}(x)=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\omega_p[\alpha(p)e^{-iP_\mu x^\mu}-\alpha^*(p)e^{iP_\mu x^\mu}]\\
+&\underline{\nabla}\Phi=i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\underline{p}[\alpha(p)e^{-iP_\mu x^\mu}-\alpha^*(p)e^{iP_\mu x^\mu}]
+\end{aligned}
+\right.
+\]
+The expression for the energy $H$ then becomes:
+\begin{align*}
+    H=\frac{1}{2}\int \frac{d^3pd^3p'}{(2\pi)^3\sqrt{2\omega_p\omega_{p'}}}\int d^3x&\left[-\omega_p\omega_{p'}(\alpha_pe^{-iP_\mu x^\mu}-\alpha^*_pe^{iP_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}-\alpha^*_{p'}e^{iP'_\mu x^\mu})\right.\\
+    &-\underline{p}\cdot\underline{p'}(\alpha_pe^{-iP_\mu x^\mu}-\alpha^*_pe^{iP_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}-\alpha^*_{p'}e^{iP_\mu 'x^\mu})\\
+    &\left.+m^2(\alpha_pe^{-iP_\mu x^\mu}+\alpha^*_pe^{iP_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}+\alpha^*_{p'}e^{iP'_\mu x^\mu})\right]
+\end{align*}
+We focus just on the term inside the square brackets and compute the multiplications. Starting with the term in $\omega_p\omega_{p'}$, what we get is:
+\[
+-\omega_p\omega_{p'}\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}-\alpha_p\alpha_{p'}^*e^{-i(P-P')_\mu x^\mu}-\alpha_p^*\alpha_{p'}e^{i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(P+P')_\mu x^\mu}\right]
+\]
+Now we integrate in $d^3x$ in order to obtain $\delta$ functions:
+\begin{align*}
+-\omega_p\omega_{p'}&\left[\alpha_p\alpha_{p'}e^{-i(\omega_p+\omega_{p'})t}\delta(\underline{p}+\underline{p}')-\alpha_p\alpha_{p'}^*e^{-i(\omega_p-\omega_{p'})t}\delta(\underline{p}-\underline{p}')\right.\\
+&\left.-\alpha_p^*\alpha_{p'}e^{i(\omega_p-\omega_{p'})t}\delta(\underline{p}-\underline{p}')+\alpha_p^*\alpha_{p'}^*e^{i(\omega_p+\omega_{p'})t}\delta(\underline{p}+\underline{p}')\right]
+\end{align*}
+We repeat the same procedure for the other two terms. For the one in $\underline{p}\cdot\underline{p}'$ we get:
+\[
+-\underline{p}\cdot\underline{p}'\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}-\alpha_p\alpha_{p'}^*e^{-i(P-P')_\mu x^\mu}-\alpha_p^*\alpha_{p'}e^{i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(P+P')_\mu x^\mu}\right]
+\]
+The integration in $d^3x$ gives us:
+\begin{align*}
+-\underline{p}\cdot\underline{p}'&\left[\alpha_p\alpha_{p'}e^{-i(\omega_p+\omega_{p'})t}\delta(\underline{p}+\underline{p}')-\alpha_p\alpha_{p'}^*e^{-i(\omega_p-\omega_{p'})t}\delta(\underline{p}-\underline{p}')\right.\\
+&\left.-\alpha_p^*\alpha_{p'}e^{i(\omega_p-\omega_{p'})t}\delta(\underline{p}-\underline{p}')+\alpha_p^*\alpha_{p'}^*e^{i(\omega_p+\omega_{p'})t}\delta(\underline{p}+\underline{p}')\right]
+\end{align*}
+For the term in $m^2$ instead we have:
+\[
++m^2\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}+\alpha_p\alpha_{p'}^*e^{-i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}e^{i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(P+P')_\mu x^\mu}\right]\
+\]
+And when we go to the integration in $d^3x$ we obtain:
+\begin{align*}
++m^2&\left[\alpha_p\alpha_{p'}e^{-i(\omega_p+\omega_{p'})t}\delta(\underline{p}+\underline{p}')+\alpha_p\alpha_{p'}^*e^{-i(\omega_p-\omega_{p'})t}\delta(\underline{p}-\underline{p}')\right.\\
+&\left.+\alpha_p^*\alpha_{p'}e^{i(\omega_p-\omega_{p'})t}\delta(\underline{p}-\underline{p}')+\alpha_p^*\alpha_{p'}^*e^{i(\omega_p+\omega_{p'})t}\delta(\underline{p}+\underline{p}')\right]
+\end{align*}
+At the end of the day, we put everything together and integrate the $\delta$ functions in $d^3p'$:
+\begin{align*}
+&{\color{red}(-\omega_p^2+p^2+m^2)\alpha_p\alpha_{p}e^{-i(\omega_p+\omega_{p})t}}+{\color{green}(+\omega_p^2+p^2+m^2)\alpha_p\alpha_{p}^*e^{-i(\omega_p-\omega_{p})t}}\\
+&{\color{green}(+\omega_p^2+p^2+m^2)\alpha_p^*\alpha_{p}e^{i(\omega_p-\omega_{p})t}}+{\color{red}(-\omega_p^2+p^2+m^2)\alpha_p^*\alpha_{p}^*e^{i(\omega_p+\omega_{p})t}}
+\end{align*}
+% \begin{align*}
+% H=\frac{1}{2}\int \frac{d^3pd^3p'}{(2\pi^3)\sqrt{2\omega_p\omega_{p'}}}[&(\alpha_p\alpha_{p'}+\alpha^*_p\alpha^*_{p'})\delta(\underline{p}+\underline{p'})(-\omega_p\omega_{p'}-\underline{p}\cdot\underline{p'}+m^2)e^{i(\omega_p+\omega_{p'})t}+\\
+% &(\alpha_p\alpha^*_{p'}+\alpha^*_p\alpha_{p'})\delta(\underline{p}-\underline{p'})(\omega_p\omega_{p'}+\underline{p}\cdot\underline{p'}+m^2)e^{i(\omega_p-\omega_{p'})t}]
+% \end{align*}
+$(-\omega_p^2+p^2+m^2)=0$ and the terms in red go away. On the other hand, $(\omega_p^2+p^2+m^2)=2\omega_p^2$ and what survives are just the terms highlighted in green. The energy $H$ can be now written as:
+\begin{equation}
+\labeq{HamiltonianOperators}
+H=\frac{1}{2}\int\frac{d^3p}{2\omega_p}2\omega_p^2(\alpha_p\alpha_p^*+\alpha_p^*\alpha_p)=\frac{1}{2}\int d^3p\omega_p(\alpha_p\alpha_p^*+\alpha_p^*\alpha_p)
+\end{equation} 
+which is the Hamiltonian of a harmonic oscillator. $\alpha$ and $\alpha^*$ will be promoted to \textbf{operators} and interpreted as \textbf{creation} and \textbf{annihilation} operators: $\alpha\ket{0}=\ket{0}$ and $\alpha^\dagger\ket{0}=\ket{1}$. The field $\Phi(x)$ now becomes:
+\[
+\hat{\Phi}(x)=\int d^3p\left[\hat{\alpha}_pe^{-ipx}+\hat{\alpha}^\dagger_pe^{ipx}\right]
+\]
+and the following commutation rules holds true:
+\begin{equation}
+\labeq{commrules}
+\left\{
+\begin{aligned}
+&[\hat{\Phi}(\underline{x},t),\hat{\pi}(\underline{y},t)]=i\hbar\delta(\underline{x}-\underline{y})\\
+&[\hat{\Phi}(\underline{x},t),\hat{\Phi}(\underline{y},t)]=[\hat{\pi}(\underline{x},t),\hat{\pi}(\underline{y},t)]=0
+\end{aligned}
+\right.
+\end{equation}
+From the commutation relations we imposed for the field and the conjugated momentum, we find rules for creation and annihilation operator:\marginnote{For unknown reasons, from now on $\alpha$ will be just $a$.}
+\[
+\left\{
+\begin{aligned}
+&[a_p,a^\dagger_{p'}]=\delta(\underline{p}-\underline{p'})\\
+&[a_p,a_{p'}]=[a^\dagger_p,a^\dagger_{p'}]=0
+\end{aligned}
+\right.
+\]
+With these commutation rules, we can rewrite the Hamiltonian $H$ defined in \refeq{HamiltonianOperators}:
+\[
+H=\int d^3p\omega_p(a_pa^\dagger_p+a^\dagger_pa_p{\color{red}-a^\dagger_pa_p+a^\dagger_pa_p})=\int d^3p\omega_pa_p^\dagger a_p+\frac{1}{2}\delta(0)\int d^3p\omega_p
+\]
+The last integral is divergent, giving an infinite contribute to the energy: we remove this object by assuming that it is the energy of the ground state and we redefine $H$ via \textbf{normal ordering}:\marginnote{From \cite{schwartz}: "\textbf{Normal ordered}: all the $a^\dagger_p$ operators are on the left of all the $a_p$ operators. When you normal order something, you just pick up the operators and move them. Just manhandle them over, without any commuting."}
+\begin{kaobox}[frametitle=Normal ordering of the Hamiltonian]
+\[
+\norder{H}=\int d^3p\omega_pa_p^\dagger a_p \quad \norder{H}\ket{0}=\ket{0}
+\]
+\end{kaobox}
+Let's now look at a one-particle state $\ket{p}=a^+_p\ket{0}$:
+\[
+\norder{H}(a_p^+\ket{0})=\int d^3p'\omega_{p'}a_{p'}^\dagger a_{p'}a_p^\dagger\ket{0}=\int d^3p'\omega_{p'}a^\dagger_{p'}[\cancelto{0}{a_p^\dagger a_{p'}}+\delta(\underline{p}-\underline{p'})]\ket{0}=\omega_pa^\dagger_p\ket{0}
+\]
+If we take a look at a two-particles state $\ket{p_1,p_2}=a^\dagger_{p_1}a^\dagger_{p_2}\ket{0}$ we have:
+\begin{align*}
+\norder{H}(a^\dagger_{p_1}a^\dagger_{p_2}\ket{0})&=\int d^3p\omega_pa^\dagger_pa_pa^\dagger_{p_1}a^\dagger_{p_2}\ket{0}=\int d^3p\omega_pa^\dagger_p[\delta(\underline{p}-\underline{p_1})+a^\dagger_{p_1}a_p]a^\dagger_{p_2}\ket{0}\\
+&=\int d^3p\omega_pa^\dagger_pa^\dagger_{p_2}\delta(\underline{p}-\underline{p_1})\ket{0}+\int d^3p\omega_pa^\dagger_pa^\dagger_{p_1}a_pa^\dagger_{p_2}\ket{0}\\
+&=\omega_{p_1}a^\dagger_{p_1}a^\dagger_{p_2}\ket{0}+\int d^3p\omega_pa^\dagger_pa^\dagger_{p_1}[\delta(\underline{p}-\underline{p_2})+\cancelto{0}{a^\dagger_{p_2}a_p}]\ket{0}\\
+&=\omega_{p_1}a^\dagger_{p_1}a^\dagger_{p_2}\ket{0}+\omega_{p_2}a^\dagger_{p_1}a^\dagger_{p_2}\ket{0}=(\omega_{p_1}+\omega_{p_2})a^\dagger_{p_1}a^\dagger_{p_2}\ket{0}
+\end{align*}
+Since $[a^\dagger_{p_1},a^\dagger_{p_2}]=0$, this tells us that $\ket{p_1,p_2}=\ket{p_2,p_1}$: the Klein-Gordon field describes \textbf{bosons}.
+\section{Complex field}
+What we studied so far was the real scalar field, i.e. no spin, no charge. The complex scalar field will let us correctly recover the charge, which we have seen to be a constant of motion [\refthm{Nother}]. This fact is connected to the invariance of the Lagrangian under a phase rotation of the field. We start by looking at two real fields with the same mass:
+\[
+\pazocal{L}=\frac{1}{2}(\partial_\mu\Phi_1\partial^\mu\Phi_1-m^2\Phi_1^2)+\frac{1}{2}(\partial_\mu\Phi_2\partial^\mu\Phi_2-m^2\Phi_2^2)
+\]
+From this two real fields we define $\Phi$ and $\Phi^\dagger$ as:
+\[
+\left\{
+\begin{aligned}
+&\Phi:=\frac{\Phi_1+i\Phi_2}{\sqrt{2}}\\
+&\Phi^\dagger:=\frac{\Phi_1-i\Phi_2}{\sqrt{2}}
+\end{aligned}
+\right.
+\xrightarrow[]{}
+\left\{
+\begin{aligned}
+\Phi_1&=\frac{\Phi+\Phi^\dagger}{\sqrt{2}}\\
+\Phi_2&=\frac{\Phi-\Phi^\dagger}{i\sqrt{2}}
+\end{aligned}
+\right.
+\]
+Substituting this in the Lagrangian density we just wrote, after some calculations we obtain:
+\begin{kaobox}[frametitle=Lagrangian density for a complex field]
+\begin{equation}
+\labeq{LagrangianDensity}
+\pazocal{L}=\partial_\mu\Phi^+\partial^\mu\Phi-m^2\Phi^+\Phi
+\end{equation}
+\end{kaobox}
+The fields $\Phi_1$ and $\Phi_2$ can be expressed in terms of creation and annihilation operators $a_p$ and $a_p^\dagger$:
+\[
+\left\{
+\begin{aligned}
+\Phi_1(x)&=\int d^3p(a_1f^+_p+a_1^\dagger f^-_p)\\
+\Phi_2(x)&=\int d^3p(a_2f^+_p+a_2^\dagger f^-_p)
+\end{aligned}
+\right.
+\xrightarrow[]{}
+\left\{
+\begin{aligned}
+&\Phi(x)=\int d^3p\left[\frac{a_1+ia_2}{\sqrt{2}}f^+_p+\frac{a_1^++ia_2^+}{\sqrt{2}}f^-_p\right]=\int d^3p\left[a_pf^+_p+b^\dagger_pf^-_p\right]\\
+&\Phi^\dagger(x)=\int d^3p\left[\frac{a_1-ia_2}{\sqrt{2}}f^+_p+\frac{a_1^+-ia_2^+}{\sqrt{2}}f^-_p\right]=\int d^3p\left[b_pf^+_p+a^\dagger_pf^-_p\right]
+\end{aligned}
+\right.
+\]
+Where we introduced $a_p$ and $b^_p$ defined as:
+\[
+a_p:=\frac{a_1+ia_2}{\sqrt{2}} \quad
+b_p:=\frac{a_1-ia_2}{\sqrt{2}}
+\]
+The conjugated momenta tell us that:
+\[
+\pi_\Phi=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}}=\Dot{\Phi}^\dagger \quad 
+\pi_{\Phi^\dagger}=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}^\dagger}=\Dot{\Phi}
+\]
+Imposing again commutation relations, we get:
+\[
+\left\{
+\begin{aligned}
+[\Phi(\underline{x},t),\Dot{\Phi}^\dagger(\underline{y},t)]&=i\delta(\underline{x}-\underline{y})\\
+[\Phi^\dagger(\underline{x},t),\Dot{\Phi}(\underline{y},t)]&=i\delta(\underline{x}-\underline{y})
+\end{aligned}
+\right.
+\Rightarrow
+[a_p,a^\dagger_{p'}]=[b_p,b^\dagger_{p'}]=\delta(\underline{p}-\underline{p'})
+\]
+Looking at the energy, we see how the Hamiltonian defined in \refeq{HamiltonianDensity} changes for a complex field:
+\[
+H=\frac{1}{2}\int d^3x\left(\Dot{\Phi}^\dagger\Dot{\Phi}+\underline{\nabla}\Phi^\dagger\cdot\underline{\nabla}\Phi+m^2\Phi^\dagger\Phi\right)
+\]
+If now we express $\Phi$ and $\Phi^\dagger$ in terms of $a_p$ and $b_p$ we get:
+\[
+H=\frac{1}{2}\int d^3p\omega_p[a^\dagger a+aa^\dagger+b^\dagger b+bb^\dagger]\xrightarrow[]{\text{normal ordering}}\norder{H}=\int d^3p\omega_p(b^\dagger b+a^\dagger a)
+\]
+Analogous for the momentum, $\norder{P}=\int d^3p\underline{p}(b^\dagger b+a^\dagger a)$. 
+
+As it is possible to see, both the energy and the momentum have a \textbf{totally symmetric} description. This implies that:
+\[
+\left\{
+\begin{aligned}
+&\norder{H}a^\dagger_p\ket{0}=\omega_pa^\dagger_p\ket{0}\\ &\norder{H}b^\dagger_p\ket{0}=\omega_pb^\dagger_p\ket{0}\end{aligned}
+\right.
+\left\{
+\begin{aligned}
+&\norder{P}a^\dagger_p\ket{0}=\underline{p}a^\dagger_p\ket{0}\\
+&\norder{P}b^\dagger_p\ket{0}=\underline{p}b^\dagger_p\ket{0}
+\end{aligned}
+\right.
+\]
+States created by $a^\dagger_p$ and $b^\dagger_p$ are \textbf{not distinguishible} since they have same mass, momentum and energy. 
+
+One way to distringuish them is by using the \textbf{charge}: the Lagrangian density [\refeq{LagrangianDensity}] is invariant under an internal U(1) transformation:
+\[
+\left\{
+\begin{aligned}
+&\Phi(x)\xrightarrow[]{}\Phi'(x)=e^{-i\theta}\Phi(x)\\
+&\Phi^\dagger(x)\xrightarrow[]{}\Phi'^\dagger(x)=e^{i\theta}\Phi^\dagger(x)
+\end{aligned}
+\right.
+\quad \theta\in\mathbb{R}
+\]
+It is a global symmetry because $\theta$ does not depend on $x$. Since there is a symmetry, there will be a conserved quantity [\refthm{Nother}]:
+\[
+J^\mu=\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i+\cancelto{0}{\pazocal{L}\delta x^\mu}=\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi+\frac{\partial\pazocal{L}}{\partial\Phi^\dagger_{i,\mu}}\delta\Phi^\dagger
+\]
+\[
+\left\{
+\begin{aligned}
+&\delta\Phi=e^{-i\theta}\Phi-\Phi\simeq-i\theta\Phi\\
+&\delta\Phi^\dagger=e^{i\theta}\Phi^\dagger-\Phi^\dagger\simeq+i\theta\Phi^\dagger
+\end{aligned}
+\right.
+\Rightarrow J^\mu\simeq-i\theta\Phi\partial_\mu\Phi^\dagger+i\theta\Phi^\dagger\partial_\mu\Phi=\theta(i\Phi^\dagger\overset{\leftrightarrow}{\partial_\mu}\Phi)
+\]
+This is not a probability density, and it gets interpreted as a charge, and not positive definite in the case of a particle and an anti-particle. We define the \textbf{charge} of a U(1) complex scalar field as:
+\[
+Q_{\text{U(1)}}:=\int d^3xJ^0=i\int d^3x\Phi^\dagger\overset{\leftrightarrow}{\partial^0}\Phi=i\int d^3x(\Phi^\dagger\partial_0\Phi-\Phi\partial_0\Phi^+)
+\]
+We substitute the fields $\Phi$ and $\Phi^\dagger$ expressed in terms of $a_p$ and $b_p$:
+\begin{align*}
+Q_{\text{U(1)}}=i\int d^3x\int \frac{d^3pd^3q}{(2\pi)^3\sqrt{4\omega_p\omega_q}}&\left[(a^\dagger_pe^{iP_\mu x^\mu}+b_pe^{-iP_\mu x^\mu})\partial_0(a_qe^{-iQ_\mu x^\mu}+b^\dagger_qe^{iQ_\mu x^\mu})\right.\\
+&\left.-(a_qe^{-iQ_\mu x^\mu}+b^\dagger_qe^{iQ_\mu x^\mu})\partial_0(a^\dagger_pe^{iP_\mu x^\mu}+b_pe^{-iP_\mu x^\mu})\right]\\
+Q_{\text{U(1)}}=i\int d^3x\int \frac{d^3pd^3q}{(2\pi)^3\sqrt{4\omega_p\omega_q}}&\left[(a^\dagger_pe^{iP_\mu x^\mu}+b_pe^{-iP_\mu x^\mu})(-i\omega_q)(a_qe^{-iQ_\mu x^\mu}-b^\dagger_qe^{iQ_\mu x^\mu})\right.\\
+&\left.-(a_qe^{-iQ_\mu x^\mu}+b^\dagger_qe^{iQ_\mu x^\mu})(i\omega_p)(a^\dagger_pe^{iP_\mu x^\mu}-b_pe^{-iP_\mu x^\mu})\right]
+\end{align*}
+Computing the term inside the square brackets, we get:\marginnote{We simplified the notation: $P_\mu x^\mu=Px$ and $Q_\mu x^\mu=Qx$.}
+\begin{align*}
+&+a^\dagger_pe^{iPx}(-i\omega_q)a_qe^{-iQx}{\color{blue}-a^\dagger_pe^{iPx}(-i\omega_q)b^\dagger_qe^{iQx}}\\
+&{\color{green}+b_pe^{-iPx}(-i\omega_q)a_qe^{-iQx}}-b_pe^{-iPx}(-i\omega_q)b^\dagger_qe^{iQx}\\
+&-a_qe^{-iQx}(i\omega_p)a^\dagger_pe^{iPx}+{\color{green}a_qe^{-iQx}(i\omega_p)b_pe^{-iPx}}\\
+&{\color{blue}-b^\dagger_qe^{iQx}(i\omega_p)a^\dagger_pe^{iPx}}+b^\dagger_qe^{iQx}(i\omega_p)b_pe^{-iPx}
+\end{align*}
+The terms in blue and green goes to zero because they give us $[a_q,b_p]=[a^\dagger_p,b^\dagger_q]=0$. Integrating the remaining terms in $d^3x$ gives us a $\delta(\underline{p}-\underline{q})$. What we get at the end, by integrating in $d^3q$, is:
+\[
+-i\omega_p(a^\dagger_pa_p+a_pa^\dagger_p)+i\omega_p(b_pb^\dagger_p+b^\dagger_pb_p)
+\]
+Plugging this inside the expression for $Q_{\text{U(1)}}$ gives us:
+\[
+Q=\frac{1}{2}\int d^3p(a^\dagger_pa_p+a_pa^\dagger_p-b_pb^\dagger_p-b^\dagger_pb_p)
+\]
+At the end of the day, we redefine the charge via normal ordering:
+\begin{kaobox}[frametitle=Normal ordered charge]
+\[
+\norder{Q}=\int d^3p(a^\dagger_pa_p{\color{red}-}b^\dagger_pb_p)
+\]
+\end{kaobox}
+The \textbf{minus sign} is crucial to distinguish between $a$ and $b$ particles:
+\[
+\left\{
+\begin{aligned}
+a^\dagger_p\ket{0}&=\ket{p_a}\\
+b^\dagger_p\ket{0}&=\ket{p_b}
+\end{aligned}
+\right.
+\Rightarrow
+\left\{
+\begin{aligned}
+\norder{Q}a^\dagger_p\ket{0}&=+a^\dagger_p\ket{0}\\
+\norder{Q}b^\dagger_p\ket{0}&=-b^\dagger_p\ket{0}
+\end{aligned}
+\right.
+\]
+They are eigenstates with eigenvalues $\pm$1. Conventionally, we call \textbf{particles} the ones of type $a$ and \textbf{anti-particles} the ones of type $b$. We have seen that the charge density can be written as the 0-th component of the current $J^0$ and we have that:
+\[
+[J^0(\underline{x}),J^0(\underline{y})]_{(x-y)^2<0}=0
+\]
+This is connected to the fact that the charge density is an \textbf{observable}.
+\section{Causality}
+So far, we have a \textbf{local theory}: everything is written in terms of fields which depends on the point. We moved to its quantum version and we should be able to see that the theory is consistent with the \textbf{principle of causality}, i.e. the information travels at most at the speed of light. This means that if we measure two observables \textbf{simultaneously} in two different points of the space, they cannot influence each other:
+\[
+[O_1(\underline{x},t),O_2(\underline{y},t)]=0
+\]
+If it is Lorentz invariant, this commutator has to remain zero in another inertial frame. The observables are function of the fields, so the previous relation is connected to the commutator of the fields:
+\[
+[\Phi(\underline{x},t),\Phi(\underline{y},t)]=0
+\]
+This is already part of our theory [\refeq{commrules}]. we just have to check that it is invariant:
+\begin{align*}
+[\Phi(x),\Phi(y)]&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\left[(a_{p_1}e^{-iP_{1\mu}x^\mu}+a^\dagger_{p_1}e^{iP_{1\mu}x^\mu}),(a_{p_2}e^{-iP_{2\mu}y^\mu}+a^\dagger_{p_2}e^{iP_{2\mu}y^\mu})\right]\\
+&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\left\{[a_{p_1},a^\dagger_{p_2}]e^{-iP_{1\mu}x^\mu}e^{iP_{2\mu}y^\mu}+[a_{p_1}^\dagger,a_{p_2}]e^{iP_{1\mu}x^\mu}e^{-iP_{2\mu}y^\mu}\right\}\\
+&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\delta(\underline{p_1}-\underline{p_2})[e^{-iP_{1\mu}x^\mu}e^{iP_{2\mu}y^\mu}-e^{iP_{1\mu}x^\mu}e^{-iP_{2\mu}y^\mu}]\\
+&=\int\frac{d^3p_1}{(2\pi)^32\omega_{p_1}}[e^{-iP_{1\mu}(x-y)^\mu}-e^{iP_{1\mu}(x-y)^\mu}]:=\Delta(x-y)
+\end{align*}
+If $x^0=y^0$, we have $\Delta(x-y)=0$. We just have to prove that this is invariant in any inertial frame. To do that, we show that it is possible to rewrite the integral measure as:
+\[
+\int\frac{d^3p}{(2\pi)^32\omega_p}f(p)=\int\frac{d^4p}{(2\pi)^3}\delta(P^2-m^2)\theta(P^0)f(p)
+\]
+The RHS of the equation above is invariant since $d^4p$ is invariant, $(P^2-m^2)$ is a sum of two invariant objects and $\theta(P^0)$ is invariant since the sign of the temporal part does not change under Lorentz transformation. The only thing left to prove is the equivalence between these two objects. We know that $P^2-m^2=P^0^2-(p^2+m^2)=(P^0+\omega_p)(P^0-\omega_p)$. The delta function now becomes:
+\[
+\delta(P^2-m^2)=\frac{\delta(P^0+\omega_p)}{|P^0-\omega_p|}+\frac{\delta(P^0-\omega_p)}{|P^0+\omega_p|}=\frac{\delta(P^0+\omega_p)}{2\omega_p}+\frac{\delta(P^0-\omega_p)}{2\omega_p}
+\]
+By using the $\theta(P^0)$ we select only the positive energy. Substituting this new integral measure in $\Delta(x-y)$ we observe that it remains the same but it is now written in a manifestly covariant way, therefore it is invariant in any inertial frame. This means that the construction of the theory is consistent. In the next chapter, we are going to see that this is true also in the Dirac case, although we will have \textbf{anti-commutation} relations instead of commutation relations and the field will not be an observable.
+\end{document}

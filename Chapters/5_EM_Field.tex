@@ -1,0 +1,349 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\setchapterstyle{kao}
+\setchapterpreamble[u]{\margintoc}
+\setchapterimage[6.5cm]{Images/Maxwell.jpg}
+\chapter[Electromagnetic field]{Electromagnetic field\footnotemark[0]}
+\labch{Maxwelleq}
+\section{Maxwell equations}
+We need to move from the classical treatment of the electromagnetic field to the quantized treatment. In this case, we already know the equations for the fields:
+\[
+\left\{
+\begin{aligned}
+\textbf{\RN{1}}:\;\underline{\nabla}\cdot\underline{E}&=\rho  &\textbf{\RN{3}}:\;\underline{\nabla}\wedge\underline{E}+\frac{1}{c}\frac{\partial}{\partial t}\underline{H}&=0\\
+\textbf{\RN{2}}:\;\underline{\nabla}\cdot\underline{H}&=0  &\textbf{\RN{4}}:\;\underline{\nabla}\wedge\underline{H}-\frac{1}{c}\frac{\partial}{\partial t}\underline{E}&=\frac{1}{c}\underline{J}
+\end{aligned}
+\right.
+\]
+\marginnote{Useful vectorial relations:
+\begin{itemize}
+    \item $\underline{\nabla}\wedge(\underline{\nabla}\Phi)=0$
+    \item $\underline{\nabla}\cdot(\underline{\nabla}\wedge\underline{A})=0$
+    \item $\underline{\nabla}\wedge(\underline{\nabla}\wedge\underline{A})=-\nabla^2\underline{A}+\underline{\nabla}(\underline{\nabla}\cdot\underline{A})$
+    \item $\underline{\nabla}\cdot(\underline{\nabla}\Phi)=\underline{\nabla}^2\Phi$
+\end{itemize}}
+From this, it is possible to obtain a continuity equation: we apply the operator $\underline{\nabla}$ to equation \textbf{\RN{4}} and using equation \textbf{\RN{1}} we get:
+\[
+\cancelto{0}{\underline{\nabla}\cdot(\underline{\nabla}\wedge\underline{H})}-\frac{1}{c}\frac{\partial}{\partial t}\underbrace{(\underline{\nabla}\cdot\underline{E})}_{=\rho}=\frac{1}{c}\underline{\nabla}\cdot\underline{J}\Rightarrow\frac{\partial\rho}{\partial t}+\underline{\nabla}\cdot\underline{J}=0
+\]
+Now, we define the \textbf{vector potential} \underline{A} such that $\underline{H}=\underline{\nabla}\wedge\underline{A}$. From equation \textbf{\RN{3}}, we can write the electric field $\underline{E}$ as:
+\[
+\underline{\nabla}\wedge\left(\underline{E}+\frac{1}{c}\frac{\partial}{\partial t}\underline{A}\right)=0\Rightarrow\underline{E}=-\underline{\nabla}\Phi-\frac{1}{c}\frac{\partial}{\partial t}\underline{A}
+\]
+We defined the object inside the brackets as $-\underline{\nabla}\Phi$. This introduces the \textbf{scalar potential} $\Phi$.
+
+Substituting what we found for $\underline{E}$ and $\underline{H}$ in equations \textbf{\RN{1}} and \textbf{\RN{4}}, we obtain:
+\[
+\left\{
+\begin{aligned}
+&\underline{\nabla}\cdot\underline{E}=\rho\Rightarrow\nabla^2\Phi+\frac{1}{c}\frac{\partial}{\partial t}\underline{\nabla}\cdot\underline{A}=-\rho\\
+&\underline{\nabla}\wedge\underline{H}-\frac{1}{c}\frac{\partial}{\partial t}\underline{E}=\frac{1}{c}\underline{J}\Rightarrow\nabla^2\underline{A}-\frac{1}{c^2}\frac{\partial^2}{\partial t^2}\underline{A}=-\frac{1}{c}\underline{J}-\underline{\nabla}\left(\underline{\nabla}\cdot\underline{A}+\frac{1}{c}\frac{\partial\Phi}{\partial t}\right)
+\end{aligned}
+\right.
+\]
+The equations we just wrote are invariant under a certain transformation:
+\[
+\left\{
+\begin{aligned}
+\underline{A}&\xrightarrow[]{}\underline{A}'=\underline{A}+\underline{\nabla}\chi \quad &\text{gives the same $\underline{H}$}\\
+\Phi&\xrightarrow[]{}\Phi'=\Phi-\frac{1}{c}\frac{\partial\chi}{\partial t} \quad &\text{gives the same $\underline{E}$}
+\end{aligned}
+\right.
+\]
+It is possible to use this invariance to choose a \textbf{gauge} such that:
+\[
+\underline{\nabla}\cdot\underline{A}'+\frac{1}{c}\frac{\partial\Phi'}{\partial t}=0
+\]
+Therefore, $\chi$ has to satisfy the following condition:
+\[
+\underline{\nabla}\cdot\underline{A}+\nabla^2\chi+\frac{1}{c}\frac{\partial\Phi}{\partial t}-\frac{1}{c}\frac{\partial^2\chi}{\partial t}=0\Rightarrow\left\{
+\begin{aligned}
+\nabla^2\underline{A}-\frac{1}{c^2}\frac{\partial^2\underline{A}}{\partial t^2}&=-\frac{1}{c}\underline{J}\\
+\nabla^2\Phi-\frac{1}{c^2}\frac{\partial^2\Phi}{\partial t^2}&=-\rho
+\end{aligned}
+\right.
+\]
+It is possible to write everything in a covariant form. In order to do that, let $J^\mu=(c\rho,\underline{J})$ and $A^\mu=(\Phi,\underline{A})$. We know that $\partial_\mu J^\mu=0$, by using the covariant form of the D'Alambert operator, we can write the differential equations in just one differential equation that involves the 4-vectors and it is manifestly covariant:
+\[
+\Box=\frac{1}{c^2}\frac{\partial^2}{\partial t^2}-\nabla^2=\partial_\mu\partial^\mu=\partial^2\Rightarrow\partial^2 A^\mu-\partial^\mu(\partial_\nu A^\nu)=J^\mu
+\]
+If we work in the \textbf{Lorentz gauge}, i.e. $A^\mu\xrightarrow[]{}A'^\mu=A^\mu-\partial^\mu\chi$ and $\partial_\nu A^\nu=0$, we recover the simplest form of this equation, which is $\partial^2 A^\mu=J^\mu$.
+
+We can now introduce the \textbf{electromagnetic tensor} $F^{\mu\nu}$:
+\begin{kaobox}[frametitle=Electromagnetic tensor]
+\[
+F^{\mu\nu}:=\partial^\mu A^\nu-\partial^\nu A^\mu=-F^{\nu\mu}\marginnote{It is an anti-symmetric tensor}
+\]
+\end{kaobox}
+Using the expression for $\underline{H}$ and $\underline{E}$ in terms of $\underline{A}$ and $\Phi$, it is possible to write this object in a matrix form:
+\[
+\left\{
+\begin{aligned}
+\underline{E}&=-\underline{\nabla}\Phi-\frac{1}{c}\frac{\partial}{\partial t}\underline{A}\xrightarrow[]{}E^i=\partial^iA^0-\partial^0A^i\\
+\underline{H}&=\underline{\nabla}\wedge\underline{A}\xrightarrow[]{}H^i=\varepsilon_{ijk}(\partial^jA^k-\partial^kA^j)\marginnote{Remember that:
+\[
+\underline{\nabla}\wedge\underline{A}=\begin{pmatrix}
+\hat{i} & \hat{j} & \hat{k} \\
+\partial^1 & \partial^2 & \partial^3 \\
+A^1 & A^2 & A^3
+\end{pmatrix}
+\]}
+\end{aligned}
+\right.
+\]
+Therefore, the electromagnetic tensor is given by a 4$\times$4 traceless matrix:
+\[
+F^{\mu\nu}=\left(\begin{array}{cccc}
+    0 & -E^1 & -E^2 & -E^3 \\
+    +E^1 & 0 & +H^3 & -H^2 \\
+    +E^2 & -H^3 & 0 & +H^1 \\
+    +E^3 & +H^2 & -H^1 & 0
+\end{array}\right)
+\]
+Maxwell's equations can now be rewritten as:
+\[
+\left\{
+\begin{aligned}
+&\partial_\mu F^{\mu\nu}=J^\nu \quad &\text{Inhomogeneous equations}\\
+&\partial^\mu F^{\nu\sigma}+\partial^\sigma F^{\mu\nu}+\partial^\nu F^{\sigma\mu}=0 \quad &\text{Homogeneous equations}\marginnote{The homogeneous equations have been computed in detail in \cite{gruppi}}
+\end{aligned}
+\right.
+\]
+The \textbf{dual} of $F$ is defined as:
+\[
+\pazocal{F}^{\alpha\beta}:=\frac{1}{2}\varepsilon^{\alpha\beta\mu\nu}F_{\mu\nu}
+\]
+and the homogeneous equations can be written in a more compact form:
+\[
+\partial^\mu F^{\nu\sigma}+\partial^\sigma F^{\mu\nu}+\partial^\nu F^{\sigma\mu}=0\xrightarrow[]{}\partial_\mu\pazocal{F}^{\mu\nu}=0
+\]
+The dual tensor does not contain sources, unlike $F$. Because the conversion from $F$ to $\pazocal{F}$ implies the interchange of electric and magnetic fields, $\partial_\mu\pazocal{F}^{\mu\nu}=0$ implies the absence of magnetic monopoles.
+\section{Lagrangian description}
+We now have three objects, $A^\mu$, $F^{\mu\nu}$ and $\pazocal{F}^{\mu\nu}$. The idea is to find a Lorentz scalar, a possible choice is:
+\begin{kaobox}[frametitle=Lagrangian density of the electromagnetic field]
+\begin{equation}
+\labeq{MaxwellLagrangian}
+\pazocal{L}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}=-\frac{1}{4}(\partial_\mu A_\nu-\partial_\nu A_\mu)(\partial^\mu A^\nu-\partial^\nu A^\mu)
+\end{equation}
+\end{kaobox}
+We could have chosen other objects like $A^\mu A_\mu$ but this is not gauge invariant so it cannot enter the definition of the Lagrangian. Moreover, if we contract $F$ with its dual $\pazocal{F}$ we obtain a pseudoscalar.\marginnote{From now on, we will work without sources, i.e. $J^\mu=0$.}
+
+We will justify the factor -1/4 later, now we want to check that we correctly recover the Maxwell's equations from this Lagrangian density. First, we explicitly compute $\pazocal{L}$:
+\begin{align*}
+\pazocal{L}&=-\frac{1}{4}(\partial_\mu A_\nu-\partial_\nu A_\mu)(\partial^\mu A^\nu-\partial^\nu A^\mu)\\
+&=-\frac{1}{4}\left[{\color{blue}\partial_\mu A_\nu\partial^\mu A^\nu}-{\color{green}\partial_\mu A_\nu\partial^\nu A^\mu}-{\color{green}\partial_\nu A_\mu\partial^\mu A^\nu}+{\color{blue}\partial_\nu A_\mu\partial^\nu A^\mu}\right]\\
+&=-\frac{1}{2}\left[{\color{blue}\partial_\mu A_\nu \partial^\mu A^\nu}-{\color{green}\partial_\mu A_\nu\partial^\nu A^\mu}\right]
+\end{align*}
+Now we want to see that this gives us the correct equations of motion:
+\[
+\frac{\partial\pazocal{L}}{\partial A_\mu}-\partial_\nu\frac{\partial\pazocal{L}}{\partial A_{\mu,\nu}}=0
+\]
+The first term goes to zero because $\pazocal{L}$ does not contain an explicit dependence on $A_\mu$, we compute the second:
+\[
+\partial_\nu\frac{\partial\pazocal{L}}{\partial(\partial_\nu A_\mu)}=\partial_\nu(\partial^\nu A^\mu-\partial^\mu A^\nu)=\partial^2 A^\mu-\partial^\mu(\partial_\nu A^\nu)=0 \quad \checkmark
+\]
+The -1/4 which appears in $\pazocal{L}$ can be justified by taking the Maxwell's equations, using Hamilton's principle and imposing $\delta S=0$:
+\begin{align*}
+\delta S&=\int d^4x[\partial^2 A_\nu-\partial_\nu(\partial_\mu A^\mu)]\delta A^\nu=\int d^4x \left[\partial_\mu\partial^\mu A_\nu\delta A^\nu-\partial_\nu(\partial_\mu A^\mu)\delta A^\nu\right]\\
+&=\int d^4x \left[\partial^\mu\cancelto{0}{(\partial_\mu A_\nu \delta A^\nu)}-\partial^\mu A_\nu \delta(\partial_\mu A^\nu)-\partial^\nu\cancelto{0}{(\partial_\nu A_\mu\delta A^\nu)}+\partial_\nu A^\mu\delta(\partial^\mu A^\nu)\right]\\
+&=\int d^4x \left[{\color{blue}-\partial^\mu A_\nu \delta(\partial_\mu A^\nu)}{\color{green}+\partial_\nu A^\mu\delta(\partial^\mu A^\nu)}\right]\\
+&=\int d^4x \left[{\color{blue}-\frac{1}{2}\partial_\mu A_\nu\delta(\partial^\mu A^\nu)-\frac{1}{2}\partial_\nu A_\mu\delta(\partial^\nu A^\mu)}{\color{green}+\frac{1}{2}\partial_\nu A_\mu\delta(\partial^\mu A^\nu)+\frac{1}{2}\partial_\mu A_\nu\delta(\partial^\nu A^\mu)}\right]\\
+&=\int d^4x\left[\frac{1}{2}\delta(\partial^\mu A^\nu)(-\partial_\mu A_\nu+\partial_\nu A_\mu)+\frac{1}{2}\delta(\partial^\nu A^\mu)(-\partial_\nu A_\mu+\partial_\mu A_\nu)\right]\\
+&=\int d^4x\left[-\frac{1}{2}F_{\mu\nu}\delta(\partial^\mu A^\nu)+\frac{1}{2}F_{\mu\nu}\delta(\partial^\nu A^\mu)\right]=\int d^4x\left[-\frac{1}{2}F_{\mu\nu}\delta(\partial^\mu A^\nu-\partial^\nu A^\mu)\right]\\
+&=\int d^4x \left[-\frac{1}{2}F_{\mu\nu}\delta(F^{\mu\nu})\right]=\delta\int d^4x\left(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\right)=\delta\int d^4x\pazocal{L} \quad \checkmark
+\end{align*}
+\section{Quantization}
+We want to quantize the theory, so we introduce the \textbf{conjugated momenta} and impose commutation relations:
+\[
+\pi^\mu=\frac{\partial\pazocal{L}}{\partial\Dot{A}_\mu} \quad \begin{cases}
+[A_\mu(\underline{x},t),\pi_\nu(\underline{y},t)]=i\eta_{\mu\nu}\delta^3(\underline{x}-\underline{y})\\
+[A_\mu,A_\nu]=[\pi_\mu,\pi_\nu]=0
+\end{cases}
+\]
+From the expression of the Lagrangian density $\pazocal{L}$ previously obtained [\refeq{MaxwellLagrangian}], one can explicitly compute the momenta $\pi^\mu$:
+\[
+\left\{
+\begin{aligned}
+\pi^i&=\frac{\partial\pazocal{L}}{\partial\Dot{A}_i}=-\partial^0A^i+\partial^iA^0=-F^{0i}=-E^i\\
+\pi^0&=\frac{\partial\pazocal{L}}{\partial\Dot{A}_0}=0 \quad \text{{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} problem}
+\end{aligned}
+\right.
+\]
+This comes from the fact that $A^0$ is not a dynamical field, i.e. the Lagrangian does not contain a term proportional to $\Dot{A}^0$. Moreover, the result we just obtained is a consequence of the fact that not all the modes are physical: we are imposing commutation relations also where we should not impose them. In order to solve this problem, we have two alternatives: \marginnote{For more details about the use of the Coulomb gauge, check \cite{qftciotta}}the first one is to choose a gauge in which is manifest that we have only two degrees of freedom, e.g. the \textbf{Coulomb gauge}: $A^0=0$ and $\underline{\nabla}\cdot\underline{A}=0$. In this way, all the physical objects can be written in terms of two transverse components. However, if we do that in the end we will have something that is not anymore manifestly Lorentz invariant. 
+
+The other possibility is to have $\pi^0\neq0$ at least formally and it will become zero in a certain approximation. In order to do that, we use the gauge invariance: if we choose the \textbf{Lorentz gauge}, i.e. $\partial_\nu A^\nu=0$, what we get is that the Maxwell's equations reduce to $\partial^2 A^\mu=0$. We change a little bit the Lagrangian density so that $\partial^2 A^\mu=0$ arises directly from the equation of motion:
+\[
+\pazocal{L}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2}(\partial_\mu A^\mu)^2
+\]
+% \marginnote{We know that the conditions we imposed using the Lorentz gauge comes from a Lagrangian density which is:
+% \[
+% \pazocal{L}'=-\frac{1}{2}\partial_\mu A_\nu\partial^\mu A^\nu
+% \]
+% This is the Lagrangian density of the Klein-Gordon field without mass [\refch{KGeq}]. Let's see what happens if we take the difference:
+% \begin{align*}
+% \Tilde{\pazocal{L}}&=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\left(-\frac{1}{2}\partial_\mu A_\nu\partial^\mu A^\nu\right)\\
+% &=-\frac{1}{2}(\cancel{\partial_\mu A_\nu\partial^\mu A^\nu}-\partial_\mu A_\nu\partial^\nu A^\mu)+\cancel{-\frac{1}{2}\partial_\mu A_\nu\partial^\mu A^\nu}\\
+% &=\frac{1}{2}\partial_\mu A_\nu\partial^\nu A^\mu=\partial^\nu\left[\frac{1}{2}(\partial_\mu A_\nu)A^\mu\right]-\frac{1}{2}(\partial^\nu\partial_\mu A_\nu)A^\mu\\
+% &=\partial^\nu\left[\frac{1}{2}\cancelto{0}{(\partial_\mu A_\nu)}A^\mu\right]-\partial_\mu\left[\frac{1}{2}\cancelto{0}{(\partial^\nu A_\nu)}A^\mu\right]+\frac{1}{2}(\partial_\mu A^\mu)^2\\
+% &=\frac{1}{2}(\partial_\mu A^\mu)^2
+% \end{align*}
+% This tells us that:
+% \[
+% \pazocal{L}_{GF}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2}(\partial_\mu A^\mu)^2=-\frac{1}{2}\partial_\mu A_\nu\partial^\mu A^\nu
+% \]}
+It does not affect the equation of motions since we recover $\partial^2 A^\mu=0$:
+\[
+\frac{\partial\pazocal{L}}{\partial A_\mu}-\partial_\nu\frac{\partial\pazocal{L}}{\partial A_{\mu,\nu}}=\partial_\nu\left(\frac{\partial\pazocal{L}}{\partial(\partial_\nu A_\mu)}\right)=\partial_\nu\partial^\nu A^\mu=\partial^2 A^\mu=0
+\]
+The idea is now to quantize the electromagnetic field and only in a second moment impose the constraint $\partial_\mu A^\mu=0$. We can proceed very easily at first, since we observe that in this case:
+\[
+\left\{
+\begin{aligned}
+\pi^i&=\frac{\partial\pazocal{L}}{\partial\Dot{A}_i}=\partial^iA^0-\partial^0A^i=-F^{0i}=-E^i\\
+\pi^0&=\frac{\partial\pazocal{L}}{\partial\Dot{A}_0}=-\partial_\mu A^\mu=-\partial_0A^0+\underline{\nabla}\cdot\underline{A} \quad \raisebox{-\mydepth}{{\includegraphics[height=1.1\baselineskip]{Images/smile.jpg}}}
+\end{aligned}
+\right.
+\]
+At this point, it is possible to impose the usual commutation relations:
+% We can enlarge the space where the operators $A$ and $\pi$ act: we do not want $\pi^0=0$ at the operator level, but it will be 0 in the physics: 
+% \[
+% \bra{\text{phys}}-\partial_\nu A^\nu\ket{\text{phys}}=0
+% \]
+% In the Fock space, we include non-physical states where the mean value of $\pi$ is different than zero and this preserves the commutation relations that we imposed:
+\begin{equation}
+\left\{
+\begin{aligned}
+\labeq{commutation}    
+[A_\mu(\underline{x},t),\pi_\nu(\underline{y},t)]&=i\eta_{\mu\nu}\delta^3(\underline{x}-\underline{y)}\\
+[A_\mu(\underline{x},t),A_\nu(\underline{y},t)]&=[\pi_\mu(\underline{x},t),\pi_\nu(\underline{y},t)]=0
+\end{aligned}
+\right.
+\end{equation}
+This can be checked by explicit calculations: 
+\[
+[A_0(\underline{x},t),-\Dot{A}_0(\underline{y},t)+\partial_i A^i(\underline{y},t)]=[A_0(\underline{x},t),-\Dot{A}_0(\underline{y},t)]=i\delta^3(\underline{x}-\underline{y})
+\]
+where the term $[A_0(\underline{x},t),-\partial_i A^i(\underline{y},t)]=0$ since the derivative acts only on $y$:
+\begin{align*}
+[A_0(\underline{x},t),\partial_i A^i(\underline{y},t)]&=A_0(\underline{x},t)\frac{\partial}{\partial y^i}A^i(\underline{y},t)-\frac{\partial}{\partial y^i}A^i(\underline{y},t)A_0(\underline{x},t)\\
+&=\frac{\partial}{\partial y^i}\left[A_0(\underline{x},t)A^i(\underline{y},t)-A^i(\underline{y},t)A_0(\underline{x},t)\right]=0
+\end{align*}
+The same procedure can be repeated for $A_i$ and $\pi_i$ and the final result will be:
+\[
+[A_\mu(\underline{x},t),\Dot{A}_i(\underline{y},t)]=-i\delta^3(\underline{x}-\underline{y})
+\]
+\subsection{Temporal, longitudinal and transverse modes}
+As usual, we want to express the fields in terms of creation and annihilation operators. To do that, we need a basis of 4-vectors in $\mathbb{M}^4$. A possible choice for $P^\mu$ is:
+\[
+P^\mu=(p,0,0,p) \quad P_\mu P^\mu=0
+\]
+With this choice, we can define our basis in such a way that one vector is time-like, two vectors are orthogonal to $P^\mu$ (to have transversal components) and one vector is orthogonal to the other three:
+\[
+\left\{
+\begin{aligned}
+&\varepsilon_\mu^{(0)}=(1,0,0,0)=n^\mu \quad &\varepsilon_\mu^{(1)}=(0,1,0,0)\\
+&\varepsilon_\mu^{(2)}=(0,0,1,0) &\varepsilon_\mu^{(3)}=(0,0,0,1)
+\end{aligned}
+\right.
+\]
+They satisfy the following relations:
+\begin{equation}
+\labeq{relazionibuffe}
+\left\{
+\begin{aligned}
+P^\mu\varepsilon_\mu^{(1)}&=P^\mu\varepsilon_\mu^{(2)}=0\\
+P^\mu\varepsilon_\mu^{(3)}&=-P^\mu\varepsilon_\mu^{(0)}=-(n \cdot P)
+\end{aligned}
+\right.
+\end{equation}
+Every component is a sort of Klein-Gordon field, so we get the same composition in terms of positive and negative energy and it is possible to normalize the solutions exactly as we did for the Klein-Gordon field [\refch{KGeq}], with the only difference that this time we have to sum over the \textbf{polarizations}:
+\begin{kaobox}[frametitle=Electromagnetic field]
+\[
+A_\mu(x)=\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}\left[a_\lambda(p)e^{-iP_\mu x^\mu}+a^\dagger_\lambda(p)e^{iP_\mu x^\mu}\right]
+\]
+\end{kaobox}
+From this expression of $A_\mu(x)$ and from the commutation rules for $A_\mu$ and $\pi_\mu$ [\refeq{commutation}], we find for the creation and annihilation operators the following commutation rules:
+\begin{equation}
+\labeq{commrules}
+\left\{
+\begin{aligned}
+[a_\lambda(p),a^\dagger_{\lambda'}(p')]&=-\eta_{\lambda\lambda'}\delta^3(\underline{p}-\underline{p}')\\
+[a_\lambda(p),a_{\lambda'}(p')]&=[a^\dagger_\lambda(p),a^\dagger_{\lambda'}(p')]=0
+\end{aligned}
+\right.
+\end{equation}
+However, there is still an issue: let's consider a one particle state $\ket{1,\lambda}$:
+\[
+\ket{1,\lambda}=\int d^3pf(p)a^\dagger_\lambda(p)\ket{0}
+\]
+and compute its norm:
+\begin{align*}
+\bra{1,\lambda}\ket{1,\lambda'}&=\int d^3pd^3p'f^*(p)f(p')\bra{0}a_\lambda(p)a^\dagger_{\lambda'}(p')\ket{0}\\
+&=\int d^3pd^3pìf^*(p)f(p')\bra{0}[a_\lambda(p)a^\dagger_{\lambda'}(p'){\color{blue}-a_{\lambda'}^\dagger(p')a_\lambda(p)+\cancelto{0}{a_{\lambda'}^\dagger(p')a_\lambda(p)}}]\ket{0}\\
+&=\int d^3pd^3p'f^*(p)f(p')\bra{0}[a_\lambda(p),a^\dagger_{\lambda'}(p')]\ket{0}\\
+&=\int d^3pd^3p'f^*(p)f(p')\bra{0}[-\eta_{\lambda\lambda'}\delta^3(\underline{p}-\underline{p}')]\ket{0}\\
+&=-\eta_{\lambda\lambda'}\int d^3p|f(p)|^2
+\end{align*}
+For $\lambda=0$ we have a \textbf{negative norm} which is not physical! At this point, we remember the constraint we imposed in the beginning $\partial_\mu A^\mu=0$ and we will see how it will remove the negative norm states and cut the physical polarizations from four to two.
+\subsection{Physical states}
+At first, we could ask that $\partial_\mu A^\mu=0$ at the operator level, but this cannot work because the commutation relations [\refeq{commutation}] will not be satisfied for $\pi^0=-\partial_\mu A^\mu$. We could try to impose a weaker condition: we can imagine that the Hilbert space is somehow splitted into good states and bad states. The bad states are the unphysical ones and they will include the negative norm states, while one could think that the good physical states $\ket{\text{phys}}$ will be identified by $\partial_\mu A^\mu\ket{\text{phys}}=0$. Again, this condition is too strong because we can decompose $A_\mu(x)$ as $A_\mu(x)=A_\mu^{(+)}(x)+A_\mu^{(-)}(x)$:
+\[
+\left\{
+\begin{aligned}
+A_\mu^{(+)}(x)&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a_\lambda(p)e^{-iP_\mu x^\mu}\\
+A_\mu^{(-)}(x)&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a^\dagger_\lambda(p)e^{+iP_\mu x^\mu}=A_\mu^{(+)\dagger}(x)
+\end{aligned}
+\right.
+\]
+Acting on the vacuum, we will have $A_\mu^{(+)}(x)\ket{0}=0$ but $A_\mu^{(-)}(x)\ket{0}\neq0$: the vacuum will not be a physical state if we use this constraint. In order to have a constraint with physical meaning, we require that the physical states $\ket{\text{phys}}$ are defined by:
+\begin{kaobox}[frametitle=Gupta-Bleuler condition]
+\[
+\partial_\mu A^{(+)\mu}\ket{\text{phys}}=0\Rightarrow\bra{\text{phys}}\partial_\mu A^\mu\ket{\text{phys}}=0
+\]
+\end{kaobox}
+We can compute the explicit expression for $\partial_\mu A^{(+)\mu}$ to see what this condition implies:
+\begin{align*}
+\partial^\mu A_\mu^{(+)}&=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}e^{-iP_\mu x^\mu}P^\mu\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a_\lambda(p)\marginnote{We use the relations stated in \refeq{relazionibuffe}.}\\
+&=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}e^{-iP_\mu x^\mu}[a_0(p)-a_3(p)](n \cdot P)
+\end{align*}
+We want that $\partial_\mu A^{(+)\mu}\ket{\text{phys}}=0$ therefore it has to be:
+\begin{equation}
+\labeq{phys}
+[a_0(p)-a_3(p)]\ket{\text{phys}}=0
+\end{equation}
+% The physical state can be written as:
+% \[
+% \ket{\text{phys}}=\ket{n_0,n_3}=\frac{[a^\dagger_0(p)-a^\dagger_3(p)]^m}{m!}\ket{0,0}
+% \]
+% This form satisfies \refeq{phys}, in fact:
+% \begin{align*}
+% [a_0(p)-a_3(p),a^\dagger_0(p')-a^\dagger_3(p')]&=[a_0(p),a^\dagger_0(p')]-\cancelto{0}{[a_0(p),a^\dagger_3(p')]}\\
+% &-\cancelto{0}{[a_3(p),a^\dagger_0(p')]}+[a_3(p),a^\dagger_3(p')]\\
+% &=\eta_{00}\delta^3(\underline{p}-\underline{p}')+\eta_{33}\delta^3(\underline{p}-\underline{p}')\\
+% &=\delta^3(\underline{p}-\underline{p}')-\delta^3(\underline{p}-\underline{p}')=0
+% \end{align*}
+% Therefore, for a physical state we have:
+% \[
+% [a_0(p)-a_3(p)][a^\dagger_0(p)-a^\dagger_3(p)]^m\ket{0,0}=0
+% \]
+The constraints on the physical states are only on the longitudinal and temporal components. The general expression for a physical state will be a superposition of a term $\ket{\Psi_T}$ containing only \textbf{transverse photons} and a term $\ket{\phi}$ containing \textbf{time-like and longitudinal photons}:
+\[
+\ket{\text{phys}}=\ket{\Psi_T}+\ket{\phi} \quad \begin{cases}
+\ket{\Psi_T}=c_1a^\dagger_1(p)\ket{0}+c_2a^\dagger_2(p)\ket{0}\\
+\ket{\phi}=c_0a^\dagger_0(p)\ket{0}+c_3a^\dagger_3(p)\ket{0}
+\end{cases}
+\]
+Although the condition we imposed decouple the negative norm states, all the remaining states involving longitudinal and time-like photons have \textbf{zero norm}:
+\begin{align*}
+\bra{\phi}\ket{\phi}&=\bra{0}(a_0+a_3)(a^\dagger_0+a^\dagger_3)\ket{0}=\bra{0}[a_0a^\dagger_0+a_0a^\dagger_3+a_3a^\dagger_0+a_3a^\dagger_3]\ket{0}\\
+&=\bra{0}\{a_0a^\dagger_0+\cancelto{0}{[a_0,a^\dagger_3]}+\cancelto{0}{a^\dagger_3a_0}+\cancelto{0}{[a_3,a^\dagger_0]}+\cancelto{0}{a^\dagger_0a_3}+a_3a^\dagger_3\}\ket{0}\\
+&=\bra{0}\{[a_0,a^\dagger_0]+\cancelto{0}{a^\dagger_0 a_0}+[a_3,a^\dagger_3]+\cancelto{0}{a^\dagger_3 a_3}\}\ket{0}\\
+&=\bra{0}(-\eta_{00}-\eta_{33})\ket{0}=0 
+\end{align*}
+The physical Hilbert space we are trying to construct is positive semi-definite, but we still have to deal with the zero norm states. What we do is to treat them as equivalent to the vacuum: two states which differ only in their time-like and longitudinal components are said to be physically equivalent. To justify that, we have to show that they give the same expectation value for all physical observables: this is true for the Hamiltonian.
+\begin{align*}
+\norder{H}&=\int d^3x \norder{(\pi^\mu\Dot{A}_\mu-\pazocal{L})}\\
+&=\dots=\int\frac{d^3p}{(2\pi)^{3/2}}E\left[\sum_{\lambda=1}^3a_\lambda^\dagger(p)a_\lambda(p)-a^\dagger_0(p)a_0(p)\right]
+\end{align*}
+\refeq{phys} tells us that $\bra{\text{phys}}a^\dagger_3a_3\ket{\text{phys}}=\bra{\text{phys}}a^\dagger_0a_0\ket{\text{phys}}$ so that the contributions from time-like and longitudinal photons cancel among themselves. This leaves us with a \textbf{positive definite} Hamiltonian, with only the contribution from the transverse photons.
+\end{document}

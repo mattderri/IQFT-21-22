@@ -1,0 +1,292 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\setchapterstyle{kao}
+\setchapterpreamble[u]{\margintoc}
+\setchapterimage[6.5cm]{Images/fields.jpg}
+\chapter[Classical Fields]{Classical Fields\footnotemark[0]}
+\labch{classicalfields}
+
+\section{Euler-Lagrange equation}
+We now want to move from point-like particles to extended systems. In order to do that we need to use a \textbf{field} $\Phi(x^{\mu})$ which is a local function of space-time. The system is described by a Lagrangian\\ $L=L(\Phi_i,\partial_{\mu}\Phi_i,\dots,\partial_{\mu}^{(n)}\Phi_i,x^{\mu})$ and the action is given by:
+\[
+S=\int dtL=\int dt\int d^3x\pazocal{L}=\int d^4x\pazocal{L}
+\]
+where we introduced the \textbf{Lagrangian density} $\pazocal{L}$. $d^4x$ is invariant under Lorentz transformation since $d^4x'=|\det\Lambda|d^4x=d^4x$ and we can also require that $\pazocal{L}=\pazocal{L}(\Phi_i,\partial_{\mu}\Phi_i)$ is invariant under Poincaré transformations. Introducing the \textbf{conjugated momenta} of the field as:
+\[
+\pi_i(x^{\mu}):=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}_i}
+\]
+it is now possible to write:
+\begin{kaobox}[frametitle=Hamiltonian]
+\begin{equation}
+\labeq{Hdensity}
+\pazocal{H}=\pi_i\Dot{\Phi}_i-\pazocal{L}\Rightarrow H=\int_Vd^3x\pazocal{H}
+\end{equation}
+\end{kaobox}
+$\Phi(x^{\mu})$ is a solution of the equations of motion which minimizes the action $\delta S$ over a class of path variations $\delta\Phi(x^{\mu})$ which goes to zero on the border of the hypersurface $V$:
+\[
+\delta\Phi(\underline{x},t)=0 \text{ if } \begin{cases}
+\delta\Phi(\underline{x},t_1)=\delta\Phi(\underline{x},t_2)=0 \text{ for } \underline{x}\in V\\
+\delta\Phi(\underline{x},t)=0 \text{ for } \underline{x}\in\Sigma\sim\partial V
+\end{cases}
+\]
+We now want to explicitly compute the variation of the action $\delta S$:\marginnote{$\partial\Phi_{i,\mu}=\frac{\partial\Phi_i}{\partial x^{\mu}}$, $\delta\Phi_{i,\mu}=\delta(\partial_{\mu}\Phi_i)=\partial_{\mu}(\delta\Phi_i)$}
+\begin{align*}
+\delta S&=\int d^4x\left[\pazocal{L}(\Phi',\partial_{\mu}\Phi')-\pazocal{L}(\Phi,\partial_{\mu}\Phi)\right]=\int d^4x\left[\frac{\partial\pazocal{L}}{\partial\Phi_i}\delta\Phi_i+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_{i,\mu}\right]\\
+&=\int d^4x\left[\frac{\partial\pazocal{L}}{\partial\Phi_i}\delta\Phi_i+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_\mu(\delta\Phi_i){\color{red}+\partial_\mu\left(\frac{\partial L}{\partial\Phi_{i,\mu}}\right)\delta(\Phi_i)-\partial_\mu\left(\frac{\partial L}{\partial\Phi_{i,\mu}}\right)\delta(\Phi_i)}\right]\\
+&=\int d^4x\left[\frac{\partial\pazocal{L}}{\partial\Phi_i}\delta\Phi_i+\partial_{\mu}\left(\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i\right)-\partial_{\mu}\left(\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\right)\delta\Phi_i\right]\\
+&=\int d^4x\left[\frac{\partial\pazocal{L}}{\partial\Phi_i}-\partial_{\mu}\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\right]\delta\Phi_i+\int d^4x\partial_{\mu}\left(\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i\right)=0
+\end{align*}
+The last term can be neglected using the divergence theorem because $\delta\Phi_i=0$ on the surface, leaving us with:
+\begin{kaobox}[frametitle=Euler-Lagrange equation]
+\begin{equation}
+\labeq{ELeq}
+\frac{\partial\pazocal{L}}{\partial\Phi_i}-\partial_{\mu}\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}=0
+\end{equation}
+\end{kaobox}
+\section{N\"other's theorem}
+Let's suppose to have $\pazocal{L}=\pazocal{L}(\Phi_i,\partial_{\mu}\Phi_i,x^{\mu})$ and to apply a generic transformation to the system:
+\[
+\begin{cases}
+x^{\mu}\xrightarrow[]{}x'^{\mu}=x^{\mu}+\delta x^{\mu}\\
+\Phi_i(x)\xrightarrow[]{}\Phi'_i(x')\\
+\pazocal{L}\xrightarrow[]{}\pazocal{L}'(\Phi_i',\partial_{\mu}\Phi_i',x'^{\mu})
+\end{cases}\Rightarrow S(V)\xrightarrow[]{}S'(V')=\int_{V'}d^4x'\pazocal{L}'(\Phi_i',\partial_{\mu}\Phi_i',x'^{\mu})
+\]
+In order to have a \textbf{symmetry} it must be $S(V)=S'(V')$.
+\begin{theorem}[N\"other's theorem]
+\labthm{Nother}
+If the Lagrangian has a continuous symmetry, then there exists a \textbf{current} associated with that symmetry that is conserved when the equations of motion are satisfied.
+\end{theorem}
+\begin{proof}
+We now want to compute in detail the total variation of the field:
+\begin{align*}
+    \Delta\Phi_i(x)&=\Phi'_i(x')-\Phi_i(x)=\Phi'_i(x')-\Phi_i(x){\color{red}+\Phi'_i(x)-\Phi'_i(x)}\\
+    &=\frac{\partial\Phi_i'}{\partial x^{\mu}}\delta x^{\mu}+\delta\Phi_i=\partial_{\mu}\Phi_i\delta x^{\mu}+\delta\Phi_i
+\end{align*}
+This argument also works for the Lagrangian density:
+\begin{align*}
+    \Delta\pazocal{L}&=\pazocal{L}'(\Phi'_i(x'),\partial_{\mu}\Phi_i'(x'),x'^{\mu})-\pazocal{L}(\Phi_i(x),\partial_{\mu}\Phi_i(x),x^{\mu})\\
+    &\simeq\delta\pazocal{L}+\frac{\partial\pazocal{L}}{\partial\Phi_i}\delta\Phi_i+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_{i,\mu}+\frac{\partial\pazocal{L}}{\partial x^{\mu}}\delta x^{\mu}
+\end{align*}
+We want $\delta S=S(V')-S(V)=\int d^4x'\pazocal{L}'-\int d^4x\pazocal{L}=0$. In order to do that, we need to take into account the jacobian of the transformation $x^{\mu}\xrightarrow[]{}x'^{\mu}$:
+\[
+\left|\det\frac{\partial x'^{\mu}}{\partial x^{\nu}}\right|=\left|\det\left(\frac{\partial x^{\mu}}{\partial x^{\nu}}+\frac{\partial\delta x^{\mu}}{\partial x^{\nu}}\right)\right|=1+\partial_{\mu}\delta x^{\mu}
+\]
+With this result we can compute the variation $\delta S$:
+\begin{align*}
+    \delta S&=\int_V d^4x[(1+\partial_{\mu}\delta x^{\mu})\pazocal{L}'-\pazocal{L}]=\int_V d^4x\left[\delta\pazocal{L}+\frac{\partial\pazocal{L}}{\partial\Phi_i}\delta\Phi_i+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_{i,\mu}+\underline{\frac{\partial\pazocal{L}}{\partial x^{\mu}}\delta x^{\mu}}+\underline{\pazocal{L}\frac{\partial\delta x^{\mu}}{\partial x^{\mu}}}\right]\\
+    &=\int_V d^4x\left[\delta\pazocal{L}+\underline{\partial_{\mu}(\pazocal{L}\delta x^{\mu})}+\frac{\partial\pazocal{L}}{\partial\Phi_i}\delta\Phi_i+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_\mu(\delta\Phi_i){\color{red}+\partial_\mu\left(\frac{\partial L}{\partial\Phi_{i,\mu}}\right)\delta\Phi_i-\partial_\mu\left(\frac{\partial L}{\partial\Phi_{i,\mu}}\right)\delta\Phi_i}\right]\\
+    &=\int_V d^4x \left[\delta\pazocal{L}+\partial_{\mu}\left(\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i\right)+\cancelto{0}{\left(\frac{\partial\pazocal{L}}{\partial\Phi_i}-\partial_{\mu}\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\right)}\delta\Phi_i\right]\marginnote{The equations of motion have to be satisfied for hypothesis: the last bracket is therefore 0 [\refeq{ELeq}].}\\
+    &=\int_V d^4x \left[\delta\pazocal{L}+\partial_{\mu}\left(\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i\right)\right]
+\end{align*}
+We require that $\delta S=0$, therefore:
+\begin{equation}
+\labeq{dS0}
+\delta\pazocal{L}+\partial_{\mu}\left(\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i\right)=0
+\end{equation}
+We want that the variation of the Lagrangian density does not change the equations of motion. In order to have this, we can suppose that it is the total derivative of a function: $\delta\pazocal{L}=\partial_{\mu}\delta\Omega^{\mu}$ with $\delta\Omega^{\mu}$ vanishing on the frontier of the integration domain. In this way, \refeq{dS0} becomes:
+\begin{kaobox}[frametitle=Conserved current]
+\begin{equation}
+\labeq{current}
+\partial_{\mu}\left({\color{red}\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i+\delta\Omega^{\mu}}\right)=0\Rightarrow\partial_{\mu}{\color{red}J^{\mu}}=0
+\end{equation}
+\end{kaobox}
+In all the cases we are interested in, we will have $\delta\Omega^\mu=0$.
+
+The conservation of the \textbf{current} $J^{\mu}$ implies the conservation of the \textbf{charge} $Q$:
+\[
+Q:=\int_V d^3x J^0\xrightarrow[]{}\frac{dQ}{dt}=\int_V d^3x\partial_0J^0=-\int_V d^3x\partial_iJ^i=-\int_{\partial V}d\Sigma\underline{J}\cdot\underline{n}=0
+\]
+Therefore $Q$ is a \textbf{conserved quantity}. If the N\"other's symmetries form a group, the charges will be its generators.
+\end{proof}
+\section{Energy momentum tensor}
+Let's consider the case $\delta\Omega^{\mu}=0$ and an infinitesimal transformation:
+\[
+\left\{
+\begin{aligned}
+&x^{\mu}\xrightarrow[]{}x'^{\mu}=\Lambda^{\mu}_{\nu}x^{\nu}\simeq x^{\mu}+\varepsilon^{\mu\nu}x_{\nu}\\
+&\Phi_i(x)\xrightarrow[]{}\Phi'_i(x)=S(\Lambda)^i_j\Phi^j(x)\simeq\left[\mathbb{1}-\frac{1}{2}(\Sigma_{\nu\rho}\varepsilon^{\nu\rho})^i_j\right]\Phi_i(x)
+\end{aligned}
+\right.
+\]
+Overall, the variations are given by:
+\[
+\left\{
+\begin{aligned}
+&\delta x^{\mu}=\varepsilon^{\mu\nu}x_{\nu}\\
+&\Delta\Phi^i(x)=-\frac{1}{2}(\Sigma_{\nu\rho}\varepsilon^{\nu\rho})^i_j\Phi^j(x)=\delta\Phi^i+\partial_\nu\Phi^i\delta x^\nu
+\end{aligned}
+\right.
+\]
+We can compute the current $J^{\mu}$, given by \refeq{current}:
+\begin{align*}
+    J^{\mu}&=\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i=\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\Delta\Phi_i-\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_{\nu}\Phi^i\delta x^{\nu}\\
+    &=-\frac{1}{2}(\Sigma_{\nu\rho}\varepsilon^{\nu\rho})^i_j\Phi^j\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}-\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_{\nu}\Phi^i\varepsilon^{\nu\rho}x_{\rho}+\pazocal{L}\eta^{\mu}_{\nu}\varepsilon^{\nu\rho}x_{\rho}\\
+    &=-\frac{1}{2}(\Sigma_{\nu\rho}\varepsilon^{\nu\rho})^i_j\Phi^j\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}-\varepsilon^{\nu\rho}x_{\rho}\left[{\color{red}\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_{\nu}\Phi^i-\eta^{\mu}_{\nu}\pazocal{L}}\right]\\
+    &=-\frac{1}{2}(\Sigma_{\nu\rho}\varepsilon^{\nu\rho})^i_j\Phi^j\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}-\varepsilon^{\nu\rho}x_{\rho}{\color{red}T^{\mu}_{\nu}}
+\end{align*}
+where we defined the \textbf{energy-momentum tensor} $T^{\mu}_{\nu}$:
+\begin{kaobox}[frametitle=Energy-momentum tensor]
+\[
+T^\mu_\nu:=\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_\nu\Phi^i-\eta^\mu_\nu\pazocal{L}
+\]
+\end{kaobox}
+% We know that $\partial_{\mu}J^{\mu}=0$ and this implies $\partial_{\mu}T^{\mu}_{\nu}=0$ and it is possible to see that:
+% \[
+% P_{\nu}=\int d^3xT^0_{\nu} \quad \quad \frac{dP_{\nu}}{dt}=0
+% \]
+% In fact, $T_{\nu}^0=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}_i}\Phi_{i,\nu}\Phi_{i,0}-\eta^0_{\nu}\pazocal{L}\xrightarrow[]{}T_0^0=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}_i}-\pazocal{L}=\pazocal{H}$ the energy density.
+We recall that $\varepsilon^{\nu\rho}$ is an anti-symmetric tensor [\refsec{freedynamics}], so the only non-zero contribution to $\varepsilon^{\nu\rho}x_{\rho}T^{\mu}_{\nu}$ is given by the anti-symmetric part of $(x_{\rho}T^{\mu}_{\nu})$.
+\begin{align*}
+    J^{\mu}&=-\frac{1}{2}(\Sigma_{\nu\rho}\varepsilon^{\nu\rho})^i_j\Phi^j\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}-\frac{1}{2}\varepsilon^{\nu\rho}(x_{\rho}T^{\mu}_{\nu}-x_{\nu}T^{\mu}_{\rho})\\
+    &=-\frac{1}{2}\varepsilon^{\nu\rho}\left[{\color{red}(\Sigma_{\nu\rho})^i_j\Phi^j\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}+(x_{\rho}T^{\mu}_{\nu}-x_{\nu}T^{\mu}_{\rho})}\right]\\
+    &=-\frac{1}{2}\varepsilon^{\nu\rho}{\color{red}\pazocal{M}^{\mu}_{\nu\rho}}
+\end{align*}
+where we defined the \textbf{generalized energy-momentum tensor} $\pazocal{M}^{\mu}_{\nu\rho}$:
+\begin{kaobox}[frametitle=Generalized energy-momentum tensor]
+\[
+\pazocal{M}^\mu_{\nu\rho}:=(\Sigma_{\nu\rho})^i_j\Phi^j\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}+(x_\rho T^\mu_\nu-x_\nu T^\mu_\rho)
+\]
+\end{kaobox}
+Since $\partial_{\mu}J^{\mu}=0$ we get that $\partial_{\mu}\pazocal{M}^{\mu}_{\nu\rho}=0$. Therefore, the charge is:
+\[
+M_{\nu\rho}=\int d^3x\pazocal{M}^0_{\nu\rho} \qquad \frac{d}{dt}M_{\nu\rho}=0
+\]
+This was the most general form, now we consider a rigid translation for a scalar field, i.e. $\Delta\Phi=0$. 
+\[
+\left\{
+\begin{aligned}
+\Delta\Phi&=0\\
+\delta x^\mu&=a^\mu
+\end{aligned}
+\right.
+\]
+In this case, what we get is:
+\[
+\Delta\Phi^i=\delta\Phi^i+\partial_{\mu}\Phi^i\delta x^{\mu}=0\Rightarrow\delta\Phi^i=-\partial_{\mu}\Phi^i\delta x^{\mu}=-\partial_{\mu}\Phi^ia^{\mu}
+\]
+We can compute the current $J^{\mu}$, given by \refeq{current}:
+\begin{align*}
+    J^{\mu}&=\pazocal{L}\delta x^{\mu}+\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\delta\Phi_i=\pazocal{L}\eta^{\mu}_{\nu}a^{\nu}-\frac{\partial\pazocal{L}}{\partial\Phi_{i,\mu}}\partial_{\nu}\Phi_ia^{\nu}\\
+    &=-a^{\nu}\left[\frac{\pazocal{L}}{\Phi_{i,\mu}}\partial_{\nu}\Phi^i-\eta^{\mu}_{\nu}\pazocal{L}\right]=-a^{\nu}T^{\mu}_{\nu}
+\end{align*}
+The conservation of the current implies $\partial_\mu T^\mu_\nu=0$: the four conserved quantities are energy and momentum.\marginnote{That is why it is called energy-momentum tensor.}
+\[
+\pazocal{E}=T^0_0=\frac{\partial\pazocal{L}}{\partial\Dot{\Phi}_i}\Dot{\Phi^i}-\pazocal{L}
+\]
+This is equal to the Hamiltonian density we computed as the Legendre transformation of the Lagrangian in \refeq{Hdensity}. If we consider the spatial components $T^0_i$ we obtain instead the momentum density, so we can identify the total charge as the quadri-momentum of the system $P_\nu$
+
+For the most general case, we have seen that the conserved quantities are $\partial_{\mu}\pazocal{M}^{\mu}_{\rho\nu}=0$:
+\[
+M_{\rho\nu}=\int d^3x\pazocal{M}^0_{\rho\nu}=\int d^3x(x_{\rho}P_{\nu}-x_{\nu}P_{\rho})=\varepsilon_{ijk}L_k=\left(\begin{array}{ccc}
+    0 & L_3 & -L_2 \\
+    -L_3 & 0 & L_1 \\
+    L_2 & -L_1 & 0
+    \end{array}\right)
+\]
+\section{Spinorial representation}
+Let's considet the spatial rotations, i.e. SO(3), which is a subgroup of the Lorentz group. In SO(3), a rotation is given by:
+\[
+R_{\underline{n}}(\underline{\theta})=e^{i\underline{J}\cdot\underline{\theta}} \quad \text{ with }\, \underline{\theta}=\theta\cdot\underline{n}
+\]
+From this, we move to SU(2):
+\[
+U=\left(\begin{array}{cc}
+  a & b \\
+  c & d \\
+\end{array}\right)=\left(\begin{array}{cc}
+  a & b \\
+  -b^* & a^* \\
+\end{array}\right)
+\]
+since $UU^{\dagger}=U^{\dagger}U=\mathbb{1}$ and  $\det (U)=1$.
+
+A \textbf{spinor} is a two-component object $\xi=\left(\begin{array}{c}
+     \xi_1 \\
+     \xi_2 
+\end{array}\right)$ which transforms as $\xi\xrightarrow[]{}\xi'=U\xi$. The generators of SU(2) are the Pauli matrices $\sigma_i$:
+\[
+\sigma_1=\left(\begin{array}{cc}
+    0 & 1 \\
+    1 & 0
+\end{array}\right) \quad \sigma_2=\left(\begin{array}{cc}
+    0 & -i \\
+    i & 0
+\end{array}\right) \quad \sigma_3=\left(\begin{array}{cc}
+    1 & 0 \\
+    0 & -1
+\end{array}\right)
+\]
+which satisfy the commutation relation $[\frac{\sigma_i}{2},\frac{\sigma_j}{2}]=i\varepsilon_{ijk}\frac{\sigma_k}{2}$. 
+
+We can define $h:=\underline{\sigma}\cdot\underline{r}=\left(\begin{array}{cc}
+    z & x-iy \\
+    x+iy & -z
+\end{array}\right)$. This object is hermitian, traceless and transforms as $h\xrightarrow[]{}h'=UhU^{-1}=UhU^+$. $\tr(h')=\tr(h)=0$, $\det(h')=\det(h): -(x^2+y^2+z^2)=-(x'^2+y'^2+z'^2)$.
+
+Taking now $J_i=\frac{\sigma_i}{2}$, we observe that $[K_i,K_j]=-i\varepsilon_{ijk}\frac{\sigma_k}{2}$ meaning that we have two different representations for the boost $K_i=\pm\frac{i}{2}\sigma_i$.
+\[
+\left\{
+\begin{aligned}
+&\text{Right spinor:}\;&\Phi_R\xrightarrow[]{}\Phi'_R=e^{\frac{i}{2}\underline{\sigma}(\underline{\theta}-i\underline{\phi})}\\
+&\text{Left spinor:}\;&\Phi_L\xrightarrow[]{}\Phi'_L=e^{\frac{i}{2}\underline{\sigma}(\underline{\theta}+i\underline{\phi})}
+\end{aligned}
+\right.
+\]
+The \textbf{Dirac spinor} is defined as $\Psi=\left(\begin{array}{c}
+     \Phi_R \\
+     \Phi_L
+\end{array}\right)$ acting on a 4-dimensional reducible representation.
+\section{One-particle states}
+We consider a one-particle state with a certain momentum defined by $P^{\mu}\ket{p^{\mu},\sigma}$, with $\ket{p^{\mu},\sigma}$ an eigenvector of $P^{\mu}$: $P^{\mu}\ket{p^{\mu},\sigma}=p^{\mu}\ket{p^{\mu},\sigma}$. We know that $P^{\mu}P_{\mu}=m^2$ which is an invariant and, therefore, a Casimir. Another Casimir comes from the \textbf{Pauli-Nubanski 4-vector} $W^{\mu}=-\frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}J_{\nu\rho}P_{\sigma}$ and it is given by $W^{\mu}W_{\mu}$ which commutes with $P^{\mu}$ and $J^{\mu\nu}$.
+
+Since we are dealing with a massive particle, there is a privileged inertial frame, i.e. the one where the particle is at rest:
+\[
+P^{\mu}=(m,\underline{0})\xrightarrow[]{} W^{\mu}=-\frac{1}{2}m\varepsilon^{\mu\nu\rho\sigma}J_{\nu\rho} \quad \begin{cases}
+W^0=0\\
+W^i=mJ^i
+\end{cases}\Rightarrow W^{\mu}W_{\mu}=m^2J^2
+\]
+Having the particle at rest means that the momentum $P^{\mu}$ is invariant under rotation and there is a group that leaves it untouched: the \textbf{little group}. If $m=0$ (suppose we have a photon), $P^{\mu}P_{\mu}=0$: this means that we cannot "jump" on the inertial frame where the particle is at rest. What we can try to do is choosing a special initial momentum: the minimal requirement is $P^{\mu}=(\omega,0,0,\omega)$ and it is invariant only under rotation in the $xy$ plane. The little group is not SO(3) but something related to SU(2). In this case, we consider $J_3$, the spin component in the direction of motion.
+
+In the vector representation we have parity $P$ and time reversal $T$:
+\[
+P=\left(\begin{array}{cccc}
+    1 & 0 & 0 & 0 \\
+    0 & -1 & 0 & 0 \\
+    0 & 0 & -1 & 0 \\
+    0 & 0 & 0 & -1
+\end{array}\right)
+\quad
+T=\left(\begin{array}{cccc}
+    -1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+\end{array}\right)
+\]
+How do they affect generators? We can consider:
+\[
+\begin{cases}
+U(P,0)U(\Lambda,a)U^{-1}(P,0)=U(P\Lambda P^{-1},Pa)\\
+U(T,0)U(\Lambda,a)U^{-1}(T,0)=U(T\Lambda T^{-1},Ta)
+\end{cases}
+\]
+In order to get the generators, we consider $\Lambda$ and $a$ infinitesimal\marginnote{To avoid confusion, here we denote with $P$ the parity operator and with $\pazocal{P}$ the momentum.}:
+\[
+\begin{cases}
+U(P,0)iJ^{\rho\sigma}U^{-1}(P,0)=iP^{\rho}_{\mu}P^{\sigma}_{\nu}J^{\mu\nu}\\
+U(P,0)i\pazocal{P}^{\rho}U^{-1}(P,0)=iP^{\rho}_{\mu}\pazocal{P}^{\mu}
+\end{cases}
+\quad
+\begin{cases}
+U(T,0)iJ^{\rho\sigma}U^{-1}(T,0)=iT^{\rho}_{\mu}T^{\sigma}_{\nu}J^{\mu\nu}\\
+U(T,0)i\pazocal{P}^{\rho}U^{-1}(T,0)=iT^{\rho}_{\mu}\pazocal{P}^{\mu}
+\end{cases}
+\]
+If $U(P,0)$ is \textbf{anti-unitary}: $UHU^{-1}=-H$.
+\[
+H\ket{E}=E\ket{E}\xrightarrow[]{}HU^{-1}\ket{E}=-U^{-1}H\ket{E}=-EU^{-1}\ket{E}
+\]
+there is a physically possible state with negative energy. For time reversal instead we have problems if $U(T,0)$ is \textbf{unitary}, i.e. $UHU^{-1}=H$.
+\end{document}
