@@ -124,9 +124,9 @@ The Hamiltonian density is \textbf{positive definite} and now we want to express
 \]
 \section{Plane wave solutions}
 \labsec{pwsol}
-We are now interested in finding a plane wave solution for the Klein-Gordon equation: a general solution will be in the form $\Phi(x)=Ae^{-iP_\mu x^\mu}$. Substituting this in \refeq{KG} gives us:
+We are now interested in finding a plane wave solution for the Klein-Gordon equation: a general solution will be in the form $\Phi(x)=Ae^{-ip_\mu x^\mu}$. Substituting this in \refeq{KG} gives us:
 \[
-(-P_\mu P^\mu+m^2)Ae^{-iP_\mu x^\mu}=[-(E^2-p^2)+m^2]Ae^{-iP_\mu x^\mu}=0
+(-p_\mu p^\mu+m^2)Ae^{-ip_\mu x^\mu}=[-(E^2-p^2)+m^2]Ae^{-ip_\mu x^\mu}=0
 \]
 From this, we obtain again the relation $E^2=p^2+m^2$ giving us positive and negative energy:
 \[
@@ -153,7 +153,7 @@ We want to renormalize the function and construct an Hilbert space with the scal
 \]
 Let's start with the solution $f^+_p(x)$:
 \begin{align*}
-(f_p^+,f_{p'}^+)&=i|A|^2\int d^3x\left[e^{iP_\mu x^\mu}\partial_0e^{-iP'_\mu x^\mu}-e^{-iP'_\mu x^\mu}\partial_0e^{iP_\mu x^\mu}\right]\\
+(f_p^+,f_{p'}^+)&=i|A|^2\int d^3x\left[e^{ip_\mu x^\mu}\partial_0e^{-iP'_\mu x^\mu}-e^{-iP'_\mu x^\mu}\partial_0e^{ip_\mu x^\mu}\right]\\
 &=i|A|^2\int d^3x\left[(-i\omega_{p'})e^{i(P-P')_\mu x^\mu}-i\omega_pe^{i(P-P')_\mu x^\mu}\right]\\
 &=|A|^2\int d^3x(\omega_{p'}+\omega_p)e^{i(P-P')_\mu x^\mu}\\
 &=|A|^2\int d^3x(\omega_{p'}+\omega_p)e^{i(\omega_p-\omega_{p'})t}e^{i(\underline{p}-\underline{p}')\underline{x}}\\
@@ -177,7 +177,7 @@ As said before, we take a combination of the two in order to get $\Phi(x)$:
 \end{align*}
 We redefined the solution with negative energy as:
 \[
-f^-_p=Ae^{+i\omega_pt-i\underline{p}\cdot\underline{x}}=Ae^{iP_\mu x^\mu}=f^{+*}_p
+f^-_p=Ae^{+i\omega_pt-i\underline{p}\cdot\underline{x}}=Ae^{ip_\mu x^\mu}=f^{+*}_p
 \]
 We want to describe a \textbf{real field}: $\Phi(x)=\Phi^*(x)$. This means that\\ $\beta(p)=\alpha^*(p)$.
 \begin{kaobox}[frametitle=Solution of the Klein-Gordon equation]
@@ -210,20 +210,20 @@ Substituting the field we found in \refeq{Phi} we get:
 \[
 \left\{
 \begin{aligned}
-&\Dot{\Phi}(x)=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\omega_p[\alpha(p)e^{-iP_\mu x^\mu}-\alpha^*(p)e^{iP_\mu x^\mu}]\\
-&\underline{\nabla}\Phi=i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\underline{p}[\alpha(p)e^{-iP_\mu x^\mu}-\alpha^*(p)e^{iP_\mu x^\mu}]
+&\Dot{\Phi}(x)=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\omega_p[\alpha(p)e^{-ip_\mu x^\mu}-\alpha^*(p)e^{ip_\mu x^\mu}]\\
+&\underline{\nabla}\Phi=i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_p}}\underline{p}[\alpha(p)e^{-ip_\mu x^\mu}-\alpha^*(p)e^{ip_\mu x^\mu}]
 \end{aligned}
 \right.
 \]
 The expression for the energy $H$ then becomes:
 \begin{align*}
-    H=\frac{1}{2}\int \frac{d^3pd^3p'}{(2\pi)^3\sqrt{2\omega_p\omega_{p'}}}\int d^3x&\left[-\omega_p\omega_{p'}(\alpha_pe^{-iP_\mu x^\mu}-\alpha^*_pe^{iP_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}-\alpha^*_{p'}e^{iP'_\mu x^\mu})\right.\\
-    &-\underline{p}\cdot\underline{p'}(\alpha_pe^{-iP_\mu x^\mu}-\alpha^*_pe^{iP_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}-\alpha^*_{p'}e^{iP_\mu 'x^\mu})\\
-    &\left.+m^2(\alpha_pe^{-iP_\mu x^\mu}+\alpha^*_pe^{iP_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}+\alpha^*_{p'}e^{iP'_\mu x^\mu})\right]
+    H=\frac{1}{2}\int \frac{d^3pd^3p'}{(2\pi)^3\sqrt{2\omega_p\omega_{p'}}}\int d^3x&\left[-\omega_p\omega_{p'}(\alpha_pe^{-ip_\mu x^\mu}-\alpha^*_pe^{ip_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}-\alpha^*_{p'}e^{iP'_\mu x^\mu})\right.\\
+    &-\underline{p}\cdot\underline{p'}(\alpha_pe^{-ip_\mu x^\mu}-\alpha^*_pe^{ip_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}-\alpha^*_{p'}e^{ip_\mu 'x^\mu})\\
+    &\left.+m^2(\alpha_pe^{-ip_\mu x^\mu}+\alpha^*_pe^{ip_\mu x^\mu})(\alpha_{p'}e^{-iP'_\mu x^\mu}+\alpha^*_{p'}e^{iP'_\mu x^\mu})\right]
 \end{align*}
 We focus just on the term inside the square brackets and compute the multiplications. Starting with the term in $\omega_p\omega_{p'}$, what we get is:
 \[
--\omega_p\omega_{p'}\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}-\alpha_p\alpha_{p'}^*e^{-i(P-P')_\mu x^\mu}-\alpha_p^*\alpha_{p'}e^{i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(P+P')_\mu x^\mu}\right]
+-\omega_p\omega_{p'}\left[\alpha_p\alpha_{p'}e^{-i(p+p')_\mu x^\mu}-\alpha_p\alpha_{p'}^*e^{-i(p-p')_\mu x^\mu}-\alpha_p^*\alpha_{p'}e^{i(p-p')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(p+p')_\mu x^\mu}\right]
 \]
 Now we integrate in $d^3x$ in order to obtain $\delta$ functions:
 \begin{align*}
@@ -232,7 +232,7 @@ Now we integrate in $d^3x$ in order to obtain $\delta$ functions:
 \end{align*}
 We repeat the same procedure for the other two terms. For the one in $\underline{p}\cdot\underline{p}'$ we get:
 \[
--\underline{p}\cdot\underline{p}'\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}-\alpha_p\alpha_{p'}^*e^{-i(P-P')_\mu x^\mu}-\alpha_p^*\alpha_{p'}e^{i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(P+P')_\mu x^\mu}\right]
+-\underline{p}\cdot\underline{p}'\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}-\alpha_p\alpha_{p'}^*e^{-i(p-p')_\mu x^\mu}-\alpha_p^*\alpha_{p'}e^{i(p-p')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(p+p')_\mu x^\mu}\right]
 \]
 The integration in $d^3x$ gives us:
 \begin{align*}
@@ -241,7 +241,7 @@ The integration in $d^3x$ gives us:
 \end{align*}
 For the term in $m^2$ instead we have:
 \[
-+m^2\left[\alpha_p\alpha_{p'}e^{-i(P+P')_\mu x^\mu}+\alpha_p\alpha_{p'}^*e^{-i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}e^{i(P-P')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(P+P')_\mu x^\mu}\right]\
++m^2\left[\alpha_p\alpha_{p'}e^{-i(p+p')_\mu x^\mu}+\alpha_p\alpha_{p'}^*e^{-i(p-p')_\mu x^\mu}+\alpha_p^*\alpha_{p'}e^{i(p-p')_\mu x^\mu}+\alpha_p^*\alpha_{p'}^*e^{i(p+p')_\mu x^\mu}\right]\
 \]
 And when we go to the integration in $d^3x$ we obtain:
 \begin{align*}
@@ -426,12 +426,12 @@ Q_{\text{U(1)}}:=\int d^3xJ^0=i\int d^3x\Phi^\dagger\overset{\leftrightarrow}{\p
 \]
 We substitute the fields $\Phi$ and $\Phi^\dagger$ expressed in terms of $a_p$ and $b_p$:
 \begin{align*}
-Q_{\text{U(1)}}=i\int d^3x\int \frac{d^3pd^3q}{(2\pi)^3\sqrt{4\omega_p\omega_q}}&\left[(a^\dagger_pe^{iP_\mu x^\mu}+b_pe^{-iP_\mu x^\mu})\partial_0(a_qe^{-iQ_\mu x^\mu}+b^\dagger_qe^{iQ_\mu x^\mu})\right.\\
-&\left.-(a_qe^{-iQ_\mu x^\mu}+b^\dagger_qe^{iQ_\mu x^\mu})\partial_0(a^\dagger_pe^{iP_\mu x^\mu}+b_pe^{-iP_\mu x^\mu})\right]\\
-Q_{\text{U(1)}}=i\int d^3x\int \frac{d^3pd^3q}{(2\pi)^3\sqrt{4\omega_p\omega_q}}&\left[(a^\dagger_pe^{iP_\mu x^\mu}+b_pe^{-iP_\mu x^\mu})(-i\omega_q)(a_qe^{-iQ_\mu x^\mu}-b^\dagger_qe^{iQ_\mu x^\mu})\right.\\
-&\left.-(a_qe^{-iQ_\mu x^\mu}+b^\dagger_qe^{iQ_\mu x^\mu})(i\omega_p)(a^\dagger_pe^{iP_\mu x^\mu}-b_pe^{-iP_\mu x^\mu})\right]
+Q_{\text{U(1)}}=i\int d^3x\int \frac{d^3pd^3q}{(2\pi)^3\sqrt{4\omega_p\omega_q}}&\left[(a^\dagger_pe^{ip_\mu x^\mu}+b_pe^{-ip_\mu x^\mu})\partial_0(a_qe^{-iq_\mu x^\mu}+b^\dagger_qe^{iq_\mu x^\mu})\right.\\
+&\left.-(a_qe^{-iq_\mu x^\mu}+b^\dagger_qe^{iq_\mu x^\mu})\partial_0(a^\dagger_pe^{ip_\mu x^\mu}+b_pe^{-ip_\mu x^\mu})\right]\\
+Q_{\text{U(1)}}=i\int d^3x\int \frac{d^3pd^3q}{(2\pi)^3\sqrt{4\omega_p\omega_q}}&\left[(a^\dagger_pe^{ip_\mu x^\mu}+b_pe^{-ip_\mu x^\mu})(-i\omega_q)(a_qe^{-iq_\mu x^\mu}-b^\dagger_qe^{iq_\mu x^\mu})\right.\\
+&\left.-(a_qe^{-iq_\mu x^\mu}+b^\dagger_qe^{iq_\mu x^\mu})(i\omega_p)(a^\dagger_pe^{ip_\mu x^\mu}-b_pe^{-ip_\mu x^\mu})\right]
 \end{align*}
-Computing the term inside the square brackets, we get:\marginnote{We simplified the notation: $P_\mu x^\mu=Px$ and $Q_\mu x^\mu=Qx$.}
+Computing the term inside the square brackets, we get:\marginnote{We simplified the notation: $p_\mu x^\mu=Px$ and $q_\mu x^\mu=Qx$.}
 \begin{align*}
 &+a^\dagger_pe^{iPx}(-i\omega_q)a_qe^{-iQx}{\color{blue}-a^\dagger_pe^{iPx}(-i\omega_q)b^\dagger_qe^{iQx}}\\
 &{\color{green}+b_pe^{-iPx}(-i\omega_q)a_qe^{-iQx}}-b_pe^{-iPx}(-i\omega_q)b^\dagger_qe^{iQx}\\
@@ -484,18 +484,18 @@ If it is Lorentz invariant, this commutator has to remain zero in another inerti
 \]
 This is already part of our theory [\refeq{commrules}]. we just have to check that it is invariant:
 \begin{align*}
-[\Phi(x),\Phi(y)]&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\left[(a_{p_1}e^{-iP_{1\mu}x^\mu}+a^\dagger_{p_1}e^{iP_{1\mu}x^\mu}),(a_{p_2}e^{-iP_{2\mu}y^\mu}+a^\dagger_{p_2}e^{iP_{2\mu}y^\mu})\right]\\
-&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\left\{[a_{p_1},a^\dagger_{p_2}]e^{-iP_{1\mu}x^\mu}e^{iP_{2\mu}y^\mu}+[a_{p_1}^\dagger,a_{p_2}]e^{iP_{1\mu}x^\mu}e^{-iP_{2\mu}y^\mu}\right\}\\
-&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\delta(\underline{p_1}-\underline{p_2})[e^{-iP_{1\mu}x^\mu}e^{iP_{2\mu}y^\mu}-e^{iP_{1\mu}x^\mu}e^{-iP_{2\mu}y^\mu}]\\
-&=\int\frac{d^3p_1}{(2\pi)^32\omega_{p_1}}[e^{-iP_{1\mu}(x-y)^\mu}-e^{iP_{1\mu}(x-y)^\mu}]:=\Delta(x-y)
+[\Phi(x),\Phi(y)]&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\left[(a_{p_1}e^{-ip_{1\mu}x^\mu}+a^\dagger_{p_1}e^{ip_{1\mu}x^\mu}),(a_{p_2}e^{-ip_{2\mu}y^\mu}+a^\dagger_{p_2}e^{ip_{2\mu}y^\mu})\right]\\
+&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\left\{[a_{p_1},a^\dagger_{p_2}]e^{-ip_{1\mu}x^\mu}e^{ip_{2\mu}y^\mu}+[a_{p_1}^\dagger,a_{p_2}]e^{ip_{1\mu}x^\mu}e^{-ip_{2\mu}y^\mu}\right\}\\
+&=\int\frac{d^3p_1d^3p_2}{(2\pi)^3\sqrt{4\omega_{p_1}\omega_{p_2}}}\delta(\underline{p_1}-\underline{p_2})[e^{-ip_{1\mu}x^\mu}e^{ip_{2\mu}y^\mu}-e^{ip_{1\mu}x^\mu}e^{-ip_{2\mu}y^\mu}]\\
+&=\int\frac{d^3p_1}{(2\pi)^32\omega_{p_1}}[e^{-ip_{1\mu}(x-y)^\mu}-e^{ip_{1\mu}(x-y)^\mu}]:=\Delta(x-y)
 \end{align*}
 If $x^0=y^0$, we have $\Delta(x-y)=0$. We just have to prove that this is invariant in any inertial frame. To do that, we show that it is possible to rewrite the integral measure as:
 \[
-\int\frac{d^3p}{(2\pi)^32\omega_p}f(p)=\int\frac{d^4p}{(2\pi)^3}\delta(P^2-m^2)\theta(P^0)f(p)
+\int\frac{d^3p}{(2\pi)^32\omega_p}f(p)=\int\frac{d^4p}{(2\pi)^3}\delta(p^2-m^2)\theta(P^0)f(p)
 \]
-The RHS of the equation above is invariant since $d^4p$ is invariant, $(P^2-m^2)$ is a sum of two invariant objects and $\theta(P^0)$ is invariant since the sign of the temporal part does not change under Lorentz transformation. The only thing left to prove is the equivalence between these two objects. We know that $P^2-m^2=P^0^2-(p^2+m^2)=(P^0+\omega_p)(P^0-\omega_p)$. The delta function now becomes:
+The RHS of the equation above is invariant since $d^4p$ is invariant, $(P^2-m^2)$ is a sum of two invariant objects and $\theta(P^0)$ is invariant since the sign of the temporal part does not change under Lorentz transformation. The only thing left to prove is the equivalence between these two objects. We know that $p^2-m^2=p^0^2-(p^2+m^2)=(p^0+\omega_p)(p^0-\omega_p)$. The delta function now becomes:
 \[
-\delta(P^2-m^2)=\frac{\delta(P^0+\omega_p)}{|P^0-\omega_p|}+\frac{\delta(P^0-\omega_p)}{|P^0+\omega_p|}=\frac{\delta(P^0+\omega_p)}{2\omega_p}+\frac{\delta(P^0-\omega_p)}{2\omega_p}
+\delta(p^2-m^2)=\frac{\delta(p^0+\omega_p)}{|p^0-\omega_p|}+\frac{\delta(p^0-\omega_p)}{|p^0+\omega_p|}=\frac{\delta(p^0+\omega_p)}{2\omega_p}+\frac{\delta(p^0-\omega_p)}{2\omega_p}
 \]
-By using the $\theta(P^0)$ we select only the positive energy. Substituting this new integral measure in $\Delta(x-y)$ we observe that it remains the same but it is now written in a manifestly covariant way, therefore it is invariant in any inertial frame. This means that the construction of the theory is consistent. In the next chapter, we are going to see that this is true also in the Dirac case, although we will have \textbf{anti-commutation} relations instead of commutation relations and the field will not be an observable.
+By using the $\theta(p^0)$ we select only the positive energy. Substituting this new integral measure in $\Delta(x-y)$ we observe that it remains the same but it is now written in a manifestly covariant way, therefore it is invariant in any inertial frame. This means that the construction of the theory is consistent. In the next chapter, we are going to see that this is true also in the Dirac case, although we will have \textbf{anti-commutation} relations instead of commutation relations and the field will not be an observable.
 \end{document}

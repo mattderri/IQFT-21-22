@@ -313,20 +313,20 @@ Q_{\text{U(1)}}=\int d^3x J^0=\int d^3x\bar{\Psi}\gamma^0\Psi=\int d^3x\Psi^\dag
 \labsec{PWsol}
 As it happened for the Klein-Gordon equation [\refch{KGeq}], it is possible to find a solution to the Dirac equations in terms of plane waves. However, in this case we have a \textbf{spinor} so we have to add a term $u(p)$ which has the structure of a spinor:
 \[
-\Psi(x)=u(p)e^{-iP_\mu x^\mu} \quad P^\mu=(E,\underline{p})
+\Psi(x)=u(p)e^{-ip_\mu x^\mu} \quad p^\mu=(E,\underline{p})
 \]
 Since this a solution of the Dirac equation, one has that:
 \[
-(i\gamma^\mu\partial_\mu-m)u(p)e^{-iP_\mu x^\mu}=[i\gamma^\mu(-iP_\mu)-m]u(p)e^{-iP_\mu x^\mu}=(\slashed{P}-m)u(p)e^{-iP_\mu x^\mu}=0
+(i\gamma^\mu\partial_\mu-m)u(p)e^{-ip_\mu x^\mu}=[i\gamma^\mu(-ip_\mu)-m]u(p)e^{-ip_\mu x^\mu}=(\slashed{p}-m)u(p)e^{-ip_\mu x^\mu}=0
 \]
 \[
-\Rightarrow(\slashed{P}-m)u(p)=0
+\Rightarrow(\slashed{p}-m)u(p)=0
 \]
 Putting this in  matrix form, keeping in mind the expression of the $\gamma$ matrices [\refsec{gammamatrici}], we obtain:
 \[
 \left(\begin{array}{cc}
-    P^0-m & -\underline{\sigma}\cdot\underline{p} \\
-    \underline{\sigma}\cdot\underline{p} & -P^0-m
+    p^0-m & -\underline{\sigma}\cdot\underline{p} \\
+    \underline{\sigma}\cdot\underline{p} & -p^0-m
 \end{array}\right)\left(\begin{array}{c}
     \varphi\\
     \chi
@@ -338,8 +338,8 @@ Putting this in  matrix form, keeping in mind the expression of the $\gamma$ mat
 This has a non-trivial solution if the determinant of the matrix is zero, which means:
 \[
 \det\left(\begin{array}{cc}
-    P^0-m & -\underline{\sigma}\cdot\underline{p} \\
-    \underline{\sigma}\cdot\underline{p} & -P^0-m
+    p^0-m & -\underline{\sigma}\cdot\underline{p} \\
+    \underline{\sigma}\cdot\underline{p} & -p^0-m
 \end{array}\right)=0\Rightarrow m^2-P^{0^2}+(\underline{\sigma}\cdot\underline{p})^2=0
 \]
 Focusing now on the term $\underline{\sigma}\cdot\underline{p}$, we remind that the Pauli matrices $\sigma_i$ have the following properties:
@@ -354,31 +354,31 @@ Focusing now on the term $\underline{\sigma}\cdot\underline{p}$, we remind that 
 \]
 Therefore, $\underline{\sigma}\cdot\underline{p}=\sigma_i\sigma_jp_ip_j=p^2$ and the condition determinant=0 translates into:
 \[
-m^2-P^{0^2}+p^2=0\Rightarrow P^0=E=\pm\sqrt{p^2+m^2}=\pm\omega_p
+m^2-P^{0^2}+p^2=0\Rightarrow p^0=E=\pm\sqrt{p^2+m^2}=\pm\omega_p
 \]
 We can identify two different solutions associated respectively to $+\omega_p$ and $-\omega_p$:
 \begin{equation}
 \labeq{Diracsolutions}
 \left\{
 \begin{aligned}
-\Psi^{(+)}&=u(p)e^{-iP_\mu x^\mu}\\
-\Psi^{(-)}&=v(p)e^{+iP_\mu x^\mu}
+\Psi^{(+)}&=u(p)e^{-ip_\mu x^\mu}\\
+\Psi^{(-)}&=v(p)e^{+ip_\mu x^\mu}
 \end{aligned}
 \right.
 \Rightarrow
 \left\{
 \begin{aligned}
-&(i\slashed{\partial}-m)\Psi^{(+)}=(\slashed{P}-m)u(p)=0\\
-&(i\slashed{\partial}-m)\Psi^{(-)}=(\slashed{P}+m)v(p)=0
+&(i\slashed{\partial}-m)\Psi^{(+)}=(\slashed{p}-m)u(p)=0\\
+&(i\slashed{\partial}-m)\Psi^{(-)}=(\slashed{p}+m)v(p)=0
 \end{aligned}
 \right.
 % \Rightarrow
 % \begin{aligned}
-% (\slashed{P}-m)u(p)&=0\\
-% (\slashed{P}+m)v(p)&=0
+% (\slashed{p}-m)u(p)&=0\\
+% (\slashed{p}+m)v(p)&=0
 % \end{aligned}
 \end{equation}
-To find these solutions, we move to a certain frame with trivial solutions and then we boost back. Our privileged frame is the one where the particle is at rest: $P_\mu=(m,\underline{0})$.
+To find these solutions, we move to a certain frame with trivial solutions and then we boost back. Our privileged frame is the one where the particle is at rest: $p_\mu=(m,\underline{0})$.
 \[
 \left\{
 \begin{aligned}
@@ -450,14 +450,14 @@ We are fixing momentum and energy, what we have is a superposition of two states
 
 Now that we found the expression for $u(m,\underline{0})$ and $v(m,\underline{0})$, we can boost to a frame in which $\underline{p}\neq0$ to find $u^\alpha(m,\underline{p})$ and $v^\alpha(m,\underline{p})$. We observe that: 
 \[
-(\slashed{P}+m)(\slashed{P}-m)=\slashed{P}\slashed{P}-m^2=P^2-m^2=0
+(\slashed{p}+m)(\slashed{p}-m)=\slashed{p}\slashed{p}-m^2=P^2-m^2=0
 \]
 This means that the two objects in \refeq{Diracsolutions} are \textbf{orthogonal}, so we look for a solution in the form:
 \[
 \left\{
 \begin{aligned}
-u^{(\alpha)}(p)&=c_\alpha(\slashed{P}+m)u^{(\alpha)}(m,\underline{0})\\
-v^{(\alpha)}(p)&=d_\alpha(-\slashed{P}+m)v^{(\alpha)}(m,\underline{0})
+u^{(\alpha)}(p)&=c_\alpha(\slashed{p}+m)u^{(\alpha)}(m,\underline{0})\\
+v^{(\alpha)}(p)&=d_\alpha(-\slashed{p}+m)v^{(\alpha)}(m,\underline{0})
 \end{aligned}
 \right.
 \]
@@ -515,22 +515,22 @@ It is easy to check the validity of these relations for $u^i$ and $v^i$, with $i
 \]
 These scalar objects were computed in the frame where the particle is at the rest, but the relations hold true in \textbf{all} reference frames because $\bar{u}u$ and $\bar{v}v$ are \textbf{Lorentz scalar}. We want to find the explicit expression of the coefficients $c_\alpha$ and $d_\alpha$:
 \begin{align*}
-\delta^{\alpha\beta}&={\color{red}\bar{u}^{(\alpha)}(p)}u^{(\beta)}(p)={\color{red}c^*_\alpha u^{(\alpha)\dagger}(m,\underline{0})}{\color{green}\gamma^0\gamma^0}{\color{red}(\slashed{P}+m)^\dagger\gamma^0} c_\beta(\slashed{P}+m)u^{(\beta)}(m,\underline{0})\marginnote{$u^{(\alpha)\dagger}\gamma^0=\bar{u}^{(\alpha)}$, $\gamma^0(\slashed{P}+m)^\dagger\gamma^0=(\slashed{P}+m)$.}\\
-&=c^*_\alpha c_\beta\bar{u}^{(\alpha)}(\slashed{P}+m)^2u^{(\beta)}=c^*_\alpha c_\beta\bar{u}^{(\alpha)}({\color{blue}\slashed{P}\slashed{P}+m^2}+2m\slashed{P})u^{(\beta)}\\
-&=c^*_\alpha c_\beta\bar{u}^{(\alpha)}({\color{blue}2m^2}+2m\slashed{P})u^{(\beta)}=c^*_\alpha c_\beta\bar{u}^{(\alpha)}2m\slashed{P}u^{(\beta)}+c^*_\alpha c_\beta\bar{u}^{(\alpha)}2m^2u^{(\beta)}\\
-&=c^*_\alpha c_\beta 2mP_\mu\bar{u}^{(\alpha)}\gamma^\mu u^{(\beta)}+c^*_\alpha c_\beta 2m^2\bar{u}^{(\alpha)}u^{(\beta)}\marginnote{$\gamma^i u^{(\beta)}(m,\underline{0})=0$; $\gamma^0 u^{(\beta)}(m,\underline{0})\neq0$}\\
-&=c^*_\alpha c_\beta 2mP_0\bar{u}^{(\alpha)}\gamma^0 u^{(\beta)}+c^*_\alpha c_\beta 2m^2\delta^{\alpha\beta}=c^*_\alpha c_\beta 2mE\delta^{\alpha\beta}+c^*_\alpha c_\beta 2m^2\delta^{\alpha\beta}\\
+\delta^{\alpha\beta}&={\color{red}\bar{u}^{(\alpha)}(p)}u^{(\beta)}(p)={\color{red}c^*_\alpha u^{(\alpha)\dagger}(m,\underline{0})}{\color{green}\gamma^0\gamma^0}{\color{red}(\slashed{p}+m)^\dagger\gamma^0} c_\beta(\slashed{p}+m)u^{(\beta)}(m,\underline{0})\marginnote{$u^{(\alpha)\dagger}\gamma^0=\bar{u}^{(\alpha)}$, $\gamma^0(\slashed{p}+m)^\dagger\gamma^0=(\slashed{p}+m)$.}\\
+&=c^*_\alpha c_\beta\bar{u}^{(\alpha)}(\slashed{p}+m)^2u^{(\beta)}=c^*_\alpha c_\beta\bar{u}^{(\alpha)}({\color{blue}\slashed{p}\slashed{p}+m^2}+2m\slashed{p})u^{(\beta)}\\
+&=c^*_\alpha c_\beta\bar{u}^{(\alpha)}({\color{blue}2m^2}+2m\slashed{p})u^{(\beta)}=c^*_\alpha c_\beta\bar{u}^{(\alpha)}2m\slashed{p}u^{(\beta)}+c^*_\alpha c_\beta\bar{u}^{(\alpha)}2m^2u^{(\beta)}\\
+&=c^*_\alpha c_\beta 2mp_\mu\bar{u}^{(\alpha)}\gamma^\mu u^{(\beta)}+c^*_\alpha c_\beta 2m^2\bar{u}^{(\alpha)}u^{(\beta)}\marginnote{$\gamma^i u^{(\beta)}(m,\underline{0})=0$; $\gamma^0 u^{(\beta)}(m,\underline{0})\neq0$}\\
+&=c^*_\alpha c_\beta 2mp_0\bar{u}^{(\alpha)}\gamma^0 u^{(\beta)}+c^*_\alpha c_\beta 2m^2\delta^{\alpha\beta}=c^*_\alpha c_\beta 2mE\delta^{\alpha\beta}+c^*_\alpha c_\beta 2m^2\delta^{\alpha\beta}\\
 &=|c_\alpha|^22m(E+m)=1\Rightarrow|c_\alpha|=\frac{1}{\sqrt{2m(E+m)}}
 \end{align*}
 We repeat the same procedure for $v(p)$ spinors and we obtain the same result for $d_\alpha$. Our solutions will then be:
 \begin{kaobox}[frametitle=Plane wave solutions of the Dirac equation]
 \[
-u^{(\alpha)}(p)=\frac{\slashed{P}+m}{\sqrt{2m(E+m)}}u^{(\alpha)}(m,\underline{0})
+u^{(\alpha)}(p)=\frac{\slashed{p}+m}{\sqrt{2m(E+m)}}u^{(\alpha)}(m,\underline{0})
 \quad 
-v^{(\alpha)}(p)=\frac{-\slashed{P}+m}{\sqrt{2m(E+m)}}v^{(\alpha)}(m,\underline{0})
+v^{(\alpha)}(p)=\frac{-\slashed{p}+m}{\sqrt{2m(E+m)}}v^{(\alpha)}(m,\underline{0})
 \]
 \end{kaobox}
-We can rewrite the terms $u^{(\alpha)}(m,\underline{0})$, $v^{(\alpha)}(m,\underline{0})$ and $\slashed{P}$ in order to have a spinorial expression for $u^{(\alpha)}(p)$ and $v^{(\alpha)}(p)$:
+We can rewrite the terms $u^{(\alpha)}(m,\underline{0})$, $v^{(\alpha)}(m,\underline{0})$ and $\slashed{p}$ in order to have a spinorial expression for $u^{(\alpha)}(p)$ and $v^{(\alpha)}(p)$:
 \[
 u^{(\alpha)}(m,\underline{0})=\left(\begin{array}{c}
     \Phi^{(\alpha)}(m,\underline{0}) \\
@@ -542,7 +542,7 @@ v^{(\alpha)}(m,\underline{0})=\left(\begin{array}{c}
     \chi^{(\alpha)}(m,\underline{0})
 \end{array}\right)
 \quad 
-\slashed{P}=\left(\begin{array}{cc}
+\slashed{p}=\left(\begin{array}{cc}
     E & -\underline{p}\cdot\underline{\sigma} \\
     \underline{p}\cdot\underline{\sigma} & -E
 \end{array}\right)
@@ -589,19 +589,19 @@ And similarly, $v^{(\alpha)^\dagger}(p)v^{(\beta)}(p)=\frac{E}{m}\delta^{\alpha\
 \[
 \left\{
 \begin{aligned}
-\Psi^{(+)}_{(\alpha)}&=N\sqrt{\frac{m}{E}}u^{(\alpha)}e^{-iP_\mu x^\mu}\\
-\Psi^{(-)}_{(\alpha)}&=N\sqrt{\frac{m}{E}}v^{(\alpha)}e^{+iP_\mu x^\mu}
+\Psi^{(+)}_{(\alpha)}&=N\sqrt{\frac{m}{E}}u^{(\alpha)}e^{-ip_\mu x^\mu}\\
+\Psi^{(-)}_{(\alpha)}&=N\sqrt{\frac{m}{E}}v^{(\alpha)}e^{+ip_\mu x^\mu}
 \end{aligned}
 \right.
 \]
 Imposing now the normalization over the solutions $\Psi$, we get that:
 \[
-(\Psi^{(+)}_\alpha,\Psi^{(+)}_\beta)=N^2\frac{m}{E}\int d^3xu^{(\alpha)^\dagger}(p)u^{(\beta)}(q)e^{i(P_\mu-Q_\mu)x^\mu}=N^2\frac{m}{E}\frac{E}{m}\delta^{\alpha\beta}(2\pi)^3
+(\Psi^{(+)}_\alpha,\Psi^{(+)}_\beta)=N^2\frac{m}{E}\int d^3xu^{(\alpha)^\dagger}(p)u^{(\beta)}(q)e^{i(p_\mu-Q_\mu)x^\mu}=N^2\frac{m}{E}\frac{E}{m}\delta^{\alpha\beta}(2\pi)^3
 \]
 The normalization constant $N$ is then equal to $N=\frac{1}{(2\pi)^{3/2}}$ and we can write $\Psi(x)$ in the form:
 \begin{kaobox}[frametitle=Solution of the Dirac equation]
 \[
-\Psi(x)=\sum_{\alpha=1}^2\int \frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[b_\alpha(p)u_\alpha(p)e^{-iP_\mu x^\mu}+d^*_\alpha(p)v_\alpha(p)e^{+iP_\mu x^\mu}\right]
+\Psi(x)=\sum_{\alpha=1}^2\int \frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[b_\alpha(p)u_\alpha(p)e^{-ip_\mu x^\mu}+d^*_\alpha(p)v_\alpha(p)e^{+ip_\mu x^\mu}\right]
 \]
 \end{kaobox}
 This is a superposition of normal modes, as seen in \refsec{pwsol} for the Klein-Gordon field, with the difference that this time the planewaves have a degeneracy linked to the polarization (up and down). Therefore, we have to sum over all the possible polarizations $\alpha$.
@@ -614,8 +614,8 @@ It is now possible to promote the coefficients $b(p,n)$ and $d(p,n)$ to operator
 \[
 \left\{
 \begin{aligned}
-&\Psi(x)=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[b(p,n)u(p,n)e^{-iP_\mu x^\mu}+d^\dagger(p,n)v(p,n)e^{iP_\mu x^\mu}\right]\\
-&\Psi^\dagger(x)=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[d(p,n)v^\dagger(p,n)e^{-iP_\mu x^\mu}+b^\dagger(p,n)u^\dagger(p,n)e^{iP_\mu x^\mu}\right]
+&\Psi(x)=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[b(p,n)u(p,n)e^{-ip_\mu x^\mu}+d^\dagger(p,n)v(p,n)e^{ip_\mu x^\mu}\right]\\
+&\Psi^\dagger(x)=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E}}\left[d(p,n)v^\dagger(p,n)e^{-ip_\mu x^\mu}+b^\dagger(p,n)u^\dagger(p,n)e^{ip_\mu x^\mu}\right]
 \end{aligned}
 \right.
 \]
@@ -637,13 +637,13 @@ where $\Tilde{P}^\mu=(E,-\underline{p})$.
 With this relations, we can substitute $\Psi(x)$ and $\Psi^\dagger(x)$ into the expression for $\pazocal{H}$ to compute the energy:
 \begin{align*}
 H&=\int d^3x\pazocal{H}=i\int d^3x\Psi^\dagger\frac{\partial\Psi}{\partial t}\\
-&=i\sum_{\pm n,\pm n'}\int d^3x\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left[d_pv^\dagger_pe^{-iP_\mu x^\mu}+b^\dagger_pu^\dagger_pe^{iP_\mu x^\mu}\right](-iE')\left[b_{p'}u_{p'}e^{-iP'_\mu x^\mu}-d^\dagger_{p'}v_{p'}e^{iP'_\mu x^\mu}\right]\\
-&=\sum_{\pm n,\pm n'}\int d^3x\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{mE'}{\sqrt{EE'}}\left\{\left[d_pv^\dagger_pe^{-iP_\mu x^\mu}+b^\dagger_pu^\dagger_pe^{iP_\mu x^\mu}\right]\left[b_{p'}u_{p'}e^{-iP'_\mu x^\mu}-d^\dagger_{p'}v_{p'}e^{iP'_\mu x^\mu}\right]\right\}
+&=i\sum_{\pm n,\pm n'}\int d^3x\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left[d_pv^\dagger_pe^{-ip_\mu x^\mu}+b^\dagger_pu^\dagger_pe^{ip_\mu x^\mu}\right](-iE')\left[b_{p'}u_{p'}e^{-ip'_\mu x^\mu}-d^\dagger_{p'}v_{p'}e^{ip'_\mu x^\mu}\right]\\
+&=\sum_{\pm n,\pm n'}\int d^3x\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{mE'}{\sqrt{EE'}}\left\{\left[d_pv^\dagger_pe^{-ip_\mu x^\mu}+b^\dagger_pu^\dagger_pe^{ip_\mu x^\mu}\right]\left[b_{p'}u_{p'}e^{-ip'_\mu x^\mu}-d^\dagger_{p'}v_{p'}e^{ip'_\mu x^\mu}\right]\right\}
 \end{align*}
 We compute the multiplication between square brackets:
 \begin{align*}
-&+d_pb_{p'}v^\dagger_pu_{p'}e^{-i(P+P')_\mu x^\mu}-d_pd^\dagger_{p'}v^\dagger_pv_{p'}e^{i(P'-P)_\mu x^\mu}\\
-&+b^\dagger_pb_{p'}u^\dagger_pu_{p'}e^{i(P-P')_\mu x^\mu}-b^\dagger_pd^\dagger_{p'}u^\dagger_pv_{p'}e^{i(P+P')_\mu x^\mu}
+&+d_pb_{p'}v^\dagger_pu_{p'}e^{-i(p+p')_\mu x^\mu}-d_pd^\dagger_{p'}v^\dagger_pv_{p'}e^{i(p'-p)_\mu x^\mu}\\
+&+b^\dagger_pb_{p'}u^\dagger_pu_{p'}e^{i(p-p')_\mu x^\mu}-b^\dagger_pd^\dagger_{p'}u^\dagger_pv_{p'}e^{i(p+p')_\mu x^\mu}
 \end{align*}
 When we integrate in $d^3x$ we get $\delta(\underline{p}+\underline{p}')$ for the first and the last term: they go to zero because of the last relation stated in \refeq{roba}. What survives are instead the second and the third term because the integration in $d^3x$ gives us $\delta(\underline{p}-\underline{p}')$. Substituting this in the relation above for $H$ gives us:
 \begin{align*}
@@ -700,17 +700,17 @@ We found a way to distinguish particles created by $b^\dagger$ and $d^\dagger$: 
 \section{Causality}
 As we did for creation and annihilation operators, we can impose anti-commutation rules for the fields too and see what this implies:
 \begin{align*}
-[\Psi_a(\underline{x},t),\Psi^\dagger_b(\underline{y},t)]_+=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}&\left\{\left[b_pu_a(p)e^{-iP_\mu x^\mu}+d^\dagger_pv_a(p)e^{iP_\mu x^\mu}\right]\left[d_{p'}v^\dagger_b(p')e^{-iP'_\mu y^\mu}+b^\dagger_{p'}u^\dagger_b(p')e^{iP'_\mu y_\mu}\right]\right.\\
-&+\left.\left[d_{p'}v^\dagger_b(p')e^{-iP'_\mu y^\mu}+b^\dagger_{p'}u^\dagger_b(p')e^{iP'_\mu y^\mu}\right]\left[b_pu_a(p)e^{-iP_\mu x^\mu}+d^\dagger_pv_a(p)e^{iP_\mu x^\mu}\right]\right\}
+[\Psi_a(\underline{x},t),\Psi^\dagger_b(\underline{y},t)]_+=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}&\left\{\left[b_pu_a(p)e^{-ip_\mu x^\mu}+d^\dagger_pv_a(p)e^{ip_\mu x^\mu}\right]\left[d_{p'}v^\dagger_b(p')e^{-ip'_\mu y^\mu}+b^\dagger_{p'}u^\dagger_b(p')e^{ip'_\mu y_\mu}\right]\right.\\
+&+\left.\left[d_{p'}v^\dagger_b(p')e^{-ip'_\mu y^\mu}+b^\dagger_{p'}u^\dagger_b(p')e^{ip'_\mu y^\mu}\right]\left[b_pu_a(p)e^{-ip_\mu x^\mu}+d^\dagger_pv_a(p)e^{ip_\mu x^\mu}\right]\right\}
 \end{align*}
 Computing the multiplications inside the curly brackets makes anti-commutators appear:
 \begin{align*}
-&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}[b_p,b^\dagger_{p'}]_+}e^{-i(P_\mu x^\mu-P'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){{\color{green}[d_p,d^\dagger_{p'}]_}}+e^{i(P_\mu x^\mu-P'_\mu y^\mu)}\right\}\\
-&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{-i(P_\mu x^\mu-P'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){\color{green}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{i(P_\mu x^\mu-P'_\mu y^\mu)}\right\}\\
+&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}[b_p,b^\dagger_{p'}]_+}e^{-i(p_\mu x^\mu-p'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){{\color{green}[d_p,d^\dagger_{p'}]_}}+e^{i(p_\mu x^\mu-p'_\mu y^\mu)}\right\}\\
+&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{-i(p_\mu x^\mu-p'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){\color{green}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{i(p_\mu x^\mu-p'_\mu y^\mu)}\right\}\\
 &=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left[u_a(p,n)u^\dagger_b(p,n)e^{-ip(x-y)}+v_a(p,n)v^\dagger_b(p,n)e^{ip(x-y)}\right]\\
 &=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left\{\left[u_a(p,n)u^\dagger_b(p,n){\color{red}\gamma^0\gamma^0}+v_a(\Tilde{p},n)v^\dagger_b(\Tilde{p},n){\color{red}\gamma^0\gamma^0}\right]e^{-ip(x-y)}\right\}\\
 &=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left\{\left[{\color{green}u_a(p,n)\bar{u}_b(p,n)}\gamma^0+{\color{blue}v_a(\Tilde{p},n)\bar{v}_b(\Tilde{p},n)}\gamma^0\right]e^{-ip(x-y)}\right\}\\
-&=\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}e^{-ip(x-y)}\delta_{ab}\left[{\color{green}\frac{(\slashed{P}+m)}{2m}}{\color{blue}-\frac{(-\slashed{\Tilde{P}}+m)}{2m}}\right]\gamma^0\\
+&=\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}e^{-ip(x-y)}\delta_{ab}\left[{\color{green}\frac{(\slashed{p}+m)}{2m}}{\color{blue}-\frac{(-\slashed{\Tilde{P}}+m)}{2m}}\right]\gamma^0\\
 &=\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}e^{-ip(x-y)}\delta_{ab}\gamma^0\left(\frac{2E\gamma^0}{2m}\right)\\
 &=\int\frac{d^3p}{(2\pi)^3}e^{-ip(x-y)}\delta_{ab}=\delta_{ab}\delta(\underline{x}-\underline{y})
 \end{align*}
@@ -810,33 +810,33 @@ We already encountered one orthogonality relation while discussing the plane wav
 \[
 \left\{
 \begin{aligned}
-&(\slashed{P}+m)(\slashed{P}+m)=2m(\slashed{P}+m)\\
-&(-\slashed{P}+m)(-\slashed{P}+m)=2m(-\slashed{P}+m)\\
-&(\slashed{P}+m)(-\slashed{P}+m)=0
+&(\slashed{p}+m)(\slashed{p}+m)=2m(\slashed{p}+m)\\
+&(-\slashed{p}+m)(-\slashed{p}+m)=2m(-\slashed{p}+m)\\
+&(\slashed{p}+m)(-\slashed{p}+m)=0
 \end{aligned}
 \right.
-\Rightarrow\Lambda_\pm:=\frac{\pm\slashed{P}+m}{2m}
+\Rightarrow\Lambda_\pm:=\frac{\pm\slashed{p}+m}{2m}
 \]
 How do $\Lambda_\pm$ operate on the field? They act only on the spinorial part, so we consider a superposition of the two spinors: $\Psi(x)=\alpha u(p)+\beta v(p)$.
 \[
 \left\{
 \begin{aligned}
-\Lambda_+\Psi(x)&=\alpha\Lambda_+{\color{blue}u(p)}+\beta\cancelto{0}{\Lambda_+v(p)}=\alpha\frac{\slashed{P}+m}{2m}{\color{blue}\frac{\slashed{P}+m}{\sqrt{2m(E+m)}}u(m,\underline{0})}=\alpha\frac{\cancel{2m}(\slashed{P}+m)}{\cancel{2m}\sqrt{2m(E+m)}}u(m,\underline{0})=\alpha u(p)\\
-\Lambda_-\Psi(x)&=\alpha\cancelto{0}{\Lambda_-u(p)}+\beta\Lambda_-{\color{blue}v(p)}=\beta\frac{(-\slashed{P}+m)}{2m}{\color{blue}\frac{(-\slashed{P}+m)}{\sqrt{2m(E+m)}}v(m,\underline{0})}=\beta\frac{\cancel{2m}(-\slashed{P}+m)}{\cancel{2m}\sqrt{2m(E+m)}}v(m,\underline{0})=\beta v(p)
+\Lambda_+\Psi(x)&=\alpha\Lambda_+{\color{blue}u(p)}+\beta\cancelto{0}{\Lambda_+v(p)}=\alpha\frac{\slashed{p}+m}{2m}{\color{blue}\frac{\slashed{p}+m}{\sqrt{2m(E+m)}}u(m,\underline{0})}=\alpha\frac{\cancel{2m}(\slashed{p}+m)}{\cancel{2m}\sqrt{2m(E+m)}}u(m,\underline{0})=\alpha u(p)\\
+\Lambda_-\Psi(x)&=\alpha\cancelto{0}{\Lambda_-u(p)}+\beta\Lambda_-{\color{blue}v(p)}=\beta\frac{(-\slashed{p}+m)}{2m}{\color{blue}\frac{(-\slashed{p}+m)}{\sqrt{2m(E+m)}}v(m,\underline{0})}=\beta\frac{\cancel{2m}(-\slashed{p}+m)}{\cancel{2m}\sqrt{2m(E+m)}}v(m,\underline{0})=\beta v(p)
 \end{aligned}
 \right.
 \]
 $\Lambda_+$ selects the \textbf{positive} part, while $\Lambda_-$ the \textbf{negative} one. We show that $\Lambda_\pm$ defined in this way are actually \textbf{projectors}:
 \begin{itemize}
-    \item Idempotent: $\Lambda^2_\pm=\frac{1}{4m^2}(\pm\slashed{P}+m)(\pm\slashed{P}+m)=\frac{2m}{4m^2}(\pm\slashed{P}+m)=\Lambda_\pm$
-    \item Orthogonal: $\Lambda_+\Lambda_-=\frac{1}{4m^2}(\slashed{P}+m)(-\slashed{P}+m)=0$
-    \item Sum to the identity: $\Lambda_++\Lambda_-=\frac{1}{2m}(\slashed{P}+m-\slashed{P}+m)=\mathbb{1}$
+    \item Idempotent: $\Lambda^2_\pm=\frac{1}{4m^2}(\pm\slashed{p}+m)(\pm\slashed{p}+m)=\frac{2m}{4m^2}(\pm\slashed{p}+m)=\Lambda_\pm$
+    \item Orthogonal: $\Lambda_+\Lambda_-=\frac{1}{4m^2}(\slashed{p}+m)(-\slashed{p}+m)=0$
+    \item Sum to the identity: $\Lambda_++\Lambda_-=\frac{1}{2m}(\slashed{p}+m-\slashed{p}+m)=\mathbb{1}$
 \end{itemize}
 It is possible to express energy projectors in terms of spinors:
 \begin{align*}
 \Lambda_+&=\sum_{\alpha=1}^2 u^{(\alpha)}(p)\bar{u}^{(\alpha)}(p)=\sum_{\alpha=1}^2 u^{(\alpha)}(p)u^{(\alpha)\dagger}(p)\gamma^0\\
-&=\frac{1}{2m(E+m)}\sum_{\alpha=1}^2(\slashed{P}+m)u_\alpha(m,\underline{0}) u^\dagger_\alpha(m,\underline{0}){\color{red}\gamma^0\gamma^0}(\slashed{P}+m)^\dagger\gamma^0\\
-&=\frac{1}{2m(E+m)}\sum_{\alpha=1}^2(\slashed{P}+m)u_\alpha(m,\underline{0})\bar{u}_\alpha(m,\underline{0})(\slashed{P}+m)
+&=\frac{1}{2m(E+m)}\sum_{\alpha=1}^2(\slashed{p}+m)u_\alpha(m,\underline{0}) u^\dagger_\alpha(m,\underline{0}){\color{red}\gamma^0\gamma^0}(\slashed{p}+m)^\dagger\gamma^0\\
+&=\frac{1}{2m(E+m)}\sum_{\alpha=1}^2(\slashed{p}+m)u_\alpha(m,\underline{0})\bar{u}_\alpha(m,\underline{0})(\slashed{p}+m)
 \end{align*}
 We compute the product between $u_\alpha(m,\underline{0})$ and $\bar{u}_\alpha(m,\underline{0})$:
 \begin{align*}
@@ -864,18 +864,18 @@ We compute the product between $u_\alpha(m,\underline{0})$ and $\bar{u}_\alpha(m
 \end{align*}
 Inserting this result in the previous computation for $\Lambda_+$ gives us:
 \[
-\Lambda_+=\frac{1}{2m(E+m)}(\slashed{P}+m)\frac{1+\gamma^0}{2}(\slashed{P}+m)=\frac{1}{4m(E+m)}\left[2m(\slashed{P}+m)+(\slashed{P}+m)\gamma^0(\slashed{P}+m)\right]
+\Lambda_+=\frac{1}{2m(E+m)}(\slashed{p}+m)\frac{1+\gamma^0}{2}(\slashed{p}+m)=\frac{1}{4m(E+m)}\left[2m(\slashed{p}+m)+(\slashed{p}+m)\gamma^0(\slashed{p}+m)\right]
 \]
 Focusing just on the last term between square brackets:
 \begin{align*}
-(\slashed{P}+m)\gamma^0(\slashed{P}+m)&=(\slashed{P}+m)(P_\mu{\color{red}\gamma^0\gamma^\mu}+\gamma^0m)=(\slashed{P}+m)[P_\mu{\color{red}(2\eta^{0\mu}-\gamma^\mu\gamma^0)}+\gamma^0m]\\
-&=(\slashed{P}+m)({\color{blue}2P_0}-\slashed{P}\gamma^0+\gamma^0m)=(\slashed{P}+m)(-\slashed{P}\gamma^0+\gamma^0m+{\color{blue}2E})\\
-&=2E(\slashed{P}+m)+\cancelto{0}{(\slashed{P}+m)(-\slashed{P}+m)}\gamma^0=2E(\slashed{P}+m)
+(\slashed{p}+m)\gamma^0(\slashed{p}+m)&=(\slashed{p}+m)(p_\mu{\color{red}\gamma^0\gamma^\mu}+\gamma^0m)=(\slashed{p}+m)[p_\mu{\color{red}(2\eta^{0\mu}-\gamma^\mu\gamma^0)}+\gamma^0m]\\
+&=(\slashed{p}+m)({\color{blue}2p_0}-\slashed{p}\gamma^0+\gamma^0m)=(\slashed{p}+m)(-\slashed{p}\gamma^0+\gamma^0m+{\color{blue}2E})\\
+&=2E(\slashed{p}+m)+\cancelto{0}{(\slashed{p}+m)(-\slashed{p}+m)}\gamma^0=2E(\slashed{p}+m)
 \end{align*}
 Finally, we put this result in the previous expression of $\Lambda_+$ to find:
 \begin{align*}
-\Lambda_+&=\frac{1}{4m(E+m)}\left[2m(\slashed{P}+m)+2E(\slashed{P}+m)\right]=\frac{1}{4m(E+m)}\left[(2m+2E)(\slashed{P}+m)\right]=\\
-&=\frac{2\cancel{(E+m)}(\slashed{P}+m)}{4m\cancel{(E+m)}}=\frac{\slashed{P}+m}{2m}=\Lambda_+ \quad \checkmark
+\Lambda_+&=\frac{1}{4m(E+m)}\left[2m(\slashed{p}+m)+2E(\slashed{p}+m)\right]=\frac{1}{4m(E+m)}\left[(2m+2E)(\slashed{p}+m)\right]=\\
+&=\frac{2\cancel{(E+m)}(\slashed{p}+m)}{4m\cancel{(E+m)}}=\frac{\slashed{p}+m}{2m}=\Lambda_+ \quad \checkmark
 \end{align*}
 With the same strategy, one sees that $\sum_{\alpha=1}^2v_\alpha(p)\bar{v}_\alpha(p)=-\Lambda_-$.
 \section{Spin projectors}
@@ -1262,7 +1262,7 @@ From this, we observe that $\gamma^0$ and $\gamma^2$ do not change under transpo
 \]
 We take a certain solution of the Dirac equation:
 \[
-\Psi'(x)=\underbrace{\left(\frac{\pm\slashed{P}+m}{2m}\right)}_{\text{select the energy}}\overbrace{\left(\frac{1\pm\gamma_5\slashed{n}_3}{2}\right)}^{\text{select the spin}}\Psi(x)
+\Psi'(x)=\underbrace{\left(\frac{\pm\slashed{p}+m}{2m}\right)}_{\text{select the energy}}\overbrace{\left(\frac{1\pm\gamma_5\slashed{n}_3}{2}\right)}^{\text{select the spin}}\Psi(x)
 \]
 and we are interested to see what happens if we apply $\mathbb{C}$ to it\marginnote{Remember that:\begin{itemize}
     \item $\gamma^0\gamma_5=-\gamma_5\gamma^0$
@@ -1279,7 +1279,7 @@ and we are interested to see what happens if we apply $\mathbb{C}$ to it\marginn
 &=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right)\left(\frac{1\mp\gamma_5{\color{green}\gamma^{\mu^t}}n_3}{2}\right){\color{green}\gamma^0}\Psi^*(x)\\
 &=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n^t_3}}{2}\right)\bar{\Psi}^t(x)\\
 &=\eta_C\mathbb{C}\left(\frac{\pm\slashed{P^t}+m}{2m}\right){\color{red}\mathbb{C}^{-1}\mathbb{C}}\left(\frac{1\mp\gamma_5\slashed{n^t_3}}{2}\right){\color{red}\mathbb{C}^{-1}\mathbb{C}}\bar{\Psi}^t(x)\\
-&=\eta_C\left(\frac{\mp\slashed{P}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n}_3}{2}\right)\mathbb{C}\bar{\Psi}^t(x)=\left(\frac{\mp\slashed{P}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n}_3}{2}\right)\Psi_C(x)
+&=\eta_C\left(\frac{\mp\slashed{p}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n}_3}{2}\right)\mathbb{C}\bar{\Psi}^t(x)=\left(\frac{\mp\slashed{p}+m}{2m}\right)\left(\frac{1\mp\gamma_5\slashed{n}_3}{2}\right)\Psi_C(x)
 \end{align*}
 Charge conjugation exchanges particles with anti-particles and inverts the spin.
 
@@ -1358,7 +1358,7 @@ h:=\frac{\underline{\sigma}\cdot\underline{p}}{2|\underline{p}|}
 \]
 For a massless field, we have that $E=\pm|\underline{p}|$:
 \[
-\Psi_R=\Psi^0_Re^{\mp iP_\mu x^\mu}\Rightarrow(\pm P^0+\underline{\sigma}\cdot\underline{p})\Psi_R=\left(\pm\frac{1}{2}+\frac{\underline{\sigma}\cdot\underline{p}}{2|\underline{p}|}\right)\Psi_R=0
+\Psi_R=\Psi^0_Re^{\mp ip_\mu x^\mu}\Rightarrow(\pm p^0+\underline{\sigma}\cdot\underline{p})\Psi_R=\left(\pm\frac{1}{2}+\frac{\underline{\sigma}\cdot\underline{p}}{2|\underline{p}|}\right)\Psi_R=0
 \]
 \[
 \Rightarrow h\Psi_R=\mp\frac{1}{2}\quad\begin{cases}

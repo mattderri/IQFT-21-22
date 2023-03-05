@@ -6,7 +6,7 @@
 \chapter[Electromagnetic Interactions]{Electromagnetic Interactions\footnotemark[0]}
 \labch{EMInteractions}
 \section{Quantum Electrodynamics}
-We are now interested in studying the QED interaction between the electromagnetic field and spin $\frac{1}{2}$ field. In the classical theory, this interaction is described by the minimal substitution $P^\mu\xrightarrow[]{}P^\mu-eA^\mu$ while in quantum mechanics we have $i\partial^\mu\xrightarrow[]{}i\partial^\mu-eA^\mu$. The theory which describes photons and electrons is obtained by combining the Maxwell Lagrangian [\refeq{MaxwellLagrangian}] and the Dirac Lagrangian [\refeq{DiracLagrangian}]:
+We are now interested in studying the QED interaction between the electromagnetic field and spin $\frac{1}{2}$ field. In the classical theory, this interaction is described by the minimal substitution $p^\mu\xrightarrow[]{}p^\mu-eA^\mu$ while in quantum mechanics we have $i\partial^\mu\xrightarrow[]{}i\partial^\mu-eA^\mu$. The theory which describes photons and electrons is obtained by combining the Maxwell Lagrangian [\refeq{MaxwellLagrangian}] and the Dirac Lagrangian [\refeq{DiracLagrangian}]:
 \[
 \pazocal{L}_0=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}+\bar{\Psi}(i\slashed{\partial}-m)\Psi
 \]
@@ -51,7 +51,7 @@ Now, we can express $\pazocal{L}$ in terms of the covariant derivative to obtain
 \pazocal{L}=\bar{\Psi}(i\slashed{D}-m)\Psi-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
 \]
 \subsection{Quantization of the Lagrangian}
-We have seen that $\pazocal{L}=\pazocal{L}_0+\pazocal{L}_{int}$, i.e. it is a function of the Dirac field and the electromagnetic field. We can construct the conjugated momenta in order to impose the usual commutation relations:
+We have seen that $\pazocal{L}=\pazocal{L}_0+\pazocal{L}_{\text{int}}$, i.e. it is a function of the Dirac field and the electromagnetic field. We can construct the conjugated momenta in order to impose the usual commutation relations:
 \[
 \left\{
 \begin{aligned}
@@ -71,7 +71,7 @@ Once again, we impose the commutation relations:
 \]
 Finally, we can move to the Hamiltonian and we get:
 \[
-H=\pi_i\Dot{\Phi}^i-\pazocal{L}_0-\pazocal{L}_{int}=H_0+H_{int}
+H=\pi_i\Dot{\Phi}^i-\pazocal{L}_0-\pazocal{L}_{\text{int}}=H_0+H_{\text{int}}
 \]
 \section{Time evolution}
 Let's consider a set of particles in a state $\phi_i$ at $t=-\infty$ and $\phi_f$ at $t=+\infty$. In the Schr\"odinger's picture, the time evolution is given by:
@@ -87,7 +87,7 @@ In the interaction picture, we have $\ket{\phi_I}=e^{iH_s^0t}\ket{\phi_s(t)}$, t
 i\frac{\partial}{\partial t}\ket{\phi_I}&=i\frac{\partial}{\partial t}\left(e^{iH_s^0t}\ket{\phi_s(t)}\right)\\
 &=-H_s^0e^{iH_s^0t}\ket{\phi_s(t)}+e^{iH_s^0t}i\frac{\partial}{\partial t}\ket{\phi_s(t)}\\
 &=\cancel{-H_s^0e^{iH_s^0t}\ket{\phi_s(t)}}+e^{iH_s^0t}(\cancel{H_s^0}+H_s^{int})\ket{\phi_s(t)}\\
-&=e^{iH_s^0t}H_s^{int}e^{-iH_s^0t}\ket{\phi_I}=H_I\ket{\phi_I}
+&=e^{iH_s^0t}H_s^{\text{int}}e^{-iH_s^0t}\ket{\phi_I}=H_I\ket{\phi_I}
 \end{align*}
 By integrating this in $t$, we obtain:
 \begin{align*}
@@ -312,7 +312,7 @@ Now we can compute the terms on the right hand side by using Wick's theorem:
 \]
 The two underlined terms correspond to contractions in the same point and they get removed in the total computation: we \textbf{do not} contract fields at the same point. Each contraction in different points $x_1$, $x_2$ gives us a \textbf{propagator}.
 \section{Scattering matrix in QED}
-We now consider the scattering of an electron in a static external field. We know that $S=T\left(e^{-i\int d^4x\pazocal{H}_{int}(x)}\right)$, with $\pazocal{H}_{int}=-\pazocal{L}_{int}=e\norder{\bar{\Psi}\slashed{A}\Psi}$. The S-matrix at \textbf{first order} is:
+We now consider the scattering of an electron in a static external field. We know that $S=T\left(e^{-i\int d^4x\pazocal{H}_{\text{int}}(x)}\right)$, with $\pazocal{H}_{\text{int}}=-\pazocal{L}_{\text{int}}=e\norder{\bar{\Psi}\slashed{A}\Psi}$. The S-matrix at \textbf{first order} is:
 \begin{align*}
 S^{(1)}&=-ie\int d^4xT[\bar{\norder{\Psi(x)\slashed{A}(x)\Psi(x)}}]=-ie\int d^4x\norder{\bar{\Psi(x)}\slashed{A}(x)\Psi(x)}\\
 &=-ie\int d^4x\norder{(\bar{\Psi}^++\bar{\Psi}^-)(\slashed{A}^++\slashed{A}^-)(\Psi^++\Psi^-)}\\
@@ -374,13 +374,62 @@ S^{(2)}&=\frac{(-ie)^2}{2}\int d^4x_1d^4x_2\norder{\bar{\Psi}_1\slashed{A}_1\bra
 &=(-ie)^2\int d^4x_1d^4x_2\norder{\bar{\Psi}_1\slashed{A}_1\bra{0}T[\Psi_1\bar{\Psi}_2]\ket{0}\slashed{A}_2\Psi_2}\\
 &=(-ie)^2\int d^4x_1d^4x_2\norder{(\bar{\Psi}_1^-+\bar{\Psi}_1^+)(\slashed{A}_1^-+\slashed{A}_1^+)iS_F(x_1-x_2)(\slashed{A}_2^-+\slashed{A}_2^+)(\Psi_2^-+\Psi_2^+)}
 \end{align*}
-What we want is $\ket{i}=\ket{\gamma e^-}$ and $\ket{f}=\ket{\gamma e^-}$:
-\begin{figure}[h!]
-    \centering
-    \includegraphics{Images/compton.png}
-    \caption{Process (a) on the left and process (b) on the right.}
-    \labfig{compton}
-\end{figure}
+What we want is $\ket{i}=\ket{\gamma e^-}$ and $\ket{f}=\ket{\gamma e^-}$:\\
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i1) {$e^-$};
+    \vertex [right=of i1] (v1);
+    \vertex [below=0.1cm of v1] (a) {$x_2$};
+    \vertex [right=of v1] (v2);
+    \vertex [below=0.1cm of v2] (b) {$x_1$};
+    \vertex [right=of v2] (f1) {$e^-$};
+    \vertex [above left=of v1] (i2) {$\gamma$};
+    \vertex [above right=of v2] (f2) {$\gamma$};
+    \vertex [below right=0.5cm and 0.5cm of v1] (a) {(a)};
+    \diagram* {
+    (v1) -- [fermion] (v2),
+    (i1) -- [fermion] (v1),
+    (i2) -- [photon] (v1),
+    (v2) -- [fermion] (f1),
+    (v2) -- [photon] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i1) {$e^-$};
+    \vertex [right=of i1] (v1);
+    \vertex [below=0.1cm of v1] (a) {$x_2$};
+    \vertex [right=of v1] (v2);
+    \vertex [below=0.1cm of v2] (b) {$x_1$};
+    \vertex [right=of v2] (f1) {$e^-$};
+    \vertex [above left=of v1] (i2) {$\gamma$};
+    \vertex [above right=of v2] (f2) {$\gamma$};
+    \vertex [below right=0.5cm and 0.5cm of v1] (a) {(b)};
+    \diagram* {
+    (v1) -- [fermion] (v2),
+    (i1) -- [fermion] (v1),
+    (i2) -- [photon] (v2),
+    (v2) -- [fermion] (f1),
+    (v1) -- [photon] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics{Images/compton.png}
+%     \caption{Process (a) on the left and process (b) on the right.}
+%     \labfig{compton}
+% \end{figure}
 
 In order to obtain that, we have to select from $S^{(2)}$ matrix elements that give us a meaningful result:
 \begin{enumerate}[label=\alph*)]
@@ -403,14 +452,64 @@ For the Bhabha scattering, we have that the second order S-matrix is given by:
 S^{(2)}&=\frac{(-ie)^2}{2}\int d^4x_1d^4x_2\norder{\bar{\Psi}_1\gamma^\mu\Psi_1i\eta_{\mu\nu}D(x_1-x_2)\bar{\Psi}_2\gamma^\nu\Psi_2}\\
 &=\frac{(-ie)^2}{2}\int d^4x_1d^4x_2\norder{(\bar{\Psi}_1^-+\bar{\Psi}_1^+)\gamma^\mu(\Psi_1^-+\Psi_1^+)i\eta_{\mu\nu}D(x_1-x_2)(\bar{\Psi}_2^-+\bar{\Psi}_2^+)\gamma^\nu(\Psi_2^-+\Psi_2^+)}
 \end{align*}
-What we want is $\ket{i}=\ket{e^+e^-}$ and $\ket{f}=\ket{e^+e^-}$:
-\begin{figure}[h!]
-    \centering
-    \includegraphics{Images/bhabha.png}
-    \caption{Process (a) on the left and process (b) on the right. The arrows for the positrons are already inverted, i.e. a positron coming in has the arrow pointing outside and vice-versa. We will see why later.}
-    \labfig{bhabha}
-\end{figure}
+What we want is $\ket{i}=\ket{e^+e^-}$ and $\ket{f}=\ket{e^+e^-}$:\\
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (v1);
+    \vertex [right=of v1] (v2);
+    \vertex [above left=of v1] (i1) {$e^-$};
+    \vertex [below left=of v1] (i2) {$e^+$};
+    \vertex [above right=of v2] (f1) {$e^-$};
+    \vertex [below right=of v2] (f2) {$e^+$};
+    \vertex [left=0.1cm of v1] (a) {$x_2$};
+    \vertex [right=0.1cm of v2] (b) {$x_1$};
+    \vertex [below right=0.5cm and 0.5cm of v1] (a) {(a)};
+    \diagram* {
+    (v1) -- [photon] (v2),
+    (i1) -- [fermion] (v1),
+    (i2) -- [anti fermion] (v1),
+    (v2) -- [fermion] (f1),
+    (v2) -- [anti fermion] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (v1);
+    \vertex [right=of v1] (v2);
+    \vertex [above left=of v1] (i1) {$e^-$};
+    \vertex [below left=of v1] (i2) {$e^+$};
+    \vertex [above right=of v2] (f1) {$e^+$};
+    \vertex [below right=of v2] (f2) {$e^-$};
+    \vertex [left=0.1cm of v1] (a) {$x_2$};
+    \vertex [right=0.1cm of v2] (b) {$x_1$};
+    \vertex [below right=0.5cm and 0.5cm of v1] (a) {(b)};
+    \diagram* {
+    (v1) -- [photon] (v2),
+    (i1) -- [fermion] (v2),
+    (i2) -- [anti fermion] (v1),
+    (v1) -- [anti fermion] (f1),
+    (v2) -- [fermion] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics{Images/bhabha.png}
+%     \caption{Process (a) on the left and process (b) on the right. The arrows for the positrons are already inverted, i.e. a positron coming in has the arrow pointing outside and vice-versa. We will see why later.}
+%     \labfig{bhabha}
+% \end{figure}
 
+The arrows for the positrons are already inverted, i.e. a positron coming in has the arrow pointing outside and vice-versa. We are going to see why.\\
 As seen for Compton scattering, we have different objects contributing to this process:
 \begin{enumerate}[label=\alph*)]
 \item in $x_2$, a positron and an electron get annihilated, the photon propagator goes to $x_1$ where a positron and an electron are created;
@@ -450,18 +549,18 @@ Notice that \tikzmark{startp2}A\qquad\tikzmark{endp2}B is \textbf{not} a contrac
 
 Focusing now on the term $\Psi^+(x)\ket{e^-(p,n)}$:
 \begin{align*}
-\Psi^+(x)\ket{e^-(p',n')}&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E_p}}e^{-iP_\mu x^\mu}u(p,n)b(p,n)b^\dagger(p',n')\ket{0}\marginnote{$bb^\dagger=\delta(\underline{p}-\underline{p}')\delta_{nn'}-b^\dagger b$}\\
-&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E_p}}u(p,n)\delta(\underline{p}-\underline{p}')\delta_{nn'}e^{-iP_\mu x^\mu}\ket{0}\\
-&=\frac{1}{(2\pi)^{3/2}}\sqrt{\frac{m}{E_{p'}}}u(p',n')e^{-iP'_\mu x^\mu}\ket{0}\\
-&=\sqrt{\frac{m}{VE_{p'}}}u(p',n')e^{-iP'_\mu x^\mu}\ket{0}
+\Psi^+(x)\ket{e^-(p',n')}&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E_p}}e^{-ip_\mu x^\mu}u(p,n)b(p,n)b^\dagger(p',n')\ket{0}\marginnote{$bb^\dagger=\delta(\underline{p}-\underline{p}')\delta_{nn'}-b^\dagger b$}\\
+&=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^{3/2}}\sqrt{\frac{m}{E_p}}u(p,n)\delta(\underline{p}-\underline{p}')\delta_{nn'}e^{-ip_\mu x^\mu}\ket{0}\\
+&=\frac{1}{(2\pi)^{3/2}}\sqrt{\frac{m}{E_{p'}}}u(p',n')e^{-ip'_\mu x^\mu}\ket{0}\\
+&=\sqrt{\frac{m}{VE_{p'}}}u(p',n')e^{-ip'_\mu x^\mu}\ket{0}
 \end{align*}
 The $V$ comes from the quantization in a \textbf{finite volume}, sending $1/(2\pi)^{3/2}$ to $1/\sqrt{V}$. With an analogous process, we can find that for $A_\mu^+(x)$ we have:
 \[
-A_\mu^+(x)\ket{\gamma(k,\lambda)}=\dots=\frac{1}{\sqrt{2E_kV}}\varepsilon_\mu^{(\lambda)}(k)e^{-iK_\mu x^\mu}\ket{0}
+A_\mu^+(x)\ket{\gamma(k,\lambda)}=\dots=\frac{1}{\sqrt{2E_kV}}\varepsilon_\mu^{(\lambda)}(k)e^{-ik_\mu x^\mu}\ket{0}
 \]
 In this way, the first order S-matrix can be re-written as:
 \begin{align*}
-\bra{f}S^{(1)}\ket{i}&={\color{red}-ie}\int d^4x\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2E_{k'}V}}{\color{blue}e^{iP'_\mu x^\mu}e^{iK_\mu x^\mu}e^{-iP_\mu x^\mu}}{\color{red}\bar{u}(p')\varepsilon_\mu^{(\lambda)}(k')\gamma^\mu u(p)}\\
+\bra{f}S^{(1)}\ket{i}&={\color{red}-ie}\int d^4x\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2E_{k'}V}}{\color{blue}e^{ip'_\mu x^\mu}e^{ik_\mu x^\mu}e^{-ip_\mu x^\mu}}{\color{red}\bar{u}(p')\varepsilon_\mu^{(\lambda)}(k')\gamma^\mu u(p)}\\
 &=(2\pi)^4{\color{blue}\delta(P'+K'-P)}\frac{m}{V}\frac{1}{\sqrt{2E_{p'}E_{k'}E_pV}}{\color{red}\pazocal{M}}
 \end{align*}
 This gives us the first \textbf{Feynman rules}:
@@ -481,7 +580,7 @@ An additional rule is given by the way we wrote $\pazocal{M}$:
 \]
 For \textbf{particles}, we put the final state first, then the interaction vertex and at the end the initial state. Moreover, the $\delta$ gives us the conservation of the total four-momentum. 
 
-Moving to the second order, we consider now a \textbf{physical process}: Compton scattering, $e^-\gamma\xrightarrow[]{}e^-\gamma$ [\reffig{compton}].
+Moving to the second order, we consider now a \textbf{physical process}: Compton scattering, $e^-\gamma\xrightarrow[]{}e^-\gamma$.
 \[
 \begin{cases}
 \ket{i}=\ket{e^-(p),\gamma(k)}\\
@@ -498,14 +597,14 @@ Moving to the second order, we consider now a \textbf{physical process}: Compton
 \]
 The propagator $iS_F(x)$ can be written as:
 \[
-iS_F(x)=\int\frac{d^4p}{(2\pi)^4}e^{-iP_\mu x^\mu}i\Tilde{S}_F(p) \quad \text{with } \Tilde{S}_F(p)=\frac{\slashed{P}+m}{P^2-m^2+i\varepsilon}
+iS_F(x)=\int\frac{d^4p}{(2\pi)^4}e^{-ip_\mu x^\mu}i\Tilde{S}_F(p) \quad \text{with } \Tilde{S}_F(p)=\frac{\slashed{p}+m}{p^2-m^2+i\varepsilon}
 \]
 Substituting this in the second order matrix computed above and keeping in mind the first Feynman rules we computed, gives us:
 \begin{align*}
-\bra{f}S_a^{(2)}\ket{i}&=(-ie)^2\int d^4x_1d^4x_2\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}\frac{1}{\sqrt{2VE_k}}\bar{u}(p')\gamma^\mu\varepsilon^{(\lambda)}_\mu(k')e^{iP'_\mu x_1^\mu}e^{iK'_\mu x_1^\mu}\\
-&\times\frac{i}{(2\pi)^4}\int d^4qe^{-iQ_\mu(x_1-x_2)^\mu}\Tilde{S}_F(q)u(p)\gamma^\nu\varepsilon^{(\lambda)}_\nu(k)e^{-iP_\mu x_2^\mu}e^{-iK_\mu x_2^\mu}\\
+\bra{f}S_a^{(2)}\ket{i}&=(-ie)^2\int d^4x_1d^4x_2\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}\frac{1}{\sqrt{2VE_k}}\bar{u}(p')\gamma^\mu\varepsilon^{(\lambda)}_\mu(k')e^{ip'_\mu x_1^\mu}e^{iK'_\mu x_1^\mu}\\
+&\times\frac{i}{(2\pi)^4}\int d^4qe^{-iq_\mu(x_1-x_2)^\mu}\Tilde{S}_F(q)u(p)\gamma^\nu\varepsilon^{(\lambda)}_\nu(k)e^{-ip_\mu x_2^\mu}e^{-ik_\mu x_2^\mu}\\
 &=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}\int d^4x_1d^4x_2\\
-&\times\int\frac{d^4q}{(2\pi)^4}{\color{blue}e^{i(P'+K')_\mu x_1^\mu}}{\color{green}e^{-i(P+K)_\mu x_2^\mu}}{\color{blue}e^{-iQ_\mu x_1^\mu}}{\color{green}e^{iQ_\mu x_2^\mu}}{\color{red}\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k)\frac{i}{\slashed{Q}-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon^{(\lambda)}_\nu(k)u(p)}\\
+&\times\int\frac{d^4q}{(2\pi)^4}{\color{blue}e^{i(P'+K')_\mu x_1^\mu}}{\color{green}e^{-i(P+K)_\mu x_2^\mu}}{\color{blue}e^{-iq_\mu x_1^\mu}}{\color{green}e^{iq_\mu x_2^\mu}}{\color{red}\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k)\frac{i}{\slashed{Q}-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon^{(\lambda)}_\nu(k)u(p)}\\
 &=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}\int\frac{d^4q}{(2\pi)^4}{\color{blue}\delta(P'+K'-Q)}(2\pi)^4{\color{green}\delta(Q-P-K)}{\color{red}\pazocal{M}_a}\\
 &=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}(2\pi)^4\delta(P'+K'-P-K)\pazocal{M}_a
 \end{align*}
@@ -548,7 +647,7 @@ What happens when we have \textbf{anti-particles}, e.g. a positron?
 \]
 Computing this gives us additional Feynman rules for anti-particles:
 \begin{align*}
-\bra{f}S^{(1)}\ket{i}&={\color{red}-ie}\int d^4x\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}{\color{blue}e^{iP'_\mu x^\mu}e^{iK'_\mu x^\mu}e^{-iP_\mu x^\mu}}{\color{red}\bar{v}(p')\gamma^\mu\varepsilon_\mu^{(\lambda)}(k')v(p)}\\
+\bra{f}S^{(1)}\ket{i}&={\color{red}-ie}\int d^4x\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}{\color{blue}e^{ip'_\mu x^\mu}e^{iK'_\mu x^\mu}e^{-ip_\mu x^\mu}}{\color{red}\bar{v}(p')\gamma^\mu\varepsilon_\mu^{(\lambda)}(k')v(p)}\\
 &=(2\pi)^4{\color{blue}\delta(P'+K'-P)}\frac{m}{V}\frac{1}{\sqrt{2E_{p'}E_{k'}E_pV}}{\color{red}\pazocal{M}}
 \end{align*}
 The Feynman rules we obtain from this process are:
@@ -586,9 +685,9 @@ i\eta_{\mu\nu}D(x)=\int\frac{d^4p}{(2\pi)^4}e^{-iPx}i\eta_{\mu\nu}\Tilde{D}(p) \
 \]
 With this substitution, the second order matrix becomes:
 \begin{align*}
-\bra{f}S^{(2)}\ket{i}&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\int d^4x_1d^4x_2e^{iP'_\mu x_1^\mu}\bar{u}(p')(-ie\gamma_\mu)\\
+\bra{f}S^{(2)}\ket{i}&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\int d^4x_1d^4x_2e^{ip'_\mu x_1^\mu}\bar{u}(p')(-ie\gamma_\mu)\\
 &\times\int\frac{d^4q_1}{(2\pi)^4}e^{-iQ_{1\mu}(x_1-x_2)^\mu}i\Tilde{S}_F(q_1)(-ie\gamma_\nu)\\
-&\times\int\frac{d^4q_2}{(2\pi)^4}e^{-iQ_{2\mu}(x_1-x_2)^\mu}i\eta_{\mu\nu}\Tilde{D}(q_2)e^{-iP_\mu x_2^\mu}u(p)\\
+&\times\int\frac{d^4q_2}{(2\pi)^4}e^{-iQ_{2\mu}(x_1-x_2)^\mu}i\eta_{\mu\nu}\Tilde{D}(q_2)e^{-ip_\mu x_2^\mu}u(p)\\
 &=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\int\frac{d^4q_1}{(2\pi)^4}\int\frac{d^4q_2}{(2\pi)^4}\delta(P'-Q_1-Q_2)\delta(Q_1+Q_2-P)\\
 &\times{\color{red}\bar{u}(p')(-ie\gamma_\mu)\frac{i}{\slashed{Q_1}-m+i\varepsilon}(-ie\gamma_\nu)\frac{(-i\eta_{\mu\nu})}{Q_2^2+i\varepsilon}u(p)}\\
 &=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\delta(P'-P)(2\pi)^4{\color{red}\pazocal{M}} 

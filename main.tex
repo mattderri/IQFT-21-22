@@ -109,7 +109,11 @@
 \usepackage{tikz}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usetikzlibrary{tikzmark}
-
+\usetikzlibrary{tikzmark}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{positioning}
 \newcommand\JoinUp[4][10pt]{
 \draw
   ([shift={#2}]pic cs:start#4) -- ++(0pt,#1) -| ([shift={(#3)}]pic cs:end#4);

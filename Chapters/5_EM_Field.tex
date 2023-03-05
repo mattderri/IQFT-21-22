@@ -233,11 +233,11 @@ The same procedure can be repeated for $A_i$ and $\pi_i$ and the final result wi
 [A_\mu(\underline{x},t),\Dot{A}_i(\underline{y},t)]=-i\delta^3(\underline{x}-\underline{y})
 \]
 \subsection{Temporal, longitudinal and transverse modes}
-As usual, we want to express the fields in terms of creation and annihilation operators. To do that, we need a basis of 4-vectors in $\mathbb{M}^4$. A possible choice for $P^\mu$ is:
+As usual, we want to express the fields in terms of creation and annihilation operators. To do that, we need a basis of 4-vectors in $\mathbb{M}^4$. A possible choice for $p^\mu$ is:
 \[
-P^\mu=(p,0,0,p) \quad P_\mu P^\mu=0
+p^\mu=(p,0,0,p) \quad p_\mu p^\mu=0
 \]
-With this choice, we can define our basis in such a way that one vector is time-like, two vectors are orthogonal to $P^\mu$ (to have transversal components) and one vector is orthogonal to the other three:
+With this choice, we can define our basis in such a way that one vector is time-like, two vectors are orthogonal to $p^\mu$ (to have transversal components) and one vector is orthogonal to the other three:
 \[
 \left\{
 \begin{aligned}
@@ -251,15 +251,15 @@ They satisfy the following relations:
 \labeq{relazionibuffe}
 \left\{
 \begin{aligned}
-P^\mu\varepsilon_\mu^{(1)}&=P^\mu\varepsilon_\mu^{(2)}=0\\
-P^\mu\varepsilon_\mu^{(3)}&=-P^\mu\varepsilon_\mu^{(0)}=-(n \cdot P)
+p^\mu\varepsilon_\mu^{(1)}&=p^\mu\varepsilon_\mu^{(2)}=0\\
+p^\mu\varepsilon_\mu^{(3)}&=-p^\mu\varepsilon_\mu^{(0)}=-(n \cdot p)
 \end{aligned}
 \right.
 \end{equation}
 Every component is a sort of Klein-Gordon field, so we get the same composition in terms of positive and negative energy and it is possible to normalize the solutions exactly as we did for the Klein-Gordon field [\refch{KGeq}], with the only difference that this time we have to sum over the \textbf{polarizations}:
 \begin{kaobox}[frametitle=Electromagnetic field]
 \[
-A_\mu(x)=\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}\left[a_\lambda(p)e^{-iP_\mu x^\mu}+a^\dagger_\lambda(p)e^{iP_\mu x^\mu}\right]
+A_\mu(x)=\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}\left[a_\lambda(p)e^{-ip_\mu x^\mu}+a^\dagger_\lambda(p)e^{ip_\mu x^\mu}\right]
 \]
 \end{kaobox}
 From this expression of $A_\mu(x)$ and from the commutation rules for $A_\mu$ and $\pi_\mu$ [\refeq{commutation}], we find for the creation and annihilation operators the following commutation rules:
@@ -290,8 +290,8 @@ At first, we could ask that $\partial_\mu A^\mu=0$ at the operator level, but th
 \[
 \left\{
 \begin{aligned}
-A_\mu^{(+)}(x)&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a_\lambda(p)e^{-iP_\mu x^\mu}\\
-A_\mu^{(-)}(x)&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a^\dagger_\lambda(p)e^{+iP_\mu x^\mu}=A_\mu^{(+)\dagger}(x)
+A_\mu^{(+)}(x)&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a_\lambda(p)e^{-ip_\mu x^\mu}\\
+A_\mu^{(-)}(x)&=\int \frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a^\dagger_\lambda(p)e^{+ip_\mu x^\mu}=A_\mu^{(+)\dagger}(x)
 \end{aligned}
 \right.
 \]
@@ -303,8 +303,8 @@ Acting on the vacuum, we will have $A_\mu^{(+)}(x)\ket{0}=0$ but $A_\mu^{(-)}(x)
 \end{kaobox}
 We can compute the explicit expression for $\partial_\mu A^{(+)\mu}$ to see what this condition implies:
 \begin{align*}
-\partial^\mu A_\mu^{(+)}&=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}e^{-iP_\mu x^\mu}P^\mu\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a_\lambda(p)\marginnote{We use the relations stated in \refeq{relazionibuffe}.}\\
-&=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}e^{-iP_\mu x^\mu}[a_0(p)-a_3(p)](n \cdot P)
+\partial^\mu A_\mu^{(+)}&=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}e^{-ip_\mu x^\mu}p^\mu\sum_{\lambda=0}^3\varepsilon_\mu^{(\lambda)}a_\lambda(p)\marginnote{We use the relations stated in \refeq{relazionibuffe}.}\\
+&=-i\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2E}}e^{-ip_\mu x^\mu}[a_0(p)-a_3(p)](n \cdot P)
 \end{align*}
 We want that $\partial_\mu A^{(+)\mu}\ket{\text{phys}}=0$ therefore it has to be:
 \begin{equation}

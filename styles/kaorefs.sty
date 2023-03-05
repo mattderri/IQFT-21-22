@@ -54,13 +54,13 @@
 \newcommand{\frefpart}[1]{\hyperref[part:#1]{\partname\xspace\ref{part:#1} (\nameref{part:#1}) \vpageref{part{#1}}}} % Part IV (Name of the Part), Part IV (Name of the Part) on the following page, Part IV (Name of the Part) on page 84)
 
 %\newcommand{\refch}[1]{\hyperref[#1]{\chaptername\xspace\usekomafont{chapter}\normalsize\nameref{ch:#1}}\xspace\vpageref{ch:#1}\,}
-\newcommand{\refch}[1]{\hyperref[ch:#1]{\chaptername\xspace\ref{ch:#1}}}
+\newcommand{\refch}[1]{\hyperref[ch:#1]{Chapter}\xspace\ref{ch:#1}}
 \newcommand{\vrefch}[1]{\hyperref[ch:#1]{\chaptername\xspace\vref{ch:#1}}}
 \newcommand{\nrefch}[1]{\hyperref[ch:#1]{\chaptername\xspace\ref{ch:#1} (\nameref{ch:#1})}}
 \newcommand{\frefch}[1]{\hyperref[ch:#1]{\chaptername\xspace\ref{ch:#1} (\nameref{ch:#1}) \vpageref{ch:#1}}}
 
 %\newcommand{\refsec}[1]{Section~{\usekomafont{section}\normalsize\nameref{sec:#1}}\xspace\vpageref{sec:#1}\,}
-\newcommand{\refsec}[1]{\hyperref[sec:#1]{\sectionname\xspace\ref{sec:#1}}}
+\newcommand{\refsec}[1]{\hyperref[sec:#1]{Paragraph}\xspace\ref{sec:#1}}
 \newcommand{\vrefsec}[1]{\hyperref[sec:#1]{\sectionname\xspace\vref{sec:#1}}}
 \newcommand{\nrefsec}[1]{\hyperref[sec:#1]{\sectionname\xspace\ref{sec:#1} (\nameref{sec:#1})}}
 \newcommand{\frefsec}[1]{\hyperref[sec:#1]{\sectionname\xspace\ref{sec:#1} (\nameref{sec:#1}) \vpageref{sec:#1}}}
