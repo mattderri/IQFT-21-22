@@ -340,12 +340,12 @@ Where in the second line we used the fact that $\Psi=\Psi^++\Psi^-$, $\bar{\Psi}
 \end{kaobox}
 As an example, let's focus on the process $\bar{\Psi}^+\slashed{A}^-\Psi^-$. This annihilates $e^+$ and creates $\gamma$ and $e^+$: $\ket{i}=\ket{e^+}$, $\ket{f}=\ket{e^+\gamma}$. We want to evaluate the sandwich between an on-shell initial state and an on-shell final state, i.e. a transition amplitude from a physical state to another physical state. The terms that appear above in the expression for $S^{(1)}$ are the building blocks of what we are going to see but they are \textbf{not physical}. In fact, we would like to have something that conserves the total momentum:
 \[
-e^+(P_1)\xrightarrow[]{}e^+(P_2)+\gamma(P_3) \quad P_1=P_2+P_3
+e^+(p_1)\xrightarrow[]{}e^+(p_2)+\gamma(p_3) \quad p_1=p_2+p_3
 \]
 \[
-\underset{=m_e^2}{P_1^2}=(P_2+P_3)^2=\underset{=m_e^2}{P_2^2}+\underset{=0}{P_3^2}+2P_2\cdot P_3\Rightarrow P_2\cdot P_3=0
+\underset{=m_e^2}{p_1^2}=(p_2+p_3)^2=\underset{=m_e^2}{p_2^2}+\underset{=0}{p_3^2}+2p_2\cdot p_3\Rightarrow p_2\cdot p_3=0
 \]
-This implies $m_eP_3^0=0$ which is true only if the photon has vanishing momentum: first order S-matrix elements (1 to 2 elements) are \textbf{not on shell}. In order to make things work, we move to the \textbf{second order}, where we will have two vertices and contractions:
+This implies $m_ep_3^0=0$ which is true only if the photon has vanishing momentum: first order S-matrix elements (1 to 2 elements) are \textbf{not on shell}. In order to make things work, we move to the \textbf{second order}, where we will have two vertices and contractions:
 \begin{align*}
 S^{(2)}&=\frac{(-ie)^2}{2}\int d^4x_1d^4x_2T\left[\norder{\bar{\Psi}(x_1)\slashed{A}(x_1)\Psi(x_1)}\norder{\bar{\Psi}(x_2)\slashed{A}(x_2)\Psi(x_2)}\right]\\
 &=\frac{(-ie)^2}{2}\int d^4x_1d^4x_2\left[\norder{(\bar{\Psi}\slashed{A}\tikzmark{starta1}\Psi)_{x_1}(\tikzmark{enda1}\bar{\Psi}\slashed{A}\Psi)_{x_2}}+\norder{(\tikzmark{starta2}\bar{\Psi}\slashed{A}\Psi)_{x_1}(\bar{\Psi}\slashed{A}\tikzmark{enda2}\Psi)_{x_2}}\right]\marginnote{Compton scattering.}\\
@@ -601,54 +601,68 @@ iS_F(x)=\int\frac{d^4p}{(2\pi)^4}e^{-ip_\mu x^\mu}i\Tilde{S}_F(p) \quad \text{wi
 \]
 Substituting this in the second order matrix computed above and keeping in mind the first Feynman rules we computed, gives us:
 \begin{align*}
-\bra{f}S_a^{(2)}\ket{i}&=(-ie)^2\int d^4x_1d^4x_2\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}\frac{1}{\sqrt{2VE_k}}\bar{u}(p')\gamma^\mu\varepsilon^{(\lambda)}_\mu(k')e^{ip'_\mu x_1^\mu}e^{iK'_\mu x_1^\mu}\\
+\bra{f}S_a^{(2)}\ket{i}&=(-ie)^2\int d^4x_1d^4x_2\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}\frac{1}{\sqrt{2VE_k}}\bar{u}(p')\gamma^\mu\varepsilon^{(\lambda)}_\mu(k')e^{ip'_\mu x_1^\mu}e^{ik'_\mu x_1^\mu}\\
 &\times\frac{i}{(2\pi)^4}\int d^4qe^{-iq_\mu(x_1-x_2)^\mu}\Tilde{S}_F(q)u(p)\gamma^\nu\varepsilon^{(\lambda)}_\nu(k)e^{-ip_\mu x_2^\mu}e^{-ik_\mu x_2^\mu}\\
 &=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}\int d^4x_1d^4x_2\\
-&\times\int\frac{d^4q}{(2\pi)^4}{\color{blue}e^{i(P'+K')_\mu x_1^\mu}}{\color{green}e^{-i(P+K)_\mu x_2^\mu}}{\color{blue}e^{-iq_\mu x_1^\mu}}{\color{green}e^{iq_\mu x_2^\mu}}{\color{red}\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k)\frac{i}{\slashed{Q}-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon^{(\lambda)}_\nu(k)u(p)}\\
-&=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}\int\frac{d^4q}{(2\pi)^4}{\color{blue}\delta(P'+K'-Q)}(2\pi)^4{\color{green}\delta(Q-P-K)}{\color{red}\pazocal{M}_a}\\
-&=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}(2\pi)^4\delta(P'+K'-P-K)\pazocal{M}_a
+&\times\int\frac{d^4q}{(2\pi)^4}{\color{blue}e^{i(p'+k')_\mu x_1^\mu}}{\color{green}e^{-i(p+k)_\mu x_2^\mu}}{\color{blue}e^{-iq_\mu x_1^\mu}}{\color{green}e^{iq_\mu x_2^\mu}}{\color{red}\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k)\frac{i}{\slashed{q}-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon^{(\lambda)}_\nu(k)u(p)}\\
+&=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}\int\frac{d^4q}{(2\pi)^4}{\color{blue}\delta(p'+k'-q)}(2\pi)^4{\color{green}\delta(q-p-k)}{\color{red}\pazocal{M}_a}\\
+&=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}(2\pi)^4\delta(p'+k'-p-k)\pazocal{M}_a
 \end{align*}
-$Q=P+K$ and the complete expression for $\pazocal{M}_a$ is:
+$q=p+k$ and the complete expression for $\pazocal{M}_a$ is:
 \[
-\pazocal{M}_a=\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k')\frac{i}{(\slashed{P}+\slashed{K})-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon_\nu^{(\lambda)}(k)u(p)
+\pazocal{M}_a=\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k')\frac{i}{(\slashed{p}+\slashed{k})-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon_\nu^{(\lambda)}(k)u(p)
 \]
-With the same reasoning, keeping in mind that now $Q=P-K'$, for $S_b^{(2)}$ we get:
+With the same reasoning, keeping in mind that now $q=p-k'$, for $S_b^{(2)}$ we get:
 \[
-\pazocal{M}_b=\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k)\frac{i}{(\slashed{P}-\slashed{K}')-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon_\nu^{(\lambda)}(k')u(p)
+\pazocal{M}_b=\bar{u}(p')(-ie\gamma^\mu)\varepsilon^{(\lambda)}_\mu(k)\frac{i}{(\slashed{p}-\slashed{k}')-m+i\varepsilon}(-ie\gamma^\nu)\varepsilon_\nu^{(\lambda)}(k')u(p)
 \]
 The full expression of $\bra{f}S^{(2)}\ket{i}$ is therefore:
 \[
-\bra{f}S^{(2)}\ket{i}=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}(2\pi)^4\delta(P'+K'-P-K)(\pazocal{M}_a+\pazocal{M}_b)
+\bra{f}S^{(2)}\ket{i}=\prod_{\text{fer}}\sqrt{\frac{m}{VE_f}}\prod_{\text{bos}}\frac{1}{\sqrt{2VE_b}}(2\pi)^4\delta(p'+k'-p-k)(\pazocal{M}_a+\pazocal{M}_b)
 \]
 This gives us the Feynman rule for the fermionic propagator:
 \begin{kaobox}[frametitle=Feynman rules]
 \[
-\bullet\text{Fermionic propagator: }\; \frac{i}{\slashed{Q}-m+i\varepsilon}
+\bullet\text{Fermionic propagator: }\; \frac{i}{\slashed{q}-m+i\varepsilon}
 \]
 \end{kaobox}
-\begin{marginfigure}
-    \includegraphics{Images/positron.png}
-    \caption{Positron scattering}
-    \labfig{positron}
-\end{marginfigure}
-What happens when we have \textbf{anti-particles}, e.g. a positron?
+% \begin{marginfigure}
+%     \includegraphics{Images/positron.png}
+%     \caption{Positron scattering}
+%     \labfig{positron}
+% \end{marginfigure}
+What happens when we have \textbf{anti-particles}, e.g. a positron?\marginnote{\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i1) {$e^+$};
+    \vertex [right=of i1] (v);
+    \vertex [right=of v] (f1) {$e^+$};
+    \vertex [above right=of v] (f2) {$\gamma$};
+    \diagram* {
+    (i1) -- [anti fermion, momentum'=$p$] (v),
+    (v) -- [anti fermion, momentum'=$p'$] (f1),
+    (v) -- [photon, momentum=$k'$] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}}
 \[
 \begin{cases}
 \ket{i}=\ket{e^+(p)}\\
 \ket{f}=\ket{e^+(p'),\gamma(k')}
 \end{cases}
 \quad 
-\bra{f}S^{(1)}\ket{i})=-ie\int d^4x\bra{\tikzmark{startd1}e^+\tikzmark{startd2}\gamma}\tikzmark{startd3}\bar{\Psi}^+\tikzmark{endd2}\slashed{A}^-\tikzmark{endd1}\Psi^-\ket{\tikzmark{endd3}e^+}
+\bra{f}S^{(1)}\ket{i})=-ie\int d^4x\bra{\tikzmark{startw1}e^+\tikzmark{startw2}\gamma}\tikzmark{startw3}\bar{\Psi}^+\tikzmark{endw2}\slashed{A}^-\tikzmark{endw1}\Psi^-\ket{\tikzmark{endw3}e^+}
 \begin{tikzpicture}[remember picture,overlay,line width=0.5pt]
-\JoinDownF{(5pt,-5pt)}{(5pt,-5pt)}{d1}
-\JoinDownF{(5pt,-1pt)}{(5pt,-1pt)}{d2}
-\JoinUpF{(5pt,10pt)}{(5pt,10pt)}{d3}
+\JoinDownF{(5pt,-5pt)}{(5pt,-5pt)}{w1}
+\JoinDownF{(5pt,-1pt)}{(5pt,-1pt)}{w2}
+\JoinUpF{(5pt,10pt)}{(5pt,10pt)}{w3}
 \end{tikzpicture}
 \]
 Computing this gives us additional Feynman rules for anti-particles:
 \begin{align*}
-\bra{f}S^{(1)}\ket{i}&={\color{red}-ie}\int d^4x\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}{\color{blue}e^{ip'_\mu x^\mu}e^{iK'_\mu x^\mu}e^{-ip_\mu x^\mu}}{\color{red}\bar{v}(p')\gamma^\mu\varepsilon_\mu^{(\lambda)}(k')v(p)}\\
-&=(2\pi)^4{\color{blue}\delta(P'+K'-P)}\frac{m}{V}\frac{1}{\sqrt{2E_{p'}E_{k'}E_pV}}{\color{red}\pazocal{M}}
+\bra{f}S^{(1)}\ket{i}&={\color{red}-ie}\int d^4x\sqrt{\frac{m}{VE_{p'}}}\sqrt{\frac{m}{VE_p}}\frac{1}{\sqrt{2VE_{k'}}}{\color{blue}e^{ip'_\mu x^\mu}e^{ik'_\mu x^\mu}e^{-ip_\mu x^\mu}}{\color{red}\bar{v}(p')\gamma^\mu\varepsilon_\mu^{(\lambda)}(k')v(p)}\\
+&=(2\pi)^4{\color{blue}\delta(p'+k'-p)}\frac{m}{V}\frac{1}{\sqrt{2E_{p'}E_{k'}E_pV}}{\color{red}\pazocal{M}}
 \end{align*}
 The Feynman rules we obtain from this process are:
 \begin{kaobox}[frametitle=Feynman rules]
@@ -664,8 +678,23 @@ The reading order of $\pazocal{M}$ is the same as the one we obtained for partic
 \pazocal{M}=\bar{v}(p')(-ie\gamma^\mu)v(p)\varepsilon^{(\lambda)}_\mu(k')
 \]
 {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}
-In order to use the same rules for particles, for anti-particles the arrows are \textbf{inverted} [\reffig{positron}]: the incoming positron has the arrow pointing outside while the outgoing positron has the arrow pointing inside.
-The last thing left to compute is the \textbf{electron self-energy}:
+In order to use the same rules for particles, for anti-particles the arrows are \textbf{inverted}: the incoming positron has the arrow pointing outside while the outgoing positron has the arrow pointing inside.
+The last thing left to compute is the \textbf{electron self-energy}:\marginnote{\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (i);
+    \vertex [right=of i] (v1);
+    \vertex [right=of v1] (v2);
+    \vertex [right=of v2] (f);
+    \diagram* {
+    (i) -- [fermion, momentum'=$p$] (v1),
+    (v1) -- [fermion, momentum'=$q_1$] (v2),
+    (v2) -- [fermion, momentum'=$p'$] (f),
+    (v1) -- [photon, half left, momentum=$q_2$] (v2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}}
 \[
 \bra{f}S^{(2)}\ket{i}&=(-ie)^2\int d^4x_1d^4x_2\bra{\tikzmark{starte1}e^-}\tikzmark{ende1}\bar{\Psi}_{x_1}^-\gamma_\mu iS_F(x_1-x_2)i\eta_{\mu\nu}D(x_1-x_2)\gamma_\nu\tikzmark{starte2}\Psi_{x_2}^+\ket{\tikzmark{ende2}e^-}
 \]
@@ -674,42 +703,42 @@ The last thing left to compute is the \textbf{electron self-energy}:
 \JoinDownF{(5pt,-1pt)}{(5pt,-1pt)}{e1}
 \JoinDownF{(5pt,-1pt)}{(5pt,-1pt)}{e2}
 \end{tikzpicture}
-\begin{marginfigure}
-    \includegraphics{Images/selfenergy.jpg}
-    \caption{Electron self-energy}
-    \labfig{selfenergy}
-\end{marginfigure}
+% \begin{marginfigure}
+%     \includegraphics{Images/selfenergy.jpg}
+%     \caption{Electron self-energy}
+%     \labfig{selfenergy}
+% \end{marginfigure}
 As we did for the propagator $iS_F(x)$, we can rewrite $i\eta_{\mu\nu}D(x)$:
 \[
-i\eta_{\mu\nu}D(x)=\int\frac{d^4p}{(2\pi)^4}e^{-iPx}i\eta_{\mu\nu}\Tilde{D}(p) \quad \text{with } \Tilde{D}(p)=-\frac{1}{P^2+i\varepsilon}
+i\eta_{\mu\nu}D(x)=\int\frac{d^4p}{(2\pi)^4}e^{-ipx}i\eta_{\mu\nu}\Tilde{D}(p) \quad \text{with } \Tilde{D}(p)=-\frac{1}{P^2+i\varepsilon}
 \]
 With this substitution, the second order matrix becomes:
 \begin{align*}
 \bra{f}S^{(2)}\ket{i}&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\int d^4x_1d^4x_2e^{ip'_\mu x_1^\mu}\bar{u}(p')(-ie\gamma_\mu)\\
-&\times\int\frac{d^4q_1}{(2\pi)^4}e^{-iQ_{1\mu}(x_1-x_2)^\mu}i\Tilde{S}_F(q_1)(-ie\gamma_\nu)\\
-&\times\int\frac{d^4q_2}{(2\pi)^4}e^{-iQ_{2\mu}(x_1-x_2)^\mu}i\eta_{\mu\nu}\Tilde{D}(q_2)e^{-ip_\mu x_2^\mu}u(p)\\
-&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\int\frac{d^4q_1}{(2\pi)^4}\int\frac{d^4q_2}{(2\pi)^4}\delta(P'-Q_1-Q_2)\delta(Q_1+Q_2-P)\\
-&\times{\color{red}\bar{u}(p')(-ie\gamma_\mu)\frac{i}{\slashed{Q_1}-m+i\varepsilon}(-ie\gamma_\nu)\frac{(-i\eta_{\mu\nu})}{Q_2^2+i\varepsilon}u(p)}\\
-&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\delta(P'-P)(2\pi)^4{\color{red}\pazocal{M}} 
+&\times\int\frac{d^4q_1}{(2\pi)^4}e^{-iq_{1\mu}(x_1-x_2)^\mu}i\Tilde{S}_F(q_1)(-ie\gamma_\nu)\\
+&\times\int\frac{d^4q_2}{(2\pi)^4}e^{-iq_{2\mu}(x_1-x_2)^\mu}i\eta_{\mu\nu}\Tilde{D}(q_2)e^{-ip_\mu x_2^\mu}u(p)\\
+&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\int\frac{d^4q_1}{(2\pi)^4}\int\frac{d^4q_2}{(2\pi)^4}\delta(p'-q_1-q_2)\delta(q_1+q_2-p)\\
+&\times{\color{red}\bar{u}(p')(-ie\gamma_\mu)\frac{i}{\slashed{q_1}-m+i\varepsilon}(-ie\gamma_\nu)\frac{(-i\eta_{\mu\nu})}{q_2^2+i\varepsilon}u(p)}\\
+&=\sqrt{\frac{m}{VE_p}}\sqrt{\frac{m}{VE_{p'}}}\delta(p'-p)(2\pi)^4{\color{red}\pazocal{M}} 
 \end{align*}
 Where we denoted with $\pazocal{M}$ the term:
 \[
-\pazocal{M}=\int\frac{d^4q_2}{(2\pi)^4}\bar{u}(p')(-ie\gamma_\mu)\frac{i}{(\slashed{P}-\slashed{Q_2})-m+i\varepsilon}(-ie\gamma_\nu)\frac{(-i\eta_{\mu\nu})}{Q_2^2+i\varepsilon}u(p)
+\pazocal{M}=\int\frac{d^4q_2}{(2\pi)^4}\bar{u}(p')(-ie\gamma_\mu)\frac{i}{(\slashed{p}-\slashed{q_2})-m+i\varepsilon}(-ie\gamma_\nu)\frac{(-i\eta_{\mu\nu})}{q_2^2+i\varepsilon}u(p)
 \]
 This gives us an additional Feynman rule:
 \begin{kaobox}[frametitle=Feynman rules]
 \[
-\text{Virtual photon: }\quad \frac{-i\eta_{\mu\nu}}{K^2+i\varepsilon}
+\text{Virtual photon: }\quad \frac{-i\eta_{\mu\nu}}{k^2+i\varepsilon}
 \]
 \end{kaobox}
 \section{Production cross section}
 Moving to a probability, what we want to study is now:
 \[
-|S_{fi}|^2=|(2\pi)^4\delta^4(\sum_iP_i^{ext})|^2\prod_{\text{fer}}\frac{m}{VE_p}\prod_{\text{bos}}\frac{1}{2VE_b}|\pazocal{M}|^2
+|S_{fi}|^2=\left|(2\pi)^4\delta^4\left(\sum_ip_i^{ext}\right)\right|^2\prod_{\text{fer}}\frac{m}{VE_p}\prod_{\text{bos}}\frac{1}{2VE_b}|\pazocal{M}|^2
 \]
 The term with the $\delta$ function can be rewritten as:
 \[
-(2\pi)^4\delta^4(P_f-P_i)=\lim_{V\to\infty\\T\to\infty}\int_V d^3x\int_{-T/2}^{+T/2}dte^{i(P_f-P_i)x}
+(2\pi)^4\delta^4(p_f-p_i)=\lim_{V\to\infty\\T\to\infty}\int_V d^3x\int_{-T/2}^{+T/2}dte^{i(p_f-p_i)x}
 \]
 Focusing for the moment on the integration over time:
 \[
@@ -720,11 +749,11 @@ Focusing for the moment on the integration over time:
 \]
 where we computed the square of this quantity because this is what we are interested in. We can do the same for the integration in $d^3x$ over a volume $V$ and what we get at the end is:
 \[
-|(2\pi)^4\delta^4(P_f-P_i)|^2=\lim_{V\to\infty\\T\to\infty}(2\pi)^4VT\delta^4(P_f-P_i)
+\left|(2\pi)^4\delta^4(p_f-p_i)\right|^2=\lim_{V\to\infty\\T\to\infty}(2\pi)^4VT\delta^4(p_f-p_i)
 \]
 At this point we define the \textbf{transition rate} as:
 \[
-\omega_{fi}:=\frac{|S_{fi}|^2}{T}=V(2\pi)^4\delta^4(P_f-P_i)\underbrace{\prod_{\text{fer}}\frac{1}{2VE_p}\prod_{\text{bos}}\frac{1}{2VE_b}}_{\big{\prod_{\text{ext}}\frac{1}{2EV}}}\prod_{\text{fer}}2m_f|\pazocal{M}|^2
+\omega_{fi}:=\frac{|S_{fi}|^2}{T}=V(2\pi)^4\delta^4(p_f-p_i)\underbrace{\prod_{\text{fer}}\frac{1}{2VE_p}\prod_{\text{bos}}\frac{1}{2VE_b}}_{\big{\prod_{\text{ext}}\frac{1}{2EV}}}\prod_{\text{fer}}2m_f|\pazocal{M}|^2
 \]
 This is the transition probability density per unit time to go from an initial state $p_i$ to an exact final state $p_f$. However, we are not usually able to get exactly $p_f$ so we take into account the possibility to have a final state in $[p_f,p_f+dp_f]$. We are going to sum over all the possible final states inside the interval $dp_f$: how many are they? We have to move from $dp$ to $dn$. We know that the momentum is quantized:
 \[
@@ -754,12 +783,12 @@ n=\frac{N_i}{{\color{red}S}{\color{green}\Delta t}}\frac{{\color{green}L}}{{\col
 Putting everything together, we obtain the \textbf{differential cross section}:
 \begin{align*}
 d\sigma&=\frac{dN}{n}=\frac{dN}{\rho|\underline{v}|}=\omega_{fi}\prod_f\frac{V}{(2\pi)^3}d^3p_f\frac{1}{\rho|\underline{v}|}\marginnote{We consider one scattering at a time, so $\rho=1/V$.}\\
-&=\frac{V^2}{|\underline{v}|}(2\pi)^4\delta^4(P_f-P_i)\prod_{\text{ext}}\frac{1}{2EV}\prod_{\text{fer}}2m_f|\pazocal{M}|^2\prod_{\text{f}}\frac{V}{(2\pi)^3}d^3p_f
+&=\frac{V^2}{|\underline{v}|}(2\pi)^4\delta^4(p_f-p_i)\prod_{\text{ext}}\frac{1}{2EV}\prod_{\text{fer}}2m_f|\pazocal{M}|^2\prod_{\text{f}}\frac{V}{(2\pi)^3}d^3p_f
 \end{align*}
 Considering now the case of 2 particles, i.e. bullet and fixed target, going into $n$ final ones:
 \begin{equation}
 \labeq{dsigma}
-d\sigma=\frac{(2\pi)^4}{|\underline{v}|}\delta^4(P_f-P_i)\frac{1}{4E_1E_2}\prod_{\text{fer}}2m_f\prod_{\text{f}}\frac{d^3p_f}{(2\pi)^3}\frac{1}{2E_f}|\pazocal{M}|^2
+d\sigma=\frac{(2\pi)^4}{|\underline{v}|}\delta^4(p_f-p_i)\frac{1}{4E_1E_2}\prod_{\text{fer}}2m_f\prod_{\text{f}}\frac{d^3p_f}{(2\pi)^3}\frac{1}{2E_f}|\pazocal{M}|^2
 \end{equation}
 We explicitly write the relative velocity as:
 \[
@@ -770,20 +799,20 @@ We explicitly write the relative velocity as:
 \end{aligned}
 \right.
 \]
-We are studying a fixed target experiment, therefore $P_2^\mu=(m_2,\underline{0})$ and $\underline{v}=\underline{v}_1$:
+We are studying a fixed target experiment, therefore $p_2^\mu=(m_2,\underline{0})$ and $\underline{v}=\underline{v}_1$:
 \[
-E_1E_2|\underline{v}|=E_1m_2\frac{|p_1|}{E_1}=m_2|p_1|=m_2\sqrt{E_1^2-m_1^2}=\sqrt{m_2^2E_1^2-m_1^2m_2^2}=\sqrt{(P_1\cdot P_2)^2-m_1^2m_2^2}
+E_1E_2|\underline{v}|=E_1m_2\frac{|p_1|}{E_1}=m_2|p_1|=m_2\sqrt{E_1^2-m_1^2}=\sqrt{m_2^2E_1^2-m_1^2m_2^2}=\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}
 \]
 This is invariant, we know the other objects in \refeq{dsigma} are invariant therefore the differential cross section $d\sigma$ is an invariant object.
 \subsection{Scattering $e^+e^-\xrightarrow[]{}\mu^+\mu^-$}
 \marginnote{This section is based on \cite{scattering}.}
 Consider now the process $e^+e^-\xrightarrow[]{}\mu^+\mu^-$, \refeq{dsigma} now becomes:
 \[
-d\sigma=(2\pi)^4\delta^4(P_1+P_2-P_3-P_4)\frac{1}{4\sqrt{(P_1\cdot P_2)^2-m_e^2m_e^2}}(2m_e)^2(2m_e)^2\frac{d^3p_3}{(2\pi)^3}\frac{1}{2E_3}\frac{d^3p_4}{(2\pi)^3}\frac{1}{2E_4}|\pazocal{M}|^2
+d\sigma=(2\pi)^4\delta^4(p_1+p_2-p_3-p_4)\frac{1}{4\sqrt{(p_1\cdot p_2)^2-m_e^2m_e^2}}(2m_e)^2(2m_e)^2\frac{d^3p_3}{(2\pi)^3}\frac{1}{2E_3}\frac{d^3p_4}{(2\pi)^3}\frac{1}{2E_4}|\pazocal{M}|^2
 \]
 The interaction Lagrangian is given by:
 \[
-\pazocal{L}_{int}=-e\norder{\left[\bar{\Psi}_e\slashed{A}\Psi_e+\bar{\Psi}_\mu\slashed{A}\Psi_\mu\right]}
+\pazocal{L}_{\text{int}}=-e\norder{\left[\bar{\Psi}_e\slashed{A}\Psi_e+\bar{\Psi}_\mu\slashed{A}\Psi_\mu\right]}
 \]
 We take the second order contribution, which is the first one with a physical sense and we obtain:
 \[
@@ -797,53 +826,120 @@ S^{(2)}=\frac{(-ie)^2}{2}\int d^4x_1d^4x_2T\left[\left(\norder{\bar{\Psi}_e\tikz
 \JoinUp{(5pt,10pt)}{(5pt,10pt)}{d2}
 \end{tikzpicture}
 \]
-This object corresponds to:
-\begin{figure}[h!]
-    \centering
-    \includegraphics{Images/feynman.png}
-    \caption*{}
-    \labfig{fig:my_label}
-\end{figure}
-
+This object corresponds to:\\
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics{Images/feynman.png}
+%     \caption*{}
+%     \labfig{fig:my_label}
+% \end{figure}
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (v1);
+    \vertex [right=of v1] (v2);
+    \vertex [above left=of v1] (i1) {$e^-$};
+    \vertex [below left=of v1] (i2) {$e^+$};
+    \vertex [above right=of v2] (f1) {$\mu^-$};
+    \vertex [below right=of v2] (f2) {$\mu^+$};
+    \vertex [left=0.1cm of v1] (a) {$x_1$};
+    \vertex [right=0.1cm of v2] (b) {$x_2$};
+    \diagram* {
+    (v1) -- [photon] (v2),
+    (i1) -- [fermion] (v1),
+    (i2) -- [anti fermion] (v1),
+    (v2) -- [fermion] (f1),
+    (v2) -- [anti fermion] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (v1);
+    \vertex [right=of v1] (v2);
+    \vertex [above=of v1] (i1) {$e^-$};
+    \vertex [below=of v1] (i2) {$e^+$};
+    \vertex [above=of v2] (f1) {$\mu^-$};
+    \vertex [below=of v2] (f2) {$\mu^+$};
+    \vertex [left=0.1cm of v1] (a) {$x_1$};
+    \vertex [right=0.1cm of v2] (b) {$x_2$};
+    \diagram* {
+    (v1) -- [photon] (v2),
+    (i1) -- [fermion] (v2),
+    (i2) -- [anti fermion] (v2),
+    (v1) -- [fermion] (f1),
+    (v1) -- [anti fermion] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+\end{minipage}
 What we want to calculate at the end is the S-matrix. Since the process on the right can be obtained by exchanging $x_1$ and $x_2$ in the process on the left, the contribution to this scattering is twice the matrix element, therefore:
 \[
 S_{fi}=(-ie)^2\int d^4x_1d^4x_2\bra{\mu^+\mu^-}\norder{\bar{\Psi}_e(x_1)\Psi_e(x_1)\gamma^\mu i\eta_{\mu\nu}D(x_1-x_2)\gamma^\nu\bar{\Psi}_\mu(x_2)\Psi_\mu(x_2)}\ket{e^+e^-}
 \]
-As we said we focus just on the diagram on the left and, using the Feynman rules we found in \refsec{frules}, we can write the transition amplitude as:\begin{marginfigure}
-\includegraphics{Images/feynman(5).png}
-\end{marginfigure}
+As we said we focus just on the diagram on the left and, using the Feynman rules we found in \refsec{frules}, we can write the transition amplitude as:\marginnote{\begin{center}
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (v1);
+    \vertex [right=of v1] (v2);
+    \vertex [above left=of v1] (i1) {$e^-$};
+    \vertex [below left=of v1] (i2) {$e^+$};
+    \vertex [above right=of v2] (f1) {$\mu^-$};
+    \vertex [below right=of v2] (f2) {$\mu^+$};
+    \vertex [left=0.1cm of v1] (a) {$\mu$};
+    \vertex [right=0.1cm of v2] (b) {$\nu$};
+    \diagram* {
+    (v1) -- [photon, momentum'=$p_1+p_2$] (v2),
+    (i1) -- [fermion, momentum=$p_1$] (v1),
+    (i2) -- [anti fermion, momentum'=$p_2$] (v1),
+    (v2) -- [fermion, momentum=$p_3$] (f1),
+    (v2) -- [anti fermion, momentum'=$p_4$] (f2),
+    };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}}
+% \begin{marginfigure}
+% \includegraphics{Images/feynman(5).png}
+% \end{marginfigure}
 \begin{align*}
-\pazocal{M}&=\bar{u}_i(p_3)(-ie\gamma^\nu)_{ij}v_j(p_4)\frac{(-i\eta_{\mu\nu})}{(P_1+P_2)^2}\bar{v}_k(p_2)(-ie\gamma^\mu)_{kl}u_l(p_1)\\
-&=\frac{ie^2}{(P_1+P_2)^2}\bar{u}_{3i}\gamma^{\nu ij}v_{4j}\bar{v}_{2k}\gamma^\nu_{kl}u_{1l}
+\pazocal{M}&=\bar{u}_i(p_3)(-ie\gamma^\nu)_{ij}v_j(p_4)\frac{(-i\eta_{\mu\nu})}{(p_1+p_2)^2}\bar{v}_k(p_2)(-ie\gamma^\mu)_{kl}u_l(p_1)\\
+&=\frac{ie^2}{(p_1+p_2)^2}\bar{u}_{3i}\gamma^{\nu ij}v_{4j}\bar{v}_{2k}\gamma^\nu_{kl}u_{1l}
 \end{align*}
 But what we are interested in is the modulus squared of this object, i.e. $|\pazocal{M}|^2=\pazocal{M}\pazocal{M}^\dagger$:
 \[
-\pazocal{M}^\dagger=\frac{-ie^2}{(P_1+P_2)^2}\bar{v}_{4j}\gamma_{\mu ji}u_{3i}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k}
+\pazocal{M}^\dagger=\frac{-ie^2}{(p_1+p_2)^2}\bar{v}_{4j}\gamma_{\mu ji}u_{3i}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k}
 \]
 \begin{align*}
-|\pazocal{M}|^2&=\frac{e^4}{(P_1+P_2)^4}\left[(\bar{u}_{3i}\gamma_{\nu ij}v_{4j}\bar{v}_{2k}\gamma^\nu_{kl}u_{il})(\bar{v}_{4j}\gamma_{\mu ji}u_{3i}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k})\right]\\
-&=\frac{e^4}{(P_1+P_2)^4}\left[(\bar{u}_{3i}\gamma_{\nu ij}\bar{v}_{4j}\bar{v}_{4j}\gamma_{\mu ji}u_{3i})(\bar{v}_{2k}\gamma^\nu_{kl}u_{1l}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k})\right]
+|\pazocal{M}|^2&=\frac{e^4}{(p_1+p_2)^4}\left[(\bar{u}_{3i}\gamma_{\nu ij}v_{4j}\bar{v}_{2k}\gamma^\nu_{kl}u_{il})(\bar{v}_{4j}\gamma_{\mu ji}u_{3i}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k})\right]\\
+&=\frac{e^4}{(p_1+p_2)^4}\left[(\bar{u}_{3i}\gamma_{\nu ij}\bar{v}_{4j}\bar{v}_{4j}\gamma_{\mu ji}u_{3i})(\bar{v}_{2k}\gamma^\nu_{kl}u_{1l}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k})\right]
 \end{align*}
 We do not consider the polarization, therefore we have to sum over all the possible initial and final states and divide by four:
 \[
-|\overline{\pazocal{M}}|^2=\frac{1}{4}|\pazocal{M}|^2=\frac{e^4}{4(P_1+P_2)^4}\sum_{n_3n_4}(\bar{u}_{3i}\gamma_{\nu ij}\bar{v}_{4j}\bar{v}_{4j}\gamma_{\mu ji}u_{3i})\sum_{n_1n_2}(\bar{v}_{2k}\gamma^\nu_{kl}u_{1l}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k})
+|\overline{\pazocal{M}}|^2=\frac{1}{4}|\pazocal{M}|^2=\frac{e^4}{4(p_1+p_2)^4}\sum_{n_3n_4}(\bar{u}_{3i}\gamma_{\nu ij}\bar{v}_{4j}\bar{v}_{4j}\gamma_{\mu ji}u_{3i})\sum_{n_1n_2}(\bar{v}_{2k}\gamma^\nu_{kl}u_{1l}\bar{u}_{1l}\gamma^\mu_{lk}v_{2k})
 \]
 Keep in mind that for the two sums we already know:
 \[
 \left\{
 \begin{aligned}
-\sum_{n_1}u_1\bar{u}_1&=\frac{\slashed{P}_1+m_e}{2m_e} \quad \sum_{n_2}v_2\bar{v}_2=\frac{\slashed{P}_2-m_e}{2m_e}\\
-\sum_{n_3}u_3\bar{u}_3&=\frac{\slashed{P}_3+m_\mu}{2m_\mu} \quad \sum_{n_4}v_4\bar{v}_4=\frac{\slashed{P}_4-m_\mu}{2m_\mu}
+\sum_{n_1}u_1\bar{u}_1&=\frac{\slashed{p}_1+m_e}{2m_e} \quad \sum_{n_2}v_2\bar{v}_2=\frac{\slashed{p}_2-m_e}{2m_e}\\
+\sum_{n_3}u_3\bar{u}_3&=\frac{\slashed{p}_3+m_\mu}{2m_\mu} \quad \sum_{n_4}v_4\bar{v}_4=\frac{\slashed{p}_4-m_\mu}{2m_\mu}
 \end{aligned}
 \right.
 \]
 With this substitution, the transition amplitude can be written as:
 \[
-|\overline{\pazocal{M}}|^2=\frac{e^4}{(P_1+P_2)^4}\tr\left[\frac{\slashed{P}_3+m_\mu}{2m_\mu}\gamma_\nu\frac{\slashed{P}_4-m_\mu}{2m_\mu}\gamma_\mu\right]\tr\left[\frac{\slashed{P}_2-m_e}{2m_e}\gamma^\nu\frac{\slashed{P}_1+m_e}{2m_e}\gamma^\mu\right]
+|\overline{\pazocal{M}}|^2=\frac{e^4}{(p_1+p_2)^4}\tr\left[\frac{\slashed{p}_3+m_\mu}{2m_\mu}\gamma_\nu\frac{\slashed{p}_4-m_\mu}{2m_\mu}\gamma_\mu\right]\tr\left[\frac{\slashed{p}_2-m_e}{2m_e}\gamma^\nu\frac{\slashed{p}_1+m_e}{2m_e}\gamma^\mu\right]
 \]
 Let's focus for the moment on the first trace:
 \[
-\tr\left[(\slashed{P}_3+m_\mu)\gamma_\nu(\slashed{P}_4-m_\mu)\gamma_\mu\right]
+\tr\left[(\slashed{p}_3+m_\mu)\gamma_\nu(\slashed{p}_4-m_\mu)\gamma_\mu\right]
 \quad
 \begin{cases}
 \text{odd number of $\gamma$ matrices$\xrightarrow[]{}0$}\\
@@ -851,16 +947,16 @@ Let's focus for the moment on the first trace:
 \end{cases}
 \]
 \begin{align*}
-\tr\left[(\slashed{P}_3+m_\mu)\gamma_\nu(\slashed{P}_4-m_\mu)\gamma_\mu\right]&=\dots=\tr\left[\slashed{P}_3\gamma_\nu\slashed{P}_4\gamma_\mu-m_\mu^2\gamma_\nu\gamma_\mu\right]\\
-&=4(P_{3\nu}P_{4\mu})+4(P_{3\mu}P_{4\nu})-4(P_3P_4)\eta_{\mu\nu}-4m_\mu^2\eta_{\mu\nu}
+\tr\left[(\slashed{p}_3+m_\mu)\gamma_\nu(\slashed{p}_4-m_\mu)\gamma_\mu\right]&=\dots=\tr\left[\slashed{p}_3\gamma_\nu\slashed{p}_4\gamma_\mu-m_\mu^2\gamma_\nu\gamma_\mu\right]\\
+&=4(P_{3\nu}P_{4\mu})+4(P_{3\mu}P_{4\nu})-4(p_3p_4)\eta_{\mu\nu}-4m_\mu^2\eta_{\mu\nu}
 \end{align*}
 Analogously, for the second trace we get:
 \[
-\tr\left[(\slashed{P}_2-m_e)\gamma^\nu(\slashed{P}_1+m_e)\gamma^\mu\right]=4(P_{1\mu}P_{2\nu})+4(P_{1\nu}P_{2\mu})-4(P_1P_2)\eta_{\mu\nu}-4m_e^2\eta_{\mu\nu}
+\tr\left[(\slashed{p}_2-m_e)\gamma^\nu(\slashed{p}_1+m_e)\gamma^\mu\right]=4(P_{1\mu}P_{2\nu})+4(P_{1\nu}P_{2\mu})-4(p_1p_2)\eta_{\mu\nu}-4m_e^2\eta_{\mu\nu}
 \]
 Putting everything together, what we get in the end is:
 \[
-|\overline{\pazocal{M}}|^2=\frac{e^4}{2(P_1+P_2)^4}\frac{1}{m_\mu^2m_e^2}\left[(P_1P_3)(P_2P_4)+(P_1P_4)(P_2P_3)+m_e^2(P_3P_4)+m_\mu^2(P_1P_2)+2m_e^2m_\mu^2\right]
+|\overline{\pazocal{M}}|^2=\frac{e^4}{2(p_1+p_2)^4}\frac{1}{m_\mu^2m_e^2}\left[(p_1p_3)(p_2p_4)+(p_1p_4)(p_2p_3)+m_e^2(p_3p_4)+m_\mu^2(p_1p_2)+2m_e^2m_\mu^2\right]
 \]
 We work in the center of mass frame, which means:\begin{marginfigure}
 \includegraphics{Images/cdm.pdf}
@@ -869,34 +965,34 @@ We work in the center of mass frame, which means:\begin{marginfigure}
 \[
 \left\{
 \begin{aligned}
-P_1^\mu&=(E_1,\underline{p}_1)\\
-P_2^\mu&=(E_2,\underline{p}_2)
+p_1^\mu&=(E_1,\underline{p}_1)\\
+p_2^\mu&=(E_2,\underline{p}_2)
 \end{aligned}
 \right.
 \quad
 \left\{
 \begin{aligned}
-P_3^\mu&=(E_3,\underline{p}_3)\\
-P_4^\mu&=(E_4,\underline{p}_4)
+p_3^\mu&=(E_3,\underline{p}_3)\\
+p_4^\mu&=(E_4,\underline{p}_4)
 \end{aligned}
 \right.
 \]
-Since $P_1^2=P_2^2=m_e^2$, this tells us that $E_1=E_2=E$, therefore $\underline{p_2}=-\underline{p_1}$. The same happens for $P_3$ and $P_4$: $\underline{p_4}=-\underline{p_3}$ and $E_3=E_4$. The conservation of energy tells us that:
+Since $p_1^2=p_2^2=m_e^2$, this tells us that $E_1=E_2=E$, therefore $\underline{p_2}=-\underline{p_1}$. The same happens for $p_3$ and $p_4$: $\underline{p_4}=-\underline{p_3}$ and $E_3=E_4$. The conservation of energy tells us that:
 \[
-P_1+P_2=(2E,\underline{0})=P_3+P_4=(2E_3,\underline{0})\Rightarrow E_3=E_4=E
+p_1+p_2=(2E,\underline{0})=p_3+p_4=(2E_3,\underline{0})\Rightarrow E_3=E_4=E
 \]
 \[
 \left\{
 \begin{aligned}
-P_1^\mu&=(E,\underline{p})\\
-P_2^\mu&=(E,-\underline{p})
+p_1^\mu&=(E,\underline{p})\\
+p_2^\mu&=(E,-\underline{p})
 \end{aligned}
 \right.
 \quad
 \left\{
 \begin{aligned}
-P_3^\mu&=(E,\underline{p}')\\
-P_4^\mu&=(E,-\underline{p}')
+p_3^\mu&=(E,\underline{p}')\\
+p_4^\mu&=(E,-\underline{p}')
 \end{aligned}
 \right.
 \]
@@ -904,9 +1000,9 @@ It is now possible to compute the scalar products in the expression for the tran
 \[
 \left\{
 \begin{aligned}
-&(P_1P_2)=E^2+p^2 \quad (P_3P_4)=E^2+p'^2\\
-&(P_1P_3)=(P_2P_4)=E^2-pp'\cos(\theta)\\
-&(P_1P_4)=(P_2P_3)=E^2+pp'\cos(\theta)
+&(p_1p_2)=E^2+p^2 \quad (p_3p_4)=E^2+p'^2\\
+&(p_1p_3)=(p_2p_4)=E^2-pp'\cos(\theta)\\
+&(p_1p_4)=(p_2p_3)=E^2+pp'\cos(\theta)
 \end{aligned}
 \right.
 \]
@@ -918,9 +1014,9 @@ We know that $m_e=0.511$MeV$\ll m_\mu=105$MeV. With this approximation, we get:
 \[
 16m_e^2m_\mu^2|\overline{\pazocal{M}}|^2\simeq\frac{e^4}{2E^4}(2E^4+2E^2p'^2\cos^2\theta+2m_\mu^2E^2)=\frac{e^4}{E^2}(E^2+p'^2\cos^2\theta+m_\mu^2)
 \]
-The flux term in the cross section computed in the beginning becomes just $4\sqrt{(P_1\cdot P_2)^2-m_e^2m_\mu^2}\simeq8E^2$ and finally for the differential cross section we can write:
+The flux term in the cross section computed in the beginning becomes just $4\sqrt{(p_1\cdot p_2)^2-m_e^2m_\mu^2}\simeq8E^2$ and finally for the differential cross section we can write:
 \begin{align*}
-d\sigma&=(2\pi)^4\delta^4(P_f-P_i)\frac{e^4}{8E^4}(E^2+p'^2\cos^2\theta+m_\mu^2)\frac{d^3p_3}{(2\pi)^32E}\frac{d^3p_4}{(2\pi)^32E}\marginnote{$\delta(P_f-P_i)=\delta(E_1+E_2-E_3-E_4)=\delta(2E-2E')=\frac{1}{2}\delta(E-E')$}\\
+d\sigma&=(2\pi)^4\delta^4(p_f-p_i)\frac{e^4}{8E^4}(E^2+p'^2\cos^2\theta+m_\mu^2)\frac{d^3p_3}{(2\pi)^32E}\frac{d^3p_4}{(2\pi)^32E}\marginnote{$\delta(p_f-p_i)=\delta(E_1+E_2-E_3-E_4)=\delta(2E-2E')=\frac{1}{2}\delta(E-E')$}\\
 &=\frac{e^4}{128\pi^2E^6}\delta(2E-2E')(E^2+p'^2\cos^2\theta+m_\mu^2)d^3p'
 \end{align*}
 Keeping in mind that $d^3p'=d\Omega dp'p'^2$, we can write:
@@ -945,11 +1041,10 @@ Where we used the constant $\alpha=\frac{e^2}{4\pi}$. To conclude, we integrate 
 \[
 \int_0^{2\pi}d\phi\int_{-1}^{+1}d\cos\theta(1+\cos^2\theta)=\frac{16\pi}{3}
 \]
-And finally we obtain:
+And finally we obtain:\marginnote{This depends on the energy of the incoming particle. For instance, a beam of 100 GeV will give us a cross section of $\sigma\sim10^{-12}$ barn.}
 \[
 \sigma=\frac{\alpha^2\pi}{3E^2}\simeq5.6\cdot10^{-5}\frac{1}{E^2}
 \]
-This depends on the energy of the incoming particle. For instance, a beam of 100 GeV will give us a cross section of $\sigma\sim10^{-12}$ barn.
 \newpage
 \vspace*{\fill}
 \begin{center}
