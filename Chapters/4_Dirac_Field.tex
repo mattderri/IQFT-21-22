@@ -208,7 +208,7 @@ $\Psi^\dagger\Psi$ is positive definite and we can construct a continuity equati
 \[
 \Rightarrow i\frac{\partial}{\partial t}(\Psi^\dagger\Psi)=-i\Psi^\dagger\underline{\alpha}\cdot\underline{\nabla}\Psi-i\underline{\nabla}\Psi^\dagger\underline{\alpha}\Psi=-i\underline{\nabla}(\Psi^\dagger\underline{\alpha}\Psi)
 \]
-In this way, we can define a \tetxbf{current} $J^\mu:=(\Psi^\dagger\Psi,\Psi^\dagger\underline{\alpha}\Psi)$ such that $\partial_\mu J^\mu=0$. By inserting $\gamma^{0^2}=\beta^2=\mathbb{1}$ in the expression of the current, keeping in mind that $\gamma^i=\beta\alpha^i$, it is possible to rewrite $J^\mu$ as:
+In this way, we can define a \textbf{current} $J^\mu:=(\Psi^\dagger\Psi,\Psi^\dagger\underline{\alpha}\Psi)$ such that $\partial_\mu J^\mu=0$. By inserting $\gamma^{0^2}=\beta^2=\mathbb{1}$ in the expression of the current, keeping in mind that $\gamma^i=\beta\alpha^i$, it is possible to rewrite $J^\mu$ as:
 \[
 \left\{
 \begin{aligned}
@@ -705,7 +705,7 @@ As we did for creation and annihilation operators, we can impose anti-commutatio
 \end{align*}
 Computing the multiplications inside the curly brackets makes anti-commutators appear:
 \begin{align*}
-&=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}[b_p,b^\dagger_{p'}]_+}e^{-i(p_\mu x^\mu-p'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){{\color{green}[d_p,d^\dagger_{p'}]_}}+e^{i(p_\mu x^\mu-p'_\mu y^\mu)}\right\}\\
+&\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}[b_p,b^\dagger_{p'}]_+}e^{-i(p_\mu x^\mu-p'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){\color{green}[d_p,d^\dagger_{p'}]_}+e^{i(p_\mu x^\mu-p'_\mu y^\mu)}\right\}\\
 &=\sum_{\pm n,\pm n'}\int\frac{d^3pd^3p'}{(2\pi)^3}\frac{m}{\sqrt{EE'}}\left\{u_a(p)u^\dagger_b(p'){\color{blue}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{-i(p_\mu x^\mu-p'_\mu y^\mu)}+v_a(p)v^\dagger_b(p'){\color{green}\delta_{nn'}\delta(\underline{p}-\underline{p}')}e^{i(p_\mu x^\mu-p'_\mu y^\mu)}\right\}\\
 &=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left[u_a(p,n)u^\dagger_b(p,n)e^{-ip(x-y)}+v_a(p,n)v^\dagger_b(p,n)e^{ip(x-y)}\right]\\
 &=\sum_{\pm n}\int\frac{d^3p}{(2\pi)^3}\frac{m}{E}\left\{\left[u_a(p,n)u^\dagger_b(p,n){\color{red}\gamma^0\gamma^0}+v_a(\Tilde{p},n)v^\dagger_b(\Tilde{p},n){\color{red}\gamma^0\gamma^0}\right]e^{-ip(x-y)}\right\}\\
@@ -797,10 +797,10 @@ As we previously did, we define $\slashed{A}:=\gamma_\mu A^\mu$ and we can look 
 \end{aligned}
 \right.
 \]
-With this properties and knowing that $\tr\gamma^\mu=\tr\gamma_5=0$, we show that:
+With these properties and knowing that $\tr\gamma^\mu=\tr\gamma_5=0$, we show that:
 \begin{align*}
 \tr(\slashed{A}\slashed{B})&=\tr(A_\mu B_\nu\gamma^\mu\gamma^\nu)=A_\mu B_\nu\tr(\gamma^\mu\gamma^\nu)=A_\mu B_\nu\frac{1}{2}\left[\tr(\gamma^\mu\gamma^\nu)+\tr(\gamma^\nu\gamma^\mu)\right]\\
-&=A_\mu B_\nu\frac{1}{2}\tr(\gamma^\mu\gamma^\nu+\gamma^\nu\gama^\mu)=A_\mu B_\nu\frac{1}{2}\tr([\gamma^\mu,\gamma^\nu]_+)=\frac{1}{2}A_\mu B_\nu\tr(2\eta_{\mu\nu}\mathbb{1})\\
+&=A_\mu B_\nu\frac{1}{2}\tr(\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu)=A_\mu B_\nu\frac{1}{2}\tr([\gamma^\mu,\gamma^\nu]_+)=\frac{1}{2}A_\mu B_\nu\tr(2\eta_{\mu\nu}\mathbb{1})\\
 &=4A\cdot B
 \end{align*}
 Moreover, one has that $\tr(\slashed{A}\slashed{B}\slashed{C})=-\tr(\slashed{A}\slashed{B}\slashed{C})=0$.

@@ -103,7 +103,6 @@
 \usepackage{subfiles} % Best loaded last in the preamble
 \usepackage{calligra}
 \usepackage{enumitem}
-\usepackage[makeroom]{cancel}
 \newcommand\norder[1]{\vcentcolon\mathrel{#1}\vcentcolon}
 \usepackage{slashed}
 \usepackage{tikz}
@@ -130,11 +129,10 @@
 \draw[<->]
   ([shift={#2}]pic cs:start#4) -- ++(0pt,-#1) -| ([shift={(#3)}]pic cs:end#4);
 }
-\DeclareMathSymbol{\varv}{\mathord}{matha}{118}
-\newcommand{\RN}[1]{%
+\renewcommand{\RN}[1]{%
   \textup{\uppercase\expandafter{\romannumeral#1}}%
 }
-\newcommand{\boxed}[1]{\fbox{\m@th$\displaystyle#1$}}
+\renewcommand{\boxed}[1]{\fbox{\m@th$\displaystyle#1$}}
 \definecolor{red}{RGB}{255, 0, 0}
 \definecolor{green}{rgb}{0.0, 0.5, 0.0}
 \renewcommand{\CancelColor}{\color{red}}
@@ -221,7 +219,7 @@
 	
 	    
 	\textbf{Publisher} \\
-	First wrote in May 2022 by \@author\\
+	First wrote in May 2022 by me :)\\
 	
 % 	Ahimè non c'è la stessa quantità di cazzate ed easter eggs che si può trovare negli appunti di teoria dei gruppi, stavolta è uscita una roba fin troppo seria. Se ci sono errori segnalateli e se vi sentite particolarmente generosi, io ve lo lascio qui che non si sa mai qualcuno impazzisca e voglia contribuire con un bel \href{https://www.paypal.me/mattderri}{PANINOZZO}.
 % 	\\
@@ -328,7 +326,7 @@
 
 \backmatter % Denotes the end of the main document content
 \setchapterstyle{plain} % Output plain chapters from this point onwards
-
+\subfile{Chapters/Fish}
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
